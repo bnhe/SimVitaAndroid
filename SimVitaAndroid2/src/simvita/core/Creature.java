@@ -1,5 +1,7 @@
 package simvita.core;
 
+import sofia.graphics.OvalShape;
+import sofia.graphics.Shape;
 import sofia.graphics.Color;
 import java.util.ArrayList;
 
@@ -42,7 +44,7 @@ public class Creature extends Thing
      */
     public Creature(Position x, String aName, Description desc, Color c, int freq)
     {
-        this(x, aName, desc, c, new ArrayList<StatusEffect<Creature>>(), freq);
+        this(x, aName, desc, c, new ArrayList<StatusEffect<Creature>>(), freq, null);
     }
 
 
@@ -57,7 +59,7 @@ public class Creature extends Thing
     public Creature(Position x, String aName, Description desc, Color c,
         ArrayList<StatusEffect<Creature>> stEffects)
     {
-        this(x, aName, desc, c, stEffects, 5);
+        this(x, aName, desc, c, stEffects, 5, null);
     }
 
 
@@ -70,9 +72,9 @@ public class Creature extends Thing
      * @param frequency a frequency of act.
      */
     public Creature(Position x, String aName, Description desc, Color c,
-        ArrayList<StatusEffect<Creature>> stEffects, int frequency)
+        ArrayList<StatusEffect<Creature>> stEffects, int frequency, OvalShape s)
     {
-        super(x, aName, desc, c);
+        super(x, aName, desc, c, s);
 
         statusEffects = stEffects;
 

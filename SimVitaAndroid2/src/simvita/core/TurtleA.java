@@ -3,6 +3,9 @@
  */
 package simvita.core;
 
+import sofia.graphics.FillableShape;
+import sofia.graphics.OvalShape;
+import sofia.graphics.RectangleShape;
 import java.util.ArrayList;
 import sofia.graphics.Color;
 import java.util.Random;
@@ -45,7 +48,10 @@ public class TurtleA extends Creature {
 	 * @param desc The description.
 	 */
 	public TurtleA(Position x, String aName, Description desc) {
-		super(x, aName, desc, Color.greenYellow, 10);
+        super(x, aName, desc, Color.greenYellow, null, 10, new OvalShape(0, 0, 1, 1));
+
+        shape.setFilled(true);
+        shape.setFillColor(color);
 
 	}
 
@@ -58,18 +64,14 @@ public class TurtleA extends Creature {
      */
     public ArrayList<Thing> act(World w)
     {
-        ArrayList<Thing> oldThing = new ArrayList<Thing>();
-
         Position newPosition =
             new Position(getPosition().x + rand.nextInt(3) - 1,
                     getPosition().y + rand.nextInt(3) - 1);
 
-        TurtleA oldPath = this;
-        oldPath.kill();
-        oldThing.add(oldPath);
-
         this.setPosition(newPosition);
-        return oldThing;
+
+//        shape.setPosition(newPosition.x, newPosition.y);
+        return null;
     }
 
     /**

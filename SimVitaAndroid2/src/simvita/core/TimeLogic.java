@@ -103,6 +103,7 @@ public class TimeLogic
     public ArrayList<Thing> tick()
     {
         ArrayList<Thing> toRemove = new ArrayList<Thing>();
+        ArrayList<Thing> newThings = new ArrayList<Thing>();
         TimeEvent t = null;
         // timeQueue
         if (timeQueue.size() > 0)
@@ -110,7 +111,7 @@ public class TimeLogic
             t = timeQueue.poll();
 
             //act
-            ArrayList<Thing> newThings = t.creature.act(world);
+            newThings = t.creature.act(world);
             if (newThings != null)
             {
                 for (Thing th : newThings)
@@ -164,7 +165,7 @@ public class TimeLogic
         }
 
         System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
-        return toRemove;
+        return newThings;
     }
 
 

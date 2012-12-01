@@ -1,5 +1,7 @@
 package simvita.core;
 
+import sofia.graphics.OvalShape;
+import sofia.graphics.Shape;
 import java.util.ArrayList;
 import sofia.graphics.Color;
 
@@ -20,6 +22,7 @@ public class Thing
     private String      name;
     private Description description;
     public Color color;
+    public OvalShape shape;
 
 
     // ~Constructors------------------------------------------------------------
@@ -33,12 +36,13 @@ public class Thing
      * @param desc
      *            The detailed description of the thing.
      */
-    public Thing(Position x, String aName, Description desc, Color c)
+    public Thing(Position x, String aName, Description desc, Color c, OvalShape s)
     {
         curPosition = x;
         name = aName;
         description = desc;
         color = c;
+        shape = s;
     }
 
 
