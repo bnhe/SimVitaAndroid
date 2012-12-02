@@ -22,7 +22,7 @@ public class Thing
     private String      name;
     private Description description;
     public Color color;
-    public OvalShape shape;
+    public Shape shape;
 
 
     // ~Constructors------------------------------------------------------------
@@ -36,7 +36,7 @@ public class Thing
      * @param desc
      *            The detailed description of the thing.
      */
-    public Thing(Position x, String aName, Description desc, Color c, OvalShape s)
+    public Thing(Position x, String aName, Description desc, Color c, Shape s)
     {
         curPosition = x;
         name = aName;

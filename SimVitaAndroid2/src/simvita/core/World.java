@@ -19,6 +19,8 @@ import java.util.ArrayList;
 public class World {
 
 	private ArrayList<Thing> things;
+	private ArrayList<Thing> toBeRemoved;
+	public ArrayList<Thing> toBeDraw;
 
 	/**
 	 * Create a new empty world.
@@ -26,6 +28,7 @@ public class World {
 	public World()
 	{
 		things = new ArrayList<Thing>();
+		toBeRemoved = new ArrayList<Thing>();
 	}
 
 	/**
@@ -135,6 +138,22 @@ public class World {
 	public ArrayList<Thing>  getListOfThings()
 	{
 		return things;
+	}
+
+	/**
+	 * getToBeRemoved list.
+	 */
+	public ArrayList<Thing> getToBeRemoved()
+	{
+	    return toBeRemoved;
+	}
+
+	/**
+	 * get Things to be added
+	 */
+	public ArrayList<Thing> getToBeDraw()
+	{
+	    return toBeDraw;
 	}
 
 

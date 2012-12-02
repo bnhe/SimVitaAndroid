@@ -24,17 +24,13 @@ import java.util.HashMap;
  */
 public class SimVitaScreen extends ShapeScreen
 {
-    private World world;
+
     private float cellSize;
     private int numBoxWidth;
     private int numBoxHeight;
-    private CheckBox addCreatureMode;
     private TimeLogic game;
     private BacteriaA ba;
-    private Color normalColor;
-    private Controller control;
-//    //private ArrayList<Shape> shapes;
-//    private HashMap<Creature, Shape> shapes;
+
 
     // ----------------------------------------------------------
     /**
@@ -49,44 +45,37 @@ public class SimVitaScreen extends ShapeScreen
         numBoxWidth = (int) (getWidth() / cellSize);
         numBoxHeight = (int) (getHeight() / cellSize);
 
-//        shapes = new HashMap<Creature, Shape>();
+
         //Set up the game
         game = new TimeLogic();
-        ba = new BacteriaA();
+
         //add stuff
+        ba = new BacteriaA();
+        Position baPosition = new Position(10, 10);
+        ba.shape.setBounds(new RectF(0, 0, cellSize, cellSize));
+        ba.shape.setPosition(cellSize * 10, cellSize * 10);
+        add(ba.shape);
         game.getWorld().addThing(ba, new Position(10, 10));
+
+//        game.getWorld().addThing(ba, new Position(10, 10));
+
         float startx = cellSize * 20;
         float starty = cellSize * 20;
+        Position turtlePosition = new Position(20, 20);
 
-        TurtleA t = new TurtleA(new Position(20, 20));
+        TurtleA t = new TurtleA(turtlePosition);
         t.shape.setBounds(new RectF(startx, starty, startx
             + cellSize, starty + cellSize));
         add(t.shape);
+
         //add a turtle
         game.getWorld().addThing(t, new Position(20, 20));
+
         // Set up the screen
-
-
-//       shapes.put(t, new OvalShape(startx, starty,  cellSize, cellSize));
-//       ((FillableShape)shapes.get(t)).setFilled(true);
-//       ((FillableShape)shapes.get(t)).setFillColor(t.color);
-//        add(shapes.get(t));
-
-        //wait
-        //updateScreen();
         game.init();
     }
-//
-//    public void addShapeCreature(Creature t)
-//    {
-//        float startx = cellSize * t.getPosition().x;
-//        float starty = cellSize * t.getPosition().y;
-//
-//       shapes.put(t, new OvalShape(startx, starty,  cellSize, cellSize));
-//       ((FillableShape)shapes.get(t)).setFilled(true);
-//       ((FillableShape)shapes.get(t)).setFillColor(t.color);
-//        add(shapes.get(t));
-//    }
+
+
 
     public void startGameClicked()
     {
@@ -104,7 +93,7 @@ public class SimVitaScreen extends ShapeScreen
             }
             catch (InterruptedException e)
             {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
         }
@@ -116,27 +105,41 @@ public class SimVitaScreen extends ShapeScreen
         //clearScreen();
         game.tick();
         updateScreen();
-       // TurtleA t = (TurtleA)game.getWorld().getListOfThings().get(0);
-        //t.act(game.getWorld());
 
-//        for (Thing t :game.getWorld().getListOfThings())
-//        {
-//            int x = t.getPosition().x;
-//            int y = t.getPosition().y;
-//                shapes.get(t).setPosition(cellSize*x, cellSize*y);
-//        }
     }
 
     public void updateScreen()
     {
-        for (Thing t : game.getWorld().getListOfThings())
+        if (game.getWorld().getListOfThings() != null)
         {
-            int x = t.getPosition().x;
-            int y = t.getPosition().y;
-            if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
+            for (Thing t : game.getWorld().getListOfThings())
             {
-                t.shape.setPosition(cellSize * x, cellSize * y);
+                int x = t.getPosition().x;
+                int y = t.getPosition().y;
+                if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
+                {
+                    t.shape.setPosition(cellSize * x, cellSize * y);
+                }
+//                System.out.println("A Thing on the world:" + t.toString());
             }
+        }
+
+        if (game.getWorld().getToBeDraw() != null)
+        {
+            for (Thing t : game.getWorld().getToBeDraw())
+            {
+                int x = t.getPosition().x;
+                int y = t.getPosition().y;
+                if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
+                {
+                    t.shape.setPosition(cellSize * x, cellSize * y);
+                    add(t.shape);
+                }
+                game.getWorld().getToBeDraw().remove(t);
+
+                System.out.println("A Thing in toBeDraw: " + t.toString());
+            }
+
         }
     }
 
@@ -147,7 +150,9 @@ public class SimVitaScreen extends ShapeScreen
             int x = t.getPosition().x;
             int y = t.getPosition().y;
             if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
-            {            }
+            {
+
+            }
         }
     }
 

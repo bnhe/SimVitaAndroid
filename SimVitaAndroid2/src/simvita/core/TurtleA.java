@@ -50,8 +50,8 @@ public class TurtleA extends Creature {
 	public TurtleA(Position x, String aName, Description desc) {
         super(x, aName, desc, Color.greenYellow, null, 10, new OvalShape(0, 0, 1, 1));
 
-        shape.setFilled(true);
-        shape.setFillColor(color);
+        ((FillableShape)shape).setFilled(true);
+        ((FillableShape)shape).setFillColor(color);
 
 	}
 
@@ -70,7 +70,6 @@ public class TurtleA extends Creature {
 
         this.setPosition(newPosition);
 
-//        shape.setPosition(newPosition.x, newPosition.y);
         return null;
     }
 
