@@ -3,6 +3,8 @@
  */
 package simvita.core;
 
+import android.graphics.RectF;
+import sofia.graphics.ImageShape;
 import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
 import sofia.graphics.RectangleShape;
@@ -50,8 +52,9 @@ public class TurtleA extends Creature {
 	public TurtleA(Position x, String aName, Description desc) {
         super(x, aName, desc, Color.greenYellow, null, 10, new OvalShape(0, 0, 1, 1));
 
-        ((FillableShape)shape).setFilled(true);
-        ((FillableShape)shape).setFillColor(color);
+//        ((FillableShape)shape).setFilled(true);
+//        ((FillableShape)shape).setFillColor(color);
+        shape = new ImageShape("turtlebigsz", new RectF(0, 0, 1, 1));
 
 	}
 

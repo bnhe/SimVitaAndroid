@@ -41,7 +41,7 @@ public class SimVitaScreen extends ShapeScreen
 
         setBackgroundColor(Color.black);
         float boardSize = Math.min(getWidth(), getHeight());
-        cellSize = boardSize / 40;
+        cellSize = boardSize / 20;
         numBoxWidth = (int) (getWidth() / cellSize);
         numBoxHeight = (int) (getHeight() / cellSize);
 
@@ -51,25 +51,25 @@ public class SimVitaScreen extends ShapeScreen
 
         //add stuff
         ba = new BacteriaA();
-        Position baPosition = new Position(10, 10);
+        Position baPosition = new Position(5, 5);
         ba.shape.setBounds(new RectF(0, 0, cellSize, cellSize));
-        ba.shape.setPosition(cellSize * 10, cellSize * 10);
+        ba.shape.setPosition(cellSize * 5, cellSize * 5);
         add(ba.shape);
-        game.getWorld().addThing(ba, new Position(10, 10));
+        game.getWorld().addThing(ba, new Position(5, 50));
 
 //        game.getWorld().addThing(ba, new Position(10, 10));
 
-        float startx = cellSize * 20;
-        float starty = cellSize * 20;
-        Position turtlePosition = new Position(20, 20);
+        float startx = cellSize * 10;
+        float starty = cellSize * 10;
+        Position turtlePosition = new Position(10, 10);
 
         TurtleA t = new TurtleA(turtlePosition);
-        t.shape.setBounds(new RectF(startx, starty, startx
-            + cellSize, starty + cellSize));
+        t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
+        t.shape.setPosition(startx, starty);
         add(t.shape);
 
         //add a turtle
-        game.getWorld().addThing(t, new Position(20, 20));
+        game.getWorld().addThing(t, new Position(10, 10));
 
         // Set up the screen
         game.init();
@@ -89,7 +89,7 @@ public class SimVitaScreen extends ShapeScreen
             doOneTick();
             try
             {
-                Thread.currentThread().sleep(10);
+                Thread.currentThread().sleep(20);
             }
             catch (InterruptedException e)
             {
