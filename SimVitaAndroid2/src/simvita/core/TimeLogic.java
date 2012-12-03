@@ -19,6 +19,7 @@ public class TimeLogic
     private PriorityQueue<TimeEvent> timeQueue;
     private PriorityQueue<TimeEvent> rollOverTimeQueue;
     private World world;
+    private long clock;
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
@@ -27,6 +28,16 @@ public class TimeLogic
     {
         this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
             new World());
+        clock = 0;
+    }
+
+    /**
+     * Adds a Creature the world and to the TimeLogic.
+     */
+    public void addCreature(Creature c)
+    {
+        world.addThing(c, c.getPosition());
+        timeQueue.add(new TimeEvent(clock, c));
     }
 
 
@@ -100,54 +111,50 @@ public class TimeLogic
      *
      * @return The TimeEvent in question, and null if nothing happened.
      */
-    public ArrayList<Thing> tick()
+    public void tick()
     {
-        ArrayList<Thing> toRemove = new ArrayList<Thing>();
-        ArrayList<Thing> newThings = new ArrayList<Thing>();
         TimeEvent t = null;
         // timeQueue
         if (timeQueue.size() > 0)
         {
+            //advance in time
             t = timeQueue.poll();
+            clock = t.time;
 
             //act
-            newThings = t.creature.act(world);
-            if (newThings != null)
+            t.creature.act(world);
+
+
+            //Add new creatures to the Queue.
+            /*
+            for (Thing th : world.getToBeDraw())
             {
-                for (Thing th : newThings)
+                if (th instanceof Creature)
                 {
-                    if (th instanceof Creature)
-                    {
-                        Creature c = (Creature) th;
-                        timeQueue.add(new TimeEvent(c.getActFrequency() + t.creature.getActFrequency() + t.time, c));
-                    }
+                    timeQueue.add(new TimeEvent(t.time, (Creature)th));
                 }
             }
+             */
 
             //requeue
             // Check for overflow.
 
-            if (!t.creature.isDead())
-            {
 
-                if (t.time >= Long.MAX_VALUE - t.creature.getActFrequency())
-                {
-                    // Go to overflow.
-                    t.time = t.creature.getActFrequency() - (Long.MAX_VALUE - t.time); //Long.MAX_VALUE - t.time - t.creature.getActFrequency();
-                    rollOverTimeQueue.offer(t);
-                }
-                else
-                {
-                    // Change the time to the next time it should be enacted
-                    t.time += t.creature.getActFrequency();
-                    // Requeue
-                    timeQueue.offer(t);
-                }
+
+            if (t.time >= Long.MAX_VALUE - t.creature.getActFrequency())
+            {
+                // Go to overflow.
+                t.time = t.creature.getActFrequency() - (Long.MAX_VALUE - t.time); //Long.MAX_VALUE - t.time - t.creature.getActFrequency();
+                rollOverTimeQueue.offer(t);
             }
             else
             {
-                toRemove.add(t.creature);
+                // Change the time to the next time it should be enacted
+                t.time += t.creature.getActFrequency();
+                // Requeue
+                timeQueue.offer(t);
             }
+
         }
         else
         {
@@ -156,6 +163,7 @@ public class TimeLogic
             {
                 timeQueue = rollOverTimeQueue;
                 rollOverTimeQueue = new PriorityQueue<TimeEvent>();
+                clock = 0;
             }
             else
             {
@@ -165,7 +173,7 @@ public class TimeLogic
         }
 
         System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
-        return newThings;
+        //return newThings;
     }
 
 

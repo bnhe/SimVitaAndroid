@@ -29,4 +29,13 @@
             android:layout_toRightOf="@+id/startGame"
             android:text="Add Creature" />
 
+        <Button
+            android:id="@+id/addIt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/shapeView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Button" />
+
 </RelativeLayout>

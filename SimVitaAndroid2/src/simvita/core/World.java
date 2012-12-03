@@ -29,6 +29,7 @@ public class World {
 	{
 		things = new ArrayList<Thing>();
 		toBeRemoved = new ArrayList<Thing>();
+		toBeDraw = new ArrayList<Thing>();
 	}
 
 	/**
@@ -50,6 +51,7 @@ public class World {
 	{
 		t.setPosition(x);
 		things.add(t);
+		toBeDraw.add(t);
 	}
 
 	/**
