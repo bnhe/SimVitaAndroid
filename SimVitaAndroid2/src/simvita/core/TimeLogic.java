@@ -111,7 +111,7 @@ public class TimeLogic
             t = timeQueue.poll();
 
             //act
-            newThings = t.creature.act(world);
+            newThings = t.creature.act(world).get(1);
             if (newThings != null)
             {
                 for (Thing th : newThings)

@@ -65,7 +65,7 @@ public class TurtleA extends Creature {
      *
      * @param w The world the TurtleA acts upon.
      */
-    public ArrayList<Thing> act(World w)
+    public ArrayList<ArrayList<Thing>> act(World w)
     {
         Position newPosition =
             new Position(getPosition().x + rand.nextInt(3) - 1,

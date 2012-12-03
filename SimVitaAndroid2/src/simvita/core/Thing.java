@@ -95,8 +95,12 @@ public class Thing
      * interact with the world.
      *
      * @param w The world the creature acts upon.
+     * @return a array of ArrayList<Things>. The 0 index ArrayList
+     * are the new thing
+     * to be added to the world. The 1 index ArrayList are the things
+     * to be removed in the world(new die thing, been eat);
      */
-    public ArrayList<Thing> act(World w)
+    public ArrayList<ArrayList<Thing>> act(World w)
     {
         return null;
     }

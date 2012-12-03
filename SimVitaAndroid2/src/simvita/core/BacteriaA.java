@@ -62,7 +62,7 @@ public class BacteriaA extends SimpleCreature {
      * @param w The world the BacteriaA acts upon.
      * @return
      */
-    public ArrayList<Thing> act(World w)
+    public ArrayList<ArrayList<Thing>> act(World w)
     {
 
 //        if (life < 0)
@@ -73,10 +73,25 @@ public class BacteriaA extends SimpleCreature {
 //        }
 //        else
 //        {
-            replicate(w);
+
+            //Replication code
+
+        ArrayList<ArrayList<Thing>> affectedThings=
+            new ArrayList< ArrayList<Thing> >();
+
+        Position daughterPosition =
+            new Position(getPosition().x + rand.nextInt(3) - 1,
+                getPosition().y + rand.nextInt(3) - 1);
+
+        BacteriaA daughter = new BacteriaA(daughterPosition);
+
+        affectedThings.get(1).add(daughter);
+
+        return affectedThings;
+
 //            life--;
 //        }
-        return null;
+//        return null;
     }
 
     /**
