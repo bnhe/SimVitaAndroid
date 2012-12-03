@@ -1,5 +1,8 @@
 package simvita.core;
 
+import android.app.AlertDialog;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
 import android.graphics.RectF;
@@ -38,7 +41,6 @@ public class SimVitaScreen extends ShapeScreen
      */
     public void initialize()
     {
-
         setBackgroundColor(Color.black);
         float boardSize = Math.min(getWidth(), getHeight());
         cellSize = boardSize / 20;
@@ -80,6 +82,12 @@ public class SimVitaScreen extends ShapeScreen
     public void startGameClicked()
     {
        doTicks(100);
+    }
+
+    public void addCreatureClicked()
+    {
+        //showAlertDialog("Add Creature", "What kind of creature to add?");
+        presentScreen(AddCreatureScreen.class);
     }
 
     public void doTicks(int n)
@@ -154,6 +162,11 @@ public class SimVitaScreen extends ShapeScreen
 
             }
         }
+    }
+
+    public void finish(Object result)
+    {
+        return;
     }
 
 }

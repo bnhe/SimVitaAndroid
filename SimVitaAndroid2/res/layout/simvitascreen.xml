@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-   
     <Button
         android:id="@+id/startGame"
         style="?android:attr/buttonStyleSmall"
@@ -19,5 +18,15 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/startGame" />
+
+        <Button
+            android:id="@+id/addCreature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/shapeView"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="31dp"
+            android:layout_toRightOf="@+id/startGame"
+            android:text="Add Creature" />
 
 </RelativeLayout>
