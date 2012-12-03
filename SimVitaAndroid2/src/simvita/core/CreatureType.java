@@ -2,5 +2,5 @@ package simvita.core;
 
 public enum CreatureType
 {
-    TURTLE, BACTERIA
+    TURTLE, BACTERIA, DONOTHING
 }

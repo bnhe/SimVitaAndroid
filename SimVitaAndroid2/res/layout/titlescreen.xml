@@ -12,4 +12,14 @@
         android:layout_alignParentTop="true"
         android:text="Play" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="164dp"
+        android:text="SimVita Start Screen (Draw a good logo to go here)"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>

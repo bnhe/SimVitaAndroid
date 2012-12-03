@@ -5,14 +5,6 @@
     android:gravity="top" >
 
     <Button
-        android:id="@+id/bacteria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Bacteria" />
-
-    <Button
         android:id="@+id/turtle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,27 +13,13 @@
         android:layout_toRightOf="@+id/bacteria"
         android:text="Turtle" />
 
-    <EditText
-        android:id="@+id/editText1"
+    <Button
+        android:id="@+id/doNothing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText2"
-        android:layout_alignRight="@+id/turtle"
-        android:layout_marginBottom="46dp"
-        android:ems="10"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="138dp"
-        android:ems="10"
-        android:inputType="numberSigned" />
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/turtle"
+        android:text="DoNothing" />
 
 </RelativeLayout>

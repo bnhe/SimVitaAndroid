@@ -172,7 +172,7 @@ public class TimeLogic
             }
         }
 
-        System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
+        //System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
         //return newThings;
     }
 

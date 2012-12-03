@@ -27,7 +27,7 @@ import java.util.HashMap;
  */
 public class AddCreatureScreen extends ShapeScreen
 {
-    private CreatureType addType;
+    private CreatureAdd add;
     private World world;
     private float cellS;
     private TimeLogic game;
@@ -37,28 +37,21 @@ public class AddCreatureScreen extends ShapeScreen
     /**
      * Place a description of your method here.
      */
-    public void initialize(TimeLogic t, float cellS)
+    public void initialize(CreatureAdd c)
     {
-        game = t;
-        this.cellS = cellS;
+        add = c;
     }
 
     public void turtleClicked()
     {
-        addType = CreatureType.TURTLE;
-        TurtleA t = new TurtleA(new Position(5, 4));
-        t.shape.setBounds(new RectF(0, 0, cellS, cellS / 4 * 3));
-        t.shape.setPosition(cellS*5, cellS*4);
-        game.addCreature(t);
-
-
-        finish(addType);
+        add.addType = CreatureType.TURTLE;
+        finish();
     }
 
-    public void bacteriaClicked()
+    public void doNothingClicked()
     {
-        addType = CreatureType.BACTERIA;
-        finish(addType);
+        add.addType = CreatureType.DONOTHING;
+        finish();
     }
 
 

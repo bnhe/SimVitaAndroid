@@ -33,7 +33,7 @@ public class SimVitaScreen extends ShapeScreen
     private int numBoxHeight;
     private TimeLogic game;
     private BacteriaA ba;
-    private CreatureType addType;
+    private CreatureAdd add;
 
 
     // ----------------------------------------------------------
@@ -42,7 +42,7 @@ public class SimVitaScreen extends ShapeScreen
      */
     public void initialize(CreatureType addType)
     {
-        this.addType = addType;
+        add = new CreatureAdd(CreatureType.TURTLE);
         setBackgroundColor(Color.black);
         float boardSize = Math.min(getWidth(), getHeight());
         cellSize = boardSize / 20;
@@ -98,27 +98,32 @@ public class SimVitaScreen extends ShapeScreen
         add(t.shape);
     }
 
-
+    public Creature generateCreature(Position p)
+    {
+        if (add.addType == CreatureType.TURTLE)
+        {
+            return new TurtleA(p);
+        }
+        return new DoNothingCreature(p);
+    }
 
     public void startGameClicked()
     {
        doTicks(100);
     }
 
-    public void addCreatureClicked()
+    public void selectCreatureClicked()
     {
-        presentScreen(AddCreatureScreen.class, this.game, cellSize);
+        presentScreen(AddCreatureScreen.class, add);
         updateScreen();
     }
 
-    public void onTouchDown()
+    public void onTouchDown(MotionEvent event)
     {
-
-    }
-
-    public void addItClicked()
-    {
-        showAlertDialog("World", game.getWorld().getListOfThings().toString());
+        int xCell = (int)(event.getX() / cellSize);
+        int yCell = (int)(event.getY() / cellSize);
+        addCreatureAndShape(generateCreature(new Position(xCell, yCell)));
+        updateScreen();
     }
 
     public void doTicks(int n)
