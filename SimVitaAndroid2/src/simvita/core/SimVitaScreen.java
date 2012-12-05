@@ -52,6 +52,7 @@ public class SimVitaScreen extends ShapeScreen
 
         //Set up the game
         game = new TimeLogic();
+        game.init();
 
         //add stuff
         //ba = new BacteriaA();
@@ -67,8 +68,8 @@ public class SimVitaScreen extends ShapeScreen
         float starty = cellSize * 10;
         Position turtlePosition = new Position(10, 10);
 
-        TurtleA t = new TurtleA(turtlePosition);
-        addCreatureAndShape(t);
+        //TurtleA t = new TurtleA(turtlePosition);
+        //addCreatureAndShape(t);
 //        t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
 //        t.shape.setPosition(startx, starty);
 //        add(t.shape);
@@ -79,7 +80,7 @@ public class SimVitaScreen extends ShapeScreen
         //addShape(t);
 
         // Set up the screen
-        game.init();
+
     }
 
     public void addCreatureAndShape(Creature c)
@@ -96,6 +97,17 @@ public class SimVitaScreen extends ShapeScreen
         t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
         t.shape.setPosition(startx, starty);
         add(t.shape);
+    }
+
+    public void removeShape(Thing t)
+    {
+        remove(t.shape);
+    }
+
+    public void removeCreatureAndShape(Creature c)
+    {
+        game.removeCreature(c);
+        removeShape(c);
     }
 
     public Creature generateCreature(Position p)
@@ -152,6 +164,16 @@ public class SimVitaScreen extends ShapeScreen
 
     public void updateScreen()
     {
+        //Remove Shapes that need to be removed
+        ArrayList<Thing> outOfBounds = new ArrayList<Thing>();
+
+        for (Thing t : game.getWorld().getToBeRemoved())
+        {
+            removeShape(t);
+        }
+        //All removed, reset toRemove
+        game.getWorld().getToBeRemoved().clear();
+
         //Add New Shapes
         if (game.getWorld().getToBeDraw() != null)
         {
@@ -162,6 +184,10 @@ public class SimVitaScreen extends ShapeScreen
                 if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
                 {
                     addShape(t);
+                }
+                else //Remove shapes that go offscreen
+                {
+                    outOfBounds.add(t);
                 }
             }
             //All drawn, reset toBeDraw
@@ -179,7 +205,17 @@ public class SimVitaScreen extends ShapeScreen
                 {
                     t.shape.setPosition(cellSize * x, cellSize * y);
                 }
+                else //Remove shapes that go offscreen
+                {
+                    outOfBounds.add(t);
+                }
             }
+        }
+
+        //Remove out of bounds shapes
+        for (Thing t : outOfBounds)
+        {
+            removeCreatureAndShape((Creature)t);
         }
     }
 }
