@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * @author Bin He
+ * @author Nate Craun
  * @version 2012.11.3
  */
 public class World {
@@ -29,6 +30,7 @@ public class World {
 	{
 		things = new ArrayList<Thing>();
 		toBeRemoved = new ArrayList<Thing>();
+		toBeDraw = new ArrayList<Thing>();
 	}
 
 	/**
@@ -50,6 +52,7 @@ public class World {
 	{
 		t.setPosition(x);
 		things.add(t);
+		toBeDraw.add(t);
 	}
 
 	/**
@@ -59,6 +62,7 @@ public class World {
 	public void removeThing(Thing t)
 	{
 	    things.remove(t);
+	    toBeRemoved.add(t);
 	}
 
 	/**

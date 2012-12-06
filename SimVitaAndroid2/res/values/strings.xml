@@ -4,5 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_sim_vita_screen">SimVitaScreenActivity</string>
+    <string-array name="creatures">
+        <item>Turtle</item>
+        <item>Bacteria</item>
+    </string-array>
 
 </resources>

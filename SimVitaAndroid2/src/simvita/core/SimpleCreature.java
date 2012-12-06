@@ -143,6 +143,4 @@ public class SimpleCreature extends Thing
         dead = true;
         color = Color.gray;
     }
-
-
 }

@@ -52,8 +52,6 @@ public class TurtleA extends Creature {
 	public TurtleA(Position x, String aName, Description desc) {
         super(x, aName, desc, Color.greenYellow, null, 10, new OvalShape(0, 0, 1, 1));
 
-//        ((FillableShape)shape).setFilled(true);
-//        ((FillableShape)shape).setFillColor(color);
         shape = new ImageShape("turtlebigsz", new RectF(0, 0, 1, 1));
 
 	}
@@ -65,7 +63,7 @@ public class TurtleA extends Creature {
      *
      * @param w The world the TurtleA acts upon.
      */
-    public ArrayList<ArrayList<Thing>> act(World w)
+    public void act(TimeLogic tl)
     {
         Position newPosition =
             new Position(getPosition().x + rand.nextInt(3) - 1,
@@ -73,7 +71,6 @@ public class TurtleA extends Creature {
 
         this.setPosition(newPosition);
 
-        return null;
     }
 
     /**

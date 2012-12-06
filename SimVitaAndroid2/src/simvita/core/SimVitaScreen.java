@@ -1,5 +1,8 @@
 package simvita.core;
 
+import android.app.AlertDialog;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
 import android.graphics.RectF;
@@ -30,15 +33,16 @@ public class SimVitaScreen extends ShapeScreen
     private int numBoxHeight;
     private TimeLogic game;
     private BacteriaA ba;
+    private CreatureAdd add;
 
 
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
      */
-    public void initialize()
+    public void initialize(CreatureType addType)
     {
-
+        add = new CreatureAdd(CreatureType.TURTLE);
         setBackgroundColor(Color.black);
         float boardSize = Math.min(getWidth(), getHeight());
         cellSize = boardSize / 20;
@@ -48,14 +52,15 @@ public class SimVitaScreen extends ShapeScreen
 
         //Set up the game
         game = new TimeLogic();
+        game.init();
 
         //add stuff
-        ba = new BacteriaA();
-        Position baPosition = new Position(5, 5);
-        ba.shape.setBounds(new RectF(0, 0, cellSize, cellSize));
-        ba.shape.setPosition(cellSize * 5, cellSize * 5);
-        add(ba.shape);
-        game.getWorld().addThing(ba, new Position(5, 50));
+        //ba = new BacteriaA();
+        //Position baPosition = new Position(5, 5);
+        //ba.shape.setBounds(new RectF(0, 0, cellSize, cellSize));
+        //ba.shape.setPosition(cellSize * 5, cellSize * 5);
+        //add(ba.shape);
+        //game.getWorld().addThing(ba, new Position(5, 50));
 
 //        game.getWorld().addThing(ba, new Position(10, 10));
 
@@ -63,23 +68,74 @@ public class SimVitaScreen extends ShapeScreen
         float starty = cellSize * 10;
         Position turtlePosition = new Position(10, 10);
 
-        TurtleA t = new TurtleA(turtlePosition);
+        //TurtleA t = new TurtleA(turtlePosition);
+        //addCreatureAndShape(t);
+//        t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
+//        t.shape.setPosition(startx, starty);
+//        add(t.shape);
+
+        //add a turtle
+        //game.getWorld().addThing(t, new Position(10, 10));
+        //game.addCreature(t);
+        //addShape(t);
+
+        // Set up the screen
+
+    }
+
+    public void addCreatureAndShape(Creature c)
+    {
+        game.addCreature(c);
+        addShape(c);
+    }
+
+    public void addShape(Thing t)
+    {
+        float startx = cellSize * t.getPosition().x;
+        float starty = cellSize * t.getPosition().y;
+
         t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
         t.shape.setPosition(startx, starty);
         add(t.shape);
-
-        //add a turtle
-        game.getWorld().addThing(t, new Position(10, 10));
-
-        // Set up the screen
-        game.init();
     }
 
+    public void removeShape(Thing t)
+    {
+        remove(t.shape);
+    }
 
+    public void removeCreatureAndShape(Creature c)
+    {
+        game.removeCreature(c);
+        removeShape(c);
+    }
+
+    public Creature generateCreature(Position p)
+    {
+        if (add.addType == CreatureType.TURTLE)
+        {
+            return new TurtleA(p);
+        }
+        return new DoNothingCreature(p);
+    }
 
     public void startGameClicked()
     {
        doTicks(100);
+    }
+
+    public void selectCreatureClicked()
+    {
+        presentScreen(AddCreatureScreen.class, add);
+        updateScreen();
+    }
+
+    public void onTouchDown(MotionEvent event)
+    {
+        int xCell = (int)(event.getX() / cellSize);
+        int yCell = (int)(event.getY() / cellSize);
+        addCreatureAndShape(generateCreature(new Position(xCell, yCell)));
+        updateScreen();
     }
 
     public void doTicks(int n)
@@ -102,14 +158,43 @@ public class SimVitaScreen extends ShapeScreen
 
     public void doOneTick()
     {
-        //clearScreen();
         game.tick();
         updateScreen();
-
     }
 
     public void updateScreen()
     {
+        //Remove Shapes that need to be removed
+        ArrayList<Thing> outOfBounds = new ArrayList<Thing>();
+
+        for (Thing t : game.getWorld().getToBeRemoved())
+        {
+            removeShape(t);
+        }
+        //All removed, reset toRemove
+        game.getWorld().getToBeRemoved().clear();
+
+        //Add New Shapes
+        if (game.getWorld().getToBeDraw() != null)
+        {
+            for (Thing t : game.getWorld().getToBeDraw())
+            {
+                int x = t.getPosition().x;
+                int y = t.getPosition().y;
+                if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
+                {
+                    addShape(t);
+                }
+                else //Remove shapes that go offscreen
+                {
+                    outOfBounds.add(t);
+                }
+            }
+            //All drawn, reset toBeDraw
+            game.getWorld().getToBeDraw().clear();
+        }
+
+        //Update existing Shapes
         if (game.getWorld().getListOfThings() != null)
         {
             for (Thing t : game.getWorld().getListOfThings())
@@ -120,40 +205,17 @@ public class SimVitaScreen extends ShapeScreen
                 {
                     t.shape.setPosition(cellSize * x, cellSize * y);
                 }
-//                System.out.println("A Thing on the world:" + t.toString());
-            }
-        }
-
-        if (game.getWorld().getToBeDraw() != null)
-        {
-            for (Thing t : game.getWorld().getToBeDraw())
-            {
-                int x = t.getPosition().x;
-                int y = t.getPosition().y;
-                if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
+                else //Remove shapes that go offscreen
                 {
-                    t.shape.setPosition(cellSize * x, cellSize * y);
-                    add(t.shape);
+                    outOfBounds.add(t);
                 }
-                game.getWorld().getToBeDraw().remove(t);
-
-                System.out.println("A Thing in toBeDraw: " + t.toString());
             }
-
         }
-    }
 
-    public void clearScreen()
-    {
-        for (Thing t : game.getWorld().getListOfThings())
+        //Remove out of bounds shapes
+        for (Thing t : outOfBounds)
         {
-            int x = t.getPosition().x;
-            int y = t.getPosition().y;
-            if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
-            {
-
-            }
+            removeCreatureAndShape((Creature)t);
         }
     }
-
 }
