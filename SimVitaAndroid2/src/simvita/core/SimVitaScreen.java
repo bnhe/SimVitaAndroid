@@ -116,6 +116,12 @@ public class SimVitaScreen extends ShapeScreen
         {
             return new TurtleA(p);
         }
+        else
+            if (add.addType == CreatureType.BACTERIA)
+            {
+                return new BacteriaA(p);
+            }
+
         return new DoNothingCreature(p);
     }
 

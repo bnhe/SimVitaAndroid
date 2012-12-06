@@ -37,7 +37,7 @@ public class TimeLogic
     public void addCreature(Creature c)
     {
         world.addThing(c, c.getPosition());
-        timeQueue.add(new TimeEvent(clock, c));
+        timeQueue.add(new TimeEvent(clock + c.getActFrequency(), c));
     }
 
     /**
@@ -130,7 +130,7 @@ public class TimeLogic
         {
             //advance in time
             t = timeQueue.poll();
-            clock = t.time;
+            clock = t.time; //+ t.creature.getActFrequency() + 1;
 
             //See if we should remove it
             if (removeOnNextTick.contains(t.creature))
@@ -177,7 +177,8 @@ public class TimeLogic
             }
         }
 
-        System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
+        //System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
+        //System.out.println("bw: "+world.getListOfThings().size()+" bq: "+timeQueue.size());
         //return newThings;
     }
 

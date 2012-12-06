@@ -14,14 +14,16 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int ic_action_search=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int turtlebigsz=0x7f020002;
-        public static final int turtlesmallsz=0x7f020003;
+        public static final int bacteriabigsz=0x7f020000;
+        public static final int bacteriasmallsz=0x7f020001;
+        public static final int ic_action_search=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int turtlebigsz=0x7f020004;
+        public static final int turtlesmallsz=0x7f020005;
     }
     public static final class id {
-        public static final int bacteria=0x7f080001;
-        public static final int doNothing=0x7f080002;
+        public static final int bacteria=0x7f080002;
+        public static final int doNothing=0x7f080001;
         public static final int menu_settings=0x7f080008;
         public static final int play=0x7f080006;
         public static final int selectCreature=0x7f080005;
