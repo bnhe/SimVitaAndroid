@@ -77,6 +77,7 @@ public class BacteriaA extends Creature {
         }
 
 
+
     }
 
     /**

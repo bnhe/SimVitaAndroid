@@ -31,6 +31,7 @@ public class TimeLogic
         clock = 0;
     }
 
+
     /**
      * Adds a Creature the world and to the TimeLogic.
      */
