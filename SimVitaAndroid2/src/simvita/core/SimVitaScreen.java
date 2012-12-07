@@ -1,5 +1,6 @@
 package simvita.core;
 
+import sofia.graphics.TextShape;
 import android.app.AlertDialog;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -34,6 +35,7 @@ public class SimVitaScreen extends ShapeScreen
     private TimeLogic game;
     private BacteriaA ba;
     private CreatureAdd add;
+    private TextShape displayMoney;
 
 
     // ----------------------------------------------------------
@@ -49,10 +51,18 @@ public class SimVitaScreen extends ShapeScreen
         numBoxWidth = (int) (getWidth() / cellSize);
         numBoxHeight = (int) (getHeight() / cellSize);
 
-
         //Set up the game
         game = new TimeLogic();
         game.init();
+
+        //add text
+        displayMoney = new TextShape("");
+        //displayMoney.setPosition(0, 0);
+        displayMoney.setTypeSize(10);
+        game.setMoney(100);
+        add(displayMoney);
+        //displayMoney.setPosition(0, 0);
+        displayMoney.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
 
         //add stuff
         //ba = new BacteriaA();
@@ -80,7 +90,13 @@ public class SimVitaScreen extends ShapeScreen
         //addShape(t);
 
         // Set up the screen
+        updateScreen();
 
+    }
+
+    public void updateMoney()
+    {
+        displayMoney.setText("Money: "+Long.toString(game.getMoney()));
     }
 
     public void addCreatureAndShape(Creature c)
@@ -127,7 +143,7 @@ public class SimVitaScreen extends ShapeScreen
 
     public void startGameClicked()
     {
-       doTicks(100);
+        doTicks(100);
     }
 
     public void selectCreatureClicked()
@@ -138,10 +154,18 @@ public class SimVitaScreen extends ShapeScreen
 
     public void onTouchDown(MotionEvent event)
     {
-        int xCell = (int)(event.getX() / cellSize);
-        int yCell = (int)(event.getY() / cellSize);
-        addCreatureAndShape(generateCreature(new Position(xCell, yCell)));
-        updateScreen();
+        if (game.getMoney() > 0)
+        {
+            int xCell = (int)(event.getX() / cellSize);
+            int yCell = (int)(event.getY() / cellSize);
+            Creature c = generateCreature(new Position(xCell, yCell));
+            if (game.getMoney() - c.value >= 0)
+            {
+                addCreatureAndShape(c);
+                game.subtractMoney(c.value);
+                updateScreen();
+            }
+        }
     }
 
     public void doTicks(int n)
@@ -168,8 +192,14 @@ public class SimVitaScreen extends ShapeScreen
         updateScreen();
     }
 
+    public void updateText()
+    {
+        updateMoney();
+    }
+
     public void updateScreen()
     {
+        updateText();
         //Remove Shapes that need to be removed
         ArrayList<Thing> outOfBounds = new ArrayList<Thing>();
 

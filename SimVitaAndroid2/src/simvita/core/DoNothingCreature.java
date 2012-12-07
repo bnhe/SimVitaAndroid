@@ -22,6 +22,7 @@ public class DoNothingCreature extends Creature
     public DoNothingCreature()
     {
         this(new Position(0, 0));
+
     }
 
     /**
@@ -47,10 +48,11 @@ public class DoNothingCreature extends Creature
         shape = new RectangleShape(0, 0, 1, 1);
         ((FillableShape)shape).setFilled(true);
         shape.setColor(Color.beige);
+        value = 5;
     }
 
-    public void act()
+    public void act(TimeLogic t)
     {
-
+        t.addMoney(5);
     }
 }
