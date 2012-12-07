@@ -53,6 +53,7 @@ public class TurtleA extends Creature {
         super(x, aName, desc, Color.greenYellow, null, 10, new OvalShape(0, 0, 1, 1));
 
         shape = new ImageShape("turtlebigsz", new RectF(0, 0, 1, 1));
+        value = 20;
 
 	}
 

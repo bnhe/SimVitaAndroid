@@ -23,6 +23,7 @@ public class Thing
     private Description description;
     public Color color;
     public Shape shape;
+    public int value;
 
 
     // ~Constructors------------------------------------------------------------

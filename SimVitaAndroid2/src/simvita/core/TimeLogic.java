@@ -21,6 +21,8 @@ public class TimeLogic
     private World world;
     private long clock;
     private ArrayList<Creature> removeOnNextTick;
+    private long money;
+
     /**
      * Create a new TimeLogic object using new, default world, and queues.
      */
@@ -31,6 +33,25 @@ public class TimeLogic
         clock = 0;
     }
 
+    public void setMoney(long money)
+    {
+        this.money = money;
+    }
+
+    public long getMoney()
+    {
+        return money;
+    }
+
+    public void addMoney(long m)
+    {
+        money += m;
+    }
+
+    public void subtractMoney(long m)
+    {
+        money -= m;
+    }
 
     /**
      * Adds a Creature the world and to the TimeLogic.
