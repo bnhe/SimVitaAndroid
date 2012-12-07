@@ -62,11 +62,14 @@ public class Eagle extends Creature {
      * Main action method. Controls how the Thing will
      * interact with the world.
      *
-     * @param w The world the BacteriaA acts upon.
+     * @param tl The TimeLogic.
      * @return
      */
     public void act(TimeLogic tl)
     {
+        TurtleA nearTurtle = new TurtleA(
+            new Position(rand.nextInt(20),
+                rand.nextInt(20)));
 
         if (life <= 0 || stomachSpace <= 0)
         {
@@ -74,7 +77,21 @@ public class Eagle extends Creature {
         }
         else
         {
+            int ex = this.getPosition().x;
+            int ey = this.getPosition().y;
+            int tx = this.getPosition().x;
+            int ty = this.getPosition().y;
 
+            for (Thing t : tl.getWorld().getListOfThings())
+            {
+
+                if (t instanceof TurtleA)
+                {
+
+
+                    break;
+                }
+            }
 
 
 
