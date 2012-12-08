@@ -1,20 +1,11 @@
 package simvita.core;
 
 import sofia.graphics.TextShape;
-import android.app.AlertDialog;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
 import android.graphics.RectF;
-import sofia.graphics.Shape;
 import java.util.ArrayList;
 import android.view.MotionEvent;
-import android.widget.CheckBox;
 import sofia.graphics.Color;
-import sofia.graphics.RectangleShape;
 import sofia.app.ShapeScreen;
-import java.util.HashMap;
 
 
 // -------------------------------------------------------------------------
@@ -83,21 +74,6 @@ public class SimVitaScreen extends ShapeScreen
         float startx = cellSize * 10;
         float starty = cellSize * 10;
         Position turtlePosition = new Position(10, 10);
-
-        //TurtleA t = new TurtleA(turtlePosition);
-        //addCreatureAndShape(t);
-//        t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
-//        t.shape.setPosition(startx, starty);
-//        add(t.shape);
-
-        //add a turtle
-        //game.getWorld().addThing(t, new Position(10, 10));
-        //game.addCreature(t);
-        //addShape(t);
-
-        // Set up the screen
-        updateScreen();
-
     }
 
     public void updateMoney()

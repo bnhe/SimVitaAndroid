@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".SimVitaScreen"/>
         <activity android:name=".AddCreatureScreen"/>
+        <activity android:name=".GameOverScreen"/>
     </application>
 
 </manifest>

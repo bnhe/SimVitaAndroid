@@ -1,13 +1,12 @@
 package simvita.core;
 
-import android.view.MotionEvent;
 import sofia.app.Screen;
 
 public class TitleScreen extends Screen
 {
-    public void onTouchDown(MotionEvent event)
+    public void playClicked()
     {
-        presentScreen(SimVitaScreen.class, CreatureType.BACTERIA);
+        presentScreen(SimVitaScreen.class, CreatureType.TURTLE);
         finish();
     }
 }

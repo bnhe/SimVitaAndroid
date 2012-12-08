@@ -3,19 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <sofia.graphics.ShapeView
-        android:id="@+id/shapeView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true" />
-
-    <Button
-        android:id="@+id/selectCreature"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/shapeView"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="31dp"
-        android:text="Select Creature" />
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="77dp"
+        android:text="Game Over"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="48dp"
+        android:text="Game Over"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
