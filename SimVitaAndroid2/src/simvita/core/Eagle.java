@@ -55,6 +55,8 @@ public class Eagle extends Creature {
         ((FillableShape)shape).setFillColor(color);
         life = 20;
         stomachSpace = 4;
+
+        setFoodCreature(new TurtleA());
     }
 
 
@@ -79,21 +81,10 @@ public class Eagle extends Creature {
         {
             int ex = this.getPosition().x;
             int ey = this.getPosition().y;
-            int tx = this.getPosition().x;
-            int ty = this.getPosition().y;
 
-            for (Thing t : tl.getWorld().getListOfThings())
-            {
-
-                if (t instanceof TurtleA)
-                {
-
-
-                    break;
-                }
-            }
-
-
+            Creature aFood = tl.getWorld().getNearestFood(this);
+            int tx = aFood.getPosition().x;
+            int ty = aFood.getPosition().y;
 
 
             life -= 2;

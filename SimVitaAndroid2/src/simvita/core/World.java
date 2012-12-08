@@ -1,5 +1,6 @@
 package simvita.core;
 
+import android.gesture.Prediction;
 import java.util.ArrayList;
 
 /**
@@ -159,6 +160,27 @@ public class World {
 	{
 	    return toBeDraw;
 	}
+
+	/**
+	 * Get the nearest target.
+	 */
+	public Creature getNearestFood(Creature preditor)
+	{
+	    Creature nearestFood = new Creature(new Position(10, 10));
+
+        for (Thing th : this.getListOfThings())
+        {
+
+            if (th.getClass().equals( preditor.getFoodCreature().getClass() ))
+            {
+                return (Creature) th;
+            }
+        }
+
+        return nearestFood;
+
+	}
+
 
 
 }
