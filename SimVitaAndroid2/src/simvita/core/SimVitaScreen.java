@@ -2,6 +2,12 @@ package simvita.core;
 
 import android.widget.TextView;
 import sofia.graphics.TextShape;
+import sofia.graphics.TextShape;
+import android.app.AlertDialog;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import sofia.graphics.FillableShape;
+import sofia.graphics.OvalShape;
 import android.graphics.RectF;
 import java.util.ArrayList;
 import android.view.MotionEvent;
@@ -49,6 +55,7 @@ public class SimVitaScreen extends ShapeScreen
         game = new TimeLogic();
         game.init();
 
+        //add text
         game.setMoney(100);
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");

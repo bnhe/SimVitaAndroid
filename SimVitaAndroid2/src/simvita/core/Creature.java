@@ -23,9 +23,17 @@ public class Creature extends Thing
     private ArrayList<StatusEffect<Creature>> statusEffects;
     private int actFrequency;
     private boolean dead;
+    private Creature foodCreature;
 
 
     //~Constructors------------------------------------------------------------
+
+    public Creature(Position p)
+    {
+        this(p, "a Name", new Description(" ", " "), Color.green);
+    }
+
+
     /**
      * @param x The position in the world.
      * @param aName The name of the creature.
@@ -80,6 +88,7 @@ public class Creature extends Thing
 
         actFrequency = frequency;
         dead = false;
+        foodCreature = new Vine();
     }
 
 
@@ -163,4 +172,17 @@ public class Creature extends Thing
         dead = true;
         color = Color.gray;
     }
+
+
+    public Creature getFoodCreature()
+    {
+        return foodCreature;
+    }
+
+    public void setFoodCreature(Creature food)
+    {
+        foodCreature = food;
+    }
+
+
 }

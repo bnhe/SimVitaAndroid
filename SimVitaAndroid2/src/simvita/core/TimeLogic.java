@@ -24,6 +24,7 @@ public class TimeLogic
     private long money;
     private long endTurn;
 
+
     /**
      * Create a new TimeLogic object using new, default world, and queues.
      */

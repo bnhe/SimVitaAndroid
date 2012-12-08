@@ -51,7 +51,7 @@ public class BacteriaA extends Creature {
 		shape = new OvalShape();
         ((FillableShape)shape).setFilled(true);
         ((FillableShape)shape).setFillColor(color);
-		life = 3;
+		life = 4;
 	}
 
 
@@ -73,7 +73,7 @@ public class BacteriaA extends Creature {
         else
         {
             replicate(tl);
-            life -= 2;
+            life -= 3;
         }
 
 
