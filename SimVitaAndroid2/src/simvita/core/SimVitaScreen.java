@@ -36,6 +36,7 @@ public class SimVitaScreen extends ShapeScreen
     private BacteriaA ba;
     private CreatureAdd add;
     private TextShape displayMoney;
+    private TextShape displayTurnCount;
 
 
     // ----------------------------------------------------------
@@ -59,10 +60,15 @@ public class SimVitaScreen extends ShapeScreen
         displayMoney = new TextShape("");
         //displayMoney.setPosition(0, 0);
         displayMoney.setTypeSize(10);
+        displayTurnCount = new TextShape("");
+        //displayMoney.setPosition(0, 0);
+        displayTurnCount.setTypeSize(10);
         game.setMoney(100);
         add(displayMoney);
+        add(displayTurnCount);
         //displayMoney.setPosition(0, 0);
         displayMoney.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
+        displayTurnCount.setBounds(new RectF(0, 30, cellSize, cellSize / 4 * 3));
 
         //add stuff
         //ba = new BacteriaA();
@@ -97,6 +103,11 @@ public class SimVitaScreen extends ShapeScreen
     public void updateMoney()
     {
         displayMoney.setText("Money: "+Long.toString(game.getMoney()));
+    }
+
+    public void updateTurnCount()
+    {
+        displayTurnCount.setText("Turns: "+Long.toString(game.getClock()));
     }
 
     public void addCreatureAndShape(Creature c)
@@ -188,13 +199,21 @@ public class SimVitaScreen extends ShapeScreen
 
     public void doOneTick()
     {
-        game.tick();
-        updateScreen();
+        if (!game.isOver())
+        {
+            game.tick();
+            updateScreen();
+        }
+        else
+        {
+            presentScreen(GameOverScreen.class, game.getMoney());
+        }
     }
 
     public void updateText()
     {
         updateMoney();
+        updateTurnCount();
     }
 
     public void updateScreen()

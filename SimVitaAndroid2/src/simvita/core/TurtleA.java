@@ -80,7 +80,6 @@ public class TurtleA extends Creature {
     private void move()
     {
 
-
     }
 
 

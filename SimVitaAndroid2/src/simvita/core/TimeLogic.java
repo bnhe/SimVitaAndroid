@@ -22,6 +22,7 @@ public class TimeLogic
     private long clock;
     private ArrayList<Creature> removeOnNextTick;
     private long money;
+    private long endTurn;
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
@@ -31,6 +32,17 @@ public class TimeLogic
         this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
             new World());
         clock = 0;
+        endTurn = 100;
+    }
+
+    public boolean isOver()
+    {
+        return clock >= endTurn;
+    }
+
+    public long getClock()
+    {
+        return clock;
     }
 
     public void setMoney(long money)
