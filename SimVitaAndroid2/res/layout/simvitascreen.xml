@@ -29,4 +29,25 @@
             android:layout_toRightOf="@+id/startGame"
             android:text="Select Creature" />
 
+        <TextView
+            android:id="@+id/textMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/shapeView"
+            android:layout_marginTop="16dp"
+            android:text="Money"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textTurns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textMoney"
+            android:text="Turns"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
 </RelativeLayout>

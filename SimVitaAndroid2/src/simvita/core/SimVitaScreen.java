@@ -1,5 +1,6 @@
 package simvita.core;
 
+import android.widget.TextView;
 import sofia.graphics.TextShape;
 import android.graphics.RectF;
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class SimVitaScreen extends ShapeScreen
     private CreatureAdd add;
     private TextShape displayMoney;
     private TextShape displayTurnCount;
-
+    private TextView textMoney;
+    private TextView textTurns;
 
     // ----------------------------------------------------------
     /**
@@ -48,42 +50,31 @@ public class SimVitaScreen extends ShapeScreen
         game.init();
 
         //add text
-        displayMoney = new TextShape("");
+        //displayMoney = new TextShape("");
         //displayMoney.setPosition(0, 0);
-        displayMoney.setTypeSize(10);
-        displayTurnCount = new TextShape("");
+        //displayMoney.setTypeSize(10);
+        //displayTurnCount = new TextShape("");
         //displayMoney.setPosition(0, 0);
-        displayTurnCount.setTypeSize(10);
+        //displayTurnCount.setTypeSize(10);
         game.setMoney(100);
-        add(displayMoney);
-        add(displayTurnCount);
+        textMoney.setText("Money: 100");
+        textTurns.setText("Turns: 0");
+        //add(displayMoney);
+        //add(displayTurnCount);
         //displayMoney.setPosition(0, 0);
-        displayMoney.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
-        displayTurnCount.setBounds(new RectF(0, 30, cellSize, cellSize / 4 * 3));
-
-        //add stuff
-        //ba = new BacteriaA();
-        //Position baPosition = new Position(5, 5);
-        //ba.shape.setBounds(new RectF(0, 0, cellSize, cellSize));
-        //ba.shape.setPosition(cellSize * 5, cellSize * 5);
-        //add(ba.shape);
-        //game.getWorld().addThing(ba, new Position(5, 50));
-
-//        game.getWorld().addThing(ba, new Position(10, 10));
-
-        float startx = cellSize * 10;
-        float starty = cellSize * 10;
-        Position turtlePosition = new Position(10, 10);
+        //displayMoney.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
+        //displayTurnCount.setBounds(new RectF(0, 30, cellSize, cellSize / 4 * 3));
     }
 
     public void updateMoney()
     {
-        displayMoney.setText("Money: "+Long.toString(game.getMoney()));
+        //displayMoney.setText("Money: "+Long.toString(game.getMoney()));
+        textMoney.setText("Money: "+Long.toString(game.getMoney()));
     }
 
     public void updateTurnCount()
     {
-        displayTurnCount.setText("Turns: "+Long.toString(game.getClock()));
+        textTurns.setText("Turns: "+Long.toString(game.getClock()));
     }
 
     public void addCreatureAndShape(Creature c)

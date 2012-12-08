@@ -14,4 +14,10 @@ public class GameOverScreen extends ShapeScreen
         //add(new TextShape("Game Over You made: "+money.toString()));
         textView1.setText("Game Over Score: "+money.toString());
     }
+
+    public void playAgainClicked()
+    {
+        presentScreen(SimVitaScreen.class, CreatureType.TURTLE);
+        finish();
+    }
 }
