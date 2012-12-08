@@ -3,23 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/title" />
+
     <Button
         android:id="@+id/play"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Play" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="164dp"
-        android:text="SimVita Start Screen (Draw a good logo to go here)"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="48dp"
+        android:text="Play" />
 
 </RelativeLayout>

@@ -9,7 +9,7 @@ package simvita.core;
 
 public final class R {
     public static final class array {
-        public static final int creatures=0x7f060000;
+        public static final int creatures=0x7f050000;
     }
     public static final class attr {
     }
@@ -18,18 +18,19 @@ public final class R {
         public static final int bacteriasmallsz=0x7f020001;
         public static final int ic_action_search=0x7f020002;
         public static final int ic_launcher=0x7f020003;
-        public static final int turtlebigsz=0x7f020004;
-        public static final int turtlesmallsz=0x7f020005;
+        public static final int title=0x7f020004;
+        public static final int turtlebigsz=0x7f020005;
+        public static final int turtlesmallsz=0x7f020006;
     }
     public static final class id {
         public static final int bacteria=0x7f080002;
         public static final int doNothing=0x7f080001;
+        public static final int imageView1=0x7f080006;
         public static final int menu_settings=0x7f080008;
-        public static final int play=0x7f080006;
+        public static final int play=0x7f080007;
         public static final int selectCreature=0x7f080005;
         public static final int shapeView=0x7f080004;
         public static final int startGame=0x7f080003;
-        public static final int textView1=0x7f080007;
         public static final int turtle=0x7f080000;
     }
     public static final class layout {
@@ -47,6 +48,6 @@ public final class R {
         public static final int title_activity_sim_vita_screen=0x7f040003;
     }
     public static final class style {
-        public static final int AppTheme=0x7f050000;
+        public static final int AppTheme=0x7f060000;
     }
 }
