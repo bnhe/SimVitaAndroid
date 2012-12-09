@@ -18,7 +18,7 @@
             android:layout_alignTop="@+id/shapeView"
             android:layout_marginTop="16dp"
             android:text="Money"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textMoney"
             android:text="Turns"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <Button
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/shapeView"
             android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/button1"
             android:text="Select Creature" />
 
         <Button
@@ -74,5 +75,14 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/hundred"
             android:text="End" />
+
+        <Button
+            android:id="@+id/stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/selectCreature"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/end"
+            android:text="Stat" />
 
 </RelativeLayout>
