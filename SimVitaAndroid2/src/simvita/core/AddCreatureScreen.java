@@ -1,6 +1,5 @@
 package simvita.core;
 
-import sofia.app.Screen;
 import android.app.AlertDialog;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -26,7 +25,7 @@ import java.util.HashMap;
  *  @author verro ejiba
  *  @version Dec 1, 2012
  */
-public class AddCreatureScreen extends Screen
+public class AddCreatureScreen extends ShapeScreen
 {
     private CreatureAdd add;
     private World world;
@@ -55,10 +54,5 @@ public class AddCreatureScreen extends Screen
         finish();
     }
 
-    public void bacteriaClicked()
-    {
-        add.addType = CreatureType.BACTERIA;
-        finish();
-    }
 
 }

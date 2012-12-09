@@ -10,6 +10,7 @@ import sofia.graphics.Color;
  * Creature with life or be a inorganic scenery.
  *
  * @author Sihui Zhang
+ * @author verro ejiba
  * @version 2012.10.30
  */
 
@@ -80,6 +81,16 @@ public class Thing
         return name;
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param aName
+     */
+    public void setName(String aName)
+    {
+        name = aName;
+    }
+
     /**
      * Get the description of the Thing.
      *
@@ -88,6 +99,15 @@ public class Thing
     public Description getDescription()
     {
         return description;
+    }
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param desc
+     */
+    public void setDescription(Description desc)
+    {
+        description = desc;
     }
 
     /**

@@ -30,6 +30,7 @@ public class Creature extends Thing
      * @param x The position in the world.
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
+     * @param c the color of the creature
      */
     public Creature(Position x, String aName, Description desc, Color c)
     {
@@ -40,6 +41,7 @@ public class Creature extends Thing
      * @param x The position in the world.
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
+     * @param c the color of the creature
      * @param freq The frequency.
      */
     public Creature(Position x, String aName, Description desc, Color c, int freq)
@@ -53,6 +55,7 @@ public class Creature extends Thing
      * @param x The position in the world.
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
+     * @param c the color of the creature
      * @param stEffects A list of StatusEffect.
 
      */
@@ -68,8 +71,10 @@ public class Creature extends Thing
      * @param x The position in the world.
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
+     * @param c the color of the creature
      * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
+     * @param s the shape of the creature
      */
     public Creature(Position x, String aName, Description desc, Color c,
         ArrayList<StatusEffect<Creature>> stEffects, int frequency, OvalShape s)
@@ -150,14 +155,30 @@ public class Creature extends Thing
         return actFrequency;
     }
 
+    // ----------------------------------------------------------
     /**
-     *
+     * Place a description of your method here.
+     * @param freq
+     */
+    public void setActfrequency(int freq)
+    {
+        actFrequency = freq;
+    }
+
+    /**
+     *When a given creature dies or has no more energy
+     *@return true if it's dead and false if otherwise
      */
     public boolean isDead()
     {
         return dead;
     }
 
+    // ----------------------------------------------------------
+    /**
+     * When a creature is killed it turns dead to true and change its color to
+     * gray
+     */
     public void kill()
     {
         dead = true;

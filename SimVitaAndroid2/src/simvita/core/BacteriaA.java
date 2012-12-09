@@ -17,7 +17,7 @@ import java.util.Random;
  * @version 2012.11.30
  *
  */
-public class BacteriaA extends Creature {
+public class BacteriaA extends SimpleCreature {
 
 	Random rand = new Random();
 	private int life;
@@ -46,12 +46,12 @@ public class BacteriaA extends Creature {
 	 * @param c
 	 */
 	public BacteriaA(Position x, Color c, int f) {
-		super(x, "BacteriaA", new Description("Bac", "A replicating Bacteria"), c, 1);
+		super(x, c, 1);
 
 		shape = new OvalShape();
         ((FillableShape)shape).setFilled(true);
         ((FillableShape)shape).setFillColor(color);
-		life = 3;
+		life = 2;
 	}
 
 
@@ -62,22 +62,21 @@ public class BacteriaA extends Creature {
      * @param w The world the BacteriaA acts upon.
      * @return
      */
-    public void act(TimeLogic tl)
+    public ArrayList<Thing> act(World w)
     {
 
-        if (life <= 0)
-        {
-            tl.removeCreature(this);
-            System.out.println("Removed a bacteria");
-        }
-        else
-        {
-            replicate(tl);
-            life -= 2;
-        }
-
-
-
+//        if (life < 0)
+//        {
+//            ArrayList<Thing> removeThis = new ArrayList<Thing>();
+//            w.getToBeRemoved().add(this);
+//            w.removeThing(this);
+//        }
+//        else
+//        {
+            replicate(w);
+//            life--;
+//        }
+        return null;
     }
 
     /**
@@ -86,14 +85,15 @@ public class BacteriaA extends Creature {
      * @return
      * @return
      */
-    private void replicate(TimeLogic tl)
+    private void replicate(World w)
     {
     	Position daughterPosition =
     			new Position(getPosition().x + rand.nextInt(3) - 1,
     					getPosition().y + rand.nextInt(3) - 1);
 
-
-        tl.addCreature(new BacteriaA(daughterPosition));
+    	BacteriaA daughter = new BacteriaA(daughterPosition);
+    	w.addThing(daughter, daughterPosition);
+    	w.getToBeDraw().add(daughter);
 
     }
 

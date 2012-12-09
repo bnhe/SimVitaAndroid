@@ -10,6 +10,7 @@ package simvita.core;
  *  @author verro ejiba
  *  @author Nate Craun
  *  @version Nov 1, 2012
+ * @param <C> the creature type
  */
 public interface StatusEffect<C>
 {
