@@ -20,7 +20,6 @@ public class Thing
 
     private Position    curPosition;
     private String      name;
-    private Description description;
     public Color color;
     public Shape shape;
     public int value;
@@ -37,11 +36,10 @@ public class Thing
      * @param desc
      *            The detailed description of the thing.
      */
-    public Thing(Position x, String aName, Description desc, Color c, Shape s)
+    public Thing(Position x, String aName, Color c, Shape s)
     {
         curPosition = x;
         name = aName;
-        description = desc;
         color = c;
         shape = s;
     }
@@ -79,16 +77,6 @@ public class Thing
     public String getName()
     {
         return name;
-    }
-
-    /**
-     * Get the description of the Thing.
-     *
-     * @return The description.
-     */
-    public Description getDescription()
-    {
-        return description;
     }
 
     /**

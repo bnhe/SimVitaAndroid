@@ -50,8 +50,7 @@ public class Eagle extends Creature {
      * @param c
      */
     public Eagle(Position x, Color c, int f) {
-        super(x, "Eagle", new Description("Eagle",
-            "A Eagle that trying to eat turtle"), c, 1);
+        super(x, "Eagle",  c, 1);
 
         shape = new ImageShape("eaglebigbh", new RectF(0, 0, 1, 1));
 

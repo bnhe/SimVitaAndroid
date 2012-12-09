@@ -37,9 +37,7 @@ public class TurtleA extends Creature {
      * @param x The position to put the TurtleA at.
      */
     public TurtleA(Position x) {
-        this(x, "SimpleMoving",
-            new Description("SimpleMoving",
-                "A simple moving thing"));
+        this(x, "SimpleMoving");
 
     }
 
@@ -49,8 +47,8 @@ public class TurtleA extends Creature {
      * @param aName A name for the TurtleA
      * @param desc The description.
      */
-    public TurtleA(Position x, String aName, Description desc) {
-        super(x, aName, desc, Color.greenYellow, null, 1, new OvalShape(0, 0, 1, 1));
+    public TurtleA(Position x, String aName) {
+        super(x, aName, Color.greenYellow, null, 1, new OvalShape(0, 0, 1, 1));
 
         shape = new ImageShape("turtlebigsz", new RectF(0, 0, 1, 1));
         value = 20;

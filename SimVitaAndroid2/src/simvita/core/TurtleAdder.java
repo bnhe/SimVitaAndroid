@@ -25,9 +25,7 @@ public class TurtleAdder
      * @param x The position to put the TurtleA at.
      */
     public TurtleAdder(Position x) {
-        this(x, "TurtleAdder",
-                new Description("TurtleAdder",
-                        "Adds turtles"));
+        this(x, "TurtleAdder");
 
     }
 
@@ -37,8 +35,8 @@ public class TurtleAdder
      * @param aName A name for the TurtleA
      * @param desc The description.
      */
-    public TurtleAdder(Position x, String aName, Description desc) {
-        super(x, aName, desc, Color.greenYellow, null, 20, new OvalShape(0, 0, 1, 1));
+    public TurtleAdder(Position x, String aName) {
+        super(x, aName, Color.greenYellow, null, 20, new OvalShape(0, 0, 1, 1));
 
         shape.setAlpha(255);
         value = 20;

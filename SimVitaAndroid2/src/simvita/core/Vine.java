@@ -50,7 +50,7 @@ public class Vine extends Creature {
      * @param c
      */
     public Vine(Position x, Color c, int f) {
-        super(x, "Vine", new Description("Vine", "A replicating Vine"), c, 5);
+        super(x, "Vine", c, 5);
 
         shape = new ImageShape("plantbigzh", new RectF(0, 0, 10, 10));
         life = 30;

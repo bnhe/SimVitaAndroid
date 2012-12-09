@@ -29,7 +29,7 @@ public class Creature extends Thing
 
     public Creature(Position p)
     {
-        this(p, "a Name", new Description(" ", " "), Color.green);
+        this(p, "a Name", Color.green);
     }
 
 
@@ -38,9 +38,9 @@ public class Creature extends Thing
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
      */
-    public Creature(Position x, String aName, Description desc, Color c)
+    public Creature(Position x, String aName, Color c)
     {
-        this(x, aName, desc, c, new ArrayList<StatusEffect<Creature>>());
+        this(x, aName, c, new ArrayList<StatusEffect<Creature>>());
     }
 
     /**
@@ -49,9 +49,9 @@ public class Creature extends Thing
      * @param desc The detailed description of the creature.
      * @param freq The frequency.
      */
-    public Creature(Position x, String aName, Description desc, Color c, int freq)
+    public Creature(Position x, String aName, Color c, int freq)
     {
-        this(x, aName, desc, c, new ArrayList<StatusEffect<Creature>>(), freq, null);
+        this(x, aName, c, new ArrayList<StatusEffect<Creature>>(), freq, null);
     }
 
 
@@ -63,10 +63,10 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
 
      */
-    public Creature(Position x, String aName, Description desc, Color c,
+    public Creature(Position x, String aName, Color c,
         ArrayList<StatusEffect<Creature>> stEffects)
     {
-        this(x, aName, desc, c, stEffects, 5, null);
+        this(x, aName, c, stEffects, 5, null);
     }
 
 
@@ -78,10 +78,10 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
      */
-    public Creature(Position x, String aName, Description desc, Color c,
+    public Creature(Position x, String aName, Color c,
         ArrayList<StatusEffect<Creature>> stEffects, int frequency, OvalShape s)
     {
-        super(x, aName, desc, c, s);
+        super(x, aName, c, s);
 
         statusEffects = stEffects;
 
