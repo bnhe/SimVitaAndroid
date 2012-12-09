@@ -80,6 +80,15 @@ public class TimeLogic
     }
 
     /**
+     * Adds a Creature the world and to the TimeLogic.
+     */
+    public void moveCreature(Creature c, Position p)
+    {
+        c.setPosition(p);
+        world.getToBeMoved().add(c);
+    }
+
+    /**
      * Removes a Creature the world and to the TimeLogic.
      */
     public void removeCreature(Creature c)

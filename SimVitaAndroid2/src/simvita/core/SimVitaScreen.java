@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.view.MotionEvent;
 import sofia.graphics.Color;
 import sofia.app.ShapeScreen;
+import java.util.Random;
 
 
 // -------------------------------------------------------------------------
@@ -28,6 +29,7 @@ public class SimVitaScreen extends ShapeScreen
     private TextView textMoney;
     private TextView textTurns;
     private CreatureAdd addCreature;
+    Random rand = new Random();
 
     // ----------------------------------------------------------
     /**
@@ -48,7 +50,8 @@ public class SimVitaScreen extends ShapeScreen
         //add text
         game.setMoney(100);
 
-        //addCreatureAndShape(new TurtleAdder(new Position(numBoxHeight/2, numBoxHeight/2)));
+        addCreatureAndShape(new TurtleAdder(new Position(
+            rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");
     }
@@ -224,22 +227,21 @@ public class SimVitaScreen extends ShapeScreen
         }
 
         //Update existing Shapes
-        if (game.getWorld().getListOfThings() != null)
+        //Move shapes that are moving.
+        for (Thing t : game.getWorld().getToBeMoved())
         {
-            for (Thing t : game.getWorld().getListOfThings())
+            int x = t.getPosition().x;
+            int y = t.getPosition().y;
+            if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
             {
-                int x = t.getPosition().x;
-                int y = t.getPosition().y;
-                if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
-                {
-                    t.shape.setPosition(cellSize * x, cellSize * y);
-                }
-                else //Remove shapes that go offscreen
-                {
-                    outOfBounds.add(t);
-                }
+                t.shape.setPosition(cellSize * x, cellSize * y);
+            }
+            else //Remove shapes that go offscreen
+            {
+                outOfBounds.add(t);
             }
         }
+        game.getWorld().getToBeMoved().clear();
 
         //Remove out of bounds shapes
         for (Thing t : outOfBounds)

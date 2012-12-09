@@ -88,7 +88,7 @@ public class TurtleA extends Creature {
                 int newX = ex + (int) Math.signum((double)(tx - ex));
                 int newY = ey + (int) Math.signum((double)(ty - ey));
 
-                this.setPosition(new Position(newX, newY));
+                tl.moveCreature(this, new Position(newX, newY));
             }
         }
 
@@ -99,6 +99,7 @@ public class TurtleA extends Creature {
     /**
      * Move the Turtle to random direction.
      */
+    /*
     private void move()
     {
         Position newPosition =
@@ -108,6 +109,7 @@ public class TurtleA extends Creature {
         this.setPosition(newPosition);
 
     }
+    */
 
 
 }

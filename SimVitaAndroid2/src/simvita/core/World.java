@@ -23,6 +23,7 @@ public class World {
 	private ArrayList<Thing> things;
 	private ArrayList<Thing> toBeRemoved;
 	public ArrayList<Thing> toBeDraw;
+	public ArrayList<Thing> toBeMoved;
 
 	/**
 	 * Create a new empty world.
@@ -32,6 +33,7 @@ public class World {
 		things = new ArrayList<Thing>();
 		toBeRemoved = new ArrayList<Thing>();
 		toBeDraw = new ArrayList<Thing>();
+		toBeMoved = new ArrayList<Thing>();
 	}
 
 	/**
@@ -160,6 +162,14 @@ public class World {
 	{
 	    return toBeDraw;
 	}
+
+	/**
+     * get Things to be added
+     */
+    public ArrayList<Thing> getToBeMoved()
+    {
+        return toBeMoved;
+    }
 
 	/**
 	 * Get the nearest target.
