@@ -55,6 +55,8 @@ public class TurtleA extends Creature {
         shape = new ImageShape("turtlebigsz", new RectF(0, 0, 1, 1));
         value = 20;
 
+        setFoodCreature(new Vine());
+
 	}
 
 
