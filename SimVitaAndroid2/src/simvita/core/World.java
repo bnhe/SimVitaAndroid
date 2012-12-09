@@ -20,20 +20,20 @@ import java.util.ArrayList;
  */
 public class World {
 
-	private ArrayList<Thing> things;
-	private ArrayList<Thing> toBeRemoved;
-	public ArrayList<Thing> toBeDraw;
-	public ArrayList<Thing> toBeMoved;
+	private ArrayList<Creature> things;
+	private ArrayList<Creature> toBeRemoved;
+	public ArrayList<Creature> toBeDraw;
+	public ArrayList<Creature> toBeMoved;
 
 	/**
 	 * Create a new empty world.
 	 */
 	public World()
 	{
-		things = new ArrayList<Thing>();
-		toBeRemoved = new ArrayList<Thing>();
-		toBeDraw = new ArrayList<Thing>();
-		toBeMoved = new ArrayList<Thing>();
+		things = new ArrayList<Creature>();
+		toBeRemoved = new ArrayList<Creature>();
+		toBeDraw = new ArrayList<Creature>();
+		toBeMoved = new ArrayList<Creature>();
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class World {
 	 * @param things The list of things alread in the world.
 	 *
 	 */
-	public World(ArrayList<Thing> things)
+	public World(ArrayList<Creature> things)
 	{
 		this.things = things;
 	}
@@ -51,21 +51,21 @@ public class World {
 	 * @param t The thing to be added.
 	 * @param x The position tha the thing been add to the world.
 	 */
-	public void addThing(Thing t, Position x)
+	public void addThing(Creature c, Position x)
 	{
-		t.setPosition(x);
-		things.add(t);
-		toBeDraw.add(t);
+		c.setPosition(x);
+		things.add(c);
+		toBeDraw.add(c);
 	}
 
 	/**
 	 * Remove a certain thing in the world.
 	 * @param t The thing been removed.
 	 */
-	public void removeThing(Thing t)
+	public void removeThing(Creature c)
 	{
-	    things.remove(t);
-	    toBeRemoved.add(t);
+	    things.remove(c);
+	    toBeRemoved.add(c);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class World {
 	 */
 	public void clearThings()
 	{
-		things = new ArrayList<Thing>();
+		things = new ArrayList<Creature>();
 	}
 
 
@@ -83,16 +83,16 @@ public class World {
 	 * @return A ArrayList of things in this region.
 	 *
 	 */
-	public ArrayList<Thing> getRegion(ArrayList<Position> region)
+	public ArrayList<Creature> getRegion(ArrayList<Position> region)
 	{
-		ArrayList<Thing> thingsInRegion = new ArrayList<Thing>();
+		ArrayList<Creature> thingsInRegion = new ArrayList<Creature>();
 		boolean thisThingIsHere = false;
 
-		for (Thing t:things)
+		for (Creature c:things)
 		{
 			for (Position p:region)
 			{
-				if (t.getPosition() == p)
+				if (c.getPosition() == p)
 				{
 					thisThingIsHere = true;
 				}
@@ -100,7 +100,7 @@ public class World {
 
 			if (thisThingIsHere)
 			{
-				thingsInRegion.add(t);
+				thingsInRegion.add(c);
 			}
 		}
 
@@ -117,9 +117,9 @@ public class World {
 	 * @return A ArrayList of things in this region.
 	 *
 	 */
-	public ArrayList<Thing> getRectangleRegion(Position tl, Position br)
+	public ArrayList<Creature> getRectangleRegion(Position tl, Position br)
 	{
-		ArrayList<Thing> thingsInRegion = new ArrayList<Thing>();
+		ArrayList<Creature> thingsInRegion = new ArrayList<Creature>();
 
 		ArrayList<Position> region = new ArrayList<Position>();
 
@@ -142,7 +142,7 @@ public class World {
 	 * Get all the things in the world.
 	 * @return All the things in the world.
 	 */
-	public ArrayList<Thing>  getListOfThings()
+	public ArrayList<Creature>  getListOfThings()
 	{
 		return things;
 	}
@@ -150,7 +150,7 @@ public class World {
 	/**
 	 * getToBeRemoved list.
 	 */
-	public ArrayList<Thing> getToBeRemoved()
+	public ArrayList<Creature> getToBeRemoved()
 	{
 	    return toBeRemoved;
 	}
@@ -158,7 +158,7 @@ public class World {
 	/**
 	 * get Things to be added
 	 */
-	public ArrayList<Thing> getToBeDraw()
+	public ArrayList<Creature> getToBeDraw()
 	{
 	    return toBeDraw;
 	}
@@ -166,7 +166,7 @@ public class World {
 	/**
      * get Things to be added
      */
-    public ArrayList<Thing> getToBeMoved()
+    public ArrayList<Creature> getToBeMoved()
     {
         return toBeMoved;
     }
@@ -179,11 +179,11 @@ public class World {
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
-        for (Thing th : this.getListOfThings())
+        for (Creature c : this.getListOfThings())
         {
-            if (th.getClass().equals(preditor.getFoodCreature().getClass() ))
+            if (c.getClass().equals(preditor.getFoodCreature().getClass() ))
             {
-                return (Creature) th;
+                return c;
             }
         }
 

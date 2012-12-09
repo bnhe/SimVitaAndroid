@@ -1,5 +1,6 @@
 package simvita.core;
 
+import sofia.graphics.Shape;
 import sofia.graphics.OvalShape;
 import sofia.graphics.Color;
 import java.util.ArrayList;
@@ -14,13 +15,18 @@ import java.util.ArrayList;
  * @version 2012.11.1
  *
  */
-public class Creature extends Thing
+public class Creature
 {
 
     //~Fields------------------------------------------------------------------
 
     private int actFrequency;
     private Creature foodCreature;
+    private Position    curPosition;
+    private String      name;
+    public Shape shape;
+    public int value;
+
 
 
     //~Constructors------------------------------------------------------------
@@ -66,8 +72,9 @@ public class Creature extends Thing
      */
     public Creature(Position x, String aName, int frequency, OvalShape s)
     {
-        super(x, aName, s);
-
+        curPosition = x;
+        name = aName;
+        shape = s;
         actFrequency = frequency;
         /*
         try
@@ -114,5 +121,53 @@ public class Creature extends Thing
     public void setFoodCreature(Creature food)
     {
         foodCreature = food;
+    }
+    /**
+     * Set the position of the thing in the world.
+     *
+     * @param x
+     *            the position in the world.
+     */
+    public void setPosition(Position x)
+    {
+        curPosition = x;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Get the current position of this thing.
+     *
+     * @return current position
+     */
+    public Position getPosition()
+    {
+        return curPosition;
+    }
+
+    /**
+     * Get the name of the type of the Thing.
+     *
+     * @return The name.
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
+     * Main action method. Controls how the Thing will
+     * interact with the world.
+     *
+     * @param w The world the creature acts upon.
+     */
+    public void act(TimeLogic tl)
+    {
+
+    }
+
+    public String toString()
+    {
+        return name;
     }
 }
