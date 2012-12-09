@@ -172,7 +172,6 @@ public class TimeLogic
                     timeQueue.offer(t);
                 }
             }
-
         }
     }
 
