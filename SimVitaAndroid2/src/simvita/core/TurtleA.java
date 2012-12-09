@@ -48,7 +48,7 @@ public class TurtleA extends Creature {
      * @param desc The description.
      */
     public TurtleA(Position x, String aName) {
-        super(x, aName, null, 1, new OvalShape(0, 0, 1, 1));
+        super(x, aName, 1, new OvalShape(0, 0, 1, 1));
 
         shape = new ImageShape("turtlebigsz", new RectF(0, 0, 1, 1));
         value = 20;

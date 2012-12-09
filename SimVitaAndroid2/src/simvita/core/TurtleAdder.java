@@ -36,7 +36,7 @@ public class TurtleAdder
      * @param desc The description.
      */
     public TurtleAdder(Position x, String aName) {
-        super(x, aName, null, 20, new OvalShape(0, 0, 1, 1));
+        super(x, aName, 20, new OvalShape(0, 0, 1, 1));
 
         shape.setAlpha(255);
         value = 20;

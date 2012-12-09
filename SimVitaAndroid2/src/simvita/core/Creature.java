@@ -19,7 +19,6 @@ public class Creature extends Thing
 
     //~Fields------------------------------------------------------------------
 
-    private ArrayList<StatusEffect<Creature>> statusEffects;
     private int actFrequency;
     private Creature foodCreature;
 
@@ -31,17 +30,6 @@ public class Creature extends Thing
         this(p, "a Name");
     }
 
-
-    /**
-     * @param x The position in the world.
-     * @param aName The name of the creature.
-     * @param desc The detailed description of the creature.
-     */
-    public Creature(Position x, String aName)
-    {
-        this(x, aName, new ArrayList<StatusEffect<Creature>>());
-    }
-
     /**
      * @param x The position in the world.
      * @param aName The name of the creature.
@@ -50,7 +38,7 @@ public class Creature extends Thing
      */
     public Creature(Position x, String aName, int freq)
     {
-        this(x, aName, new ArrayList<StatusEffect<Creature>>(), freq, null);
+        this(x, aName, freq, null);
     }
 
 
@@ -62,10 +50,9 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
 
      */
-    public Creature(Position x, String aName,
-        ArrayList<StatusEffect<Creature>> stEffects)
+    public Creature(Position x, String aName)
     {
-        this(x, aName, stEffects, 5, null);
+        this(x, aName, 5, null);
     }
 
 
@@ -77,12 +64,9 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
      */
-    public Creature(Position x, String aName,
-        ArrayList<StatusEffect<Creature>> stEffects, int frequency, OvalShape s)
+    public Creature(Position x, String aName, int frequency, OvalShape s)
     {
         super(x, aName, s);
-
-        statusEffects = stEffects;
 
         actFrequency = frequency;
         /*
@@ -111,60 +95,6 @@ public class Creature extends Thing
     //~ Methods -----------------------------------------
 
     // ----------------------------------------------------------
-    /**
-     * Add a StatusEffect.
-     * @param s a StatusEffect.
-     */
-    public void addStatusEffect(StatusEffect<Creature> s)
-    {
-        statusEffects.add(s);
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Remove a StatusEffect.
-     * @param s a StatusEffect.
-     */
-    public void removeStatusEffect(StatusEffect<Creature> s)
-    {
-        statusEffects.remove(s);
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Remove all StatusEffect.
-     */
-    public void clearStatusEffects()
-    {
-        statusEffects = new ArrayList<StatusEffect<Creature>>();
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Determine if a StatusEffect is available.
-     * @param s a StatusEffect.
-     * @return true if a StatusEffect is available false otherwise.
-     */
-    public boolean hasStatusEffect(StatusEffect<Creature> s)
-    {
-        return !(statusEffects.isEmpty());
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Return the list of StatusEffect.
-     * @return the list of StatusEffect
-     */
-    public ArrayList<StatusEffect<Creature>> getStatusEffects()
-    {
-        return statusEffects;
-    }
-
-
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
