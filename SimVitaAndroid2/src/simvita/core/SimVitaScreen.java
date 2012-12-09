@@ -55,6 +55,8 @@ public class SimVitaScreen extends ShapeScreen
 
         //Randomize starting positions
         randomizeStart();
+        //addCreatureAndShape(new TurtleA((new Position(5, 5))));
+        //updateScreen();
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");
     }
@@ -67,7 +69,7 @@ public class SimVitaScreen extends ShapeScreen
             int xCell = rand.nextInt(numBoxWidth);
             int yCell = rand.nextInt(numBoxHeight);
             addCreatureAndShape(new TurtleAdder((new Position(xCell, yCell))));
-            updateScreen();;
+            updateScreen();
         }
 
         //Plants
@@ -146,24 +148,25 @@ public class SimVitaScreen extends ShapeScreen
         return c;
     }
 
-    public void thousandClicked()
+    public void endClicked()
     {
-        doTicks(1000);
+        presentScreen(GameOverScreen.class, game.getMoney());
+        finish();
     }
 
     public void hundredClicked()
     {
-        doTicks(100);
+        doTurns(100);
     }
 
     public void tenClicked()
     {
-        doTicks(10);
+        doTurns(10);
     }
 
     public void oneClicked()
     {
-        doTicks(1);
+        doTurns(1);
     }
 
     public void selectCreatureClicked()
@@ -185,6 +188,39 @@ public class SimVitaScreen extends ShapeScreen
                 game.subtractMoney(c.value);
                 updateScreen();
             }
+        }
+    }
+
+    public void doTurns(int n)
+    {
+        long currClock = game.getClock();
+
+        while (game.getClock() < currClock + n)
+        {
+            try
+            {
+                Thread.currentThread().sleep(10);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+
+            if (!game.isOver())
+            {
+                game.tick();
+                updateScreen();
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (game.isOver())
+        {
+            presentScreen(GameOverScreen.class, game.getMoney());
+            finish();
         }
     }
 
@@ -215,6 +251,7 @@ public class SimVitaScreen extends ShapeScreen
         else
         {
             presentScreen(GameOverScreen.class, game.getMoney());
+            finish();
         }
     }
 
@@ -232,7 +269,6 @@ public class SimVitaScreen extends ShapeScreen
 
         for (Creature c : game.getWorld().getToBeRemoved())
         {
-            System.out.println(c);
             removeShape(c);
         }
         //All removed, reset toRemove

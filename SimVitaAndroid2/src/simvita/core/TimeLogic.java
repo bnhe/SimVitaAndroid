@@ -22,6 +22,8 @@ public class TimeLogic
     private ArrayList<Creature> removeOnNextTick;
     private long money;
     private long endTurn;
+    private int maxCreatures;
+    private int numPlants;
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
@@ -34,9 +36,32 @@ public class TimeLogic
         this.endTurn = endTurn;
     }
 
+
+    /**
+     * Create a new TimeLogic object with specified world, and queues.
+     *
+     * @param timeQueue
+     * @param rollOverTimeQueue
+     * @param world
+     */
+    public TimeLogic(PriorityQueue<TimeEvent> timeQueue, World world)
+    {
+        this.timeQueue = timeQueue;
+        this.world = world;
+        this.removeOnNextTick = new ArrayList<Creature>();
+        maxCreatures = 250;
+        numPlants = 0;
+
+        for (Creature c : world.getListOfCreatures())
+        {
+            timeQueue.add(new TimeEvent(c.getActFrequency(), c));
+        }
+    }
+
     public boolean isOver()
     {
-        return clock >= endTurn;
+        Vine v = new Vine();
+        return clock >= endTurn || (numPlants == 0 && money < v.value);
     }
 
     public long getClock()
@@ -69,8 +94,15 @@ public class TimeLogic
      */
     public void addCreature(Creature c)
     {
-        world.addCreature(c, c.getPosition());
-        timeQueue.add(new TimeEvent(clock + c.getActFrequency(), c));
+        if (world.getListOfCreatures().size() < maxCreatures)
+        {
+            if (c instanceof Vine)
+            {
+                numPlants++;
+            }
+            world.addCreature(c, c.getPosition());
+            timeQueue.add(new TimeEvent(clock + c.getActFrequency(), c));
+        }
     }
 
     /**
@@ -87,28 +119,12 @@ public class TimeLogic
      */
     public void removeCreature(Creature c)
     {
+        if (c instanceof Vine)
+        {
+            numPlants--;
+        }
         world.removeCreature(c);
         removeOnNextTick.add(c);
-    }
-
-
-    /**
-     * Create a new TimeLogic object with specified world, and queues.
-     *
-     * @param timeQueue
-     * @param rollOverTimeQueue
-     * @param world
-     */
-    public TimeLogic(PriorityQueue<TimeEvent> timeQueue, World world)
-    {
-        this.timeQueue = timeQueue;
-        this.world = world;
-        this.removeOnNextTick = new ArrayList<Creature>();
-
-        for (Creature c : world.getListOfCreatures())
-        {
-            timeQueue.add(new TimeEvent(c.getActFrequency(), c));
-        }
     }
 
     /**
