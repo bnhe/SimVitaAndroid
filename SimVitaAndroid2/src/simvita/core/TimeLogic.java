@@ -28,12 +28,12 @@ public class TimeLogic
     /**
      * Create a new TimeLogic object using new, default world, and queues.
      */
-    public TimeLogic()
+    public TimeLogic(long endTurn)
     {
         this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
             new World());
         clock = 0;
-        endTurn = 100;
+        this.endTurn = endTurn;
     }
 
     public boolean isOver()
@@ -82,7 +82,6 @@ public class TimeLogic
     {
         world.removeThing(c);
         removeOnNextTick.add(c);
-        //timeQueue.remove(c);
     }
 
 
@@ -100,6 +99,7 @@ public class TimeLogic
         this.rollOverTimeQueue = rollOverTimeQueue;
         this.world = world;
         this.removeOnNextTick = new ArrayList<Creature>();
+        init();
     }
 
     /**
@@ -135,7 +135,7 @@ public class TimeLogic
     /**
      * Initialize the TimeQueue, using creatures from the world.
      */
-    public void init()
+    private void init()
     {
         for (Thing t : world.getListOfThings())
         {

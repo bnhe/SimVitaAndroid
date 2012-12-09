@@ -88,7 +88,7 @@ public class Creature extends Thing
 
         actFrequency = frequency;
         dead = false;
-        foodCreature = new Vine();
+        //foodCreature = new Vine();
     }
 
 

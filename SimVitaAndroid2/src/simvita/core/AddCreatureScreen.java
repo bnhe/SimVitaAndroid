@@ -1,21 +1,6 @@
 package simvita.core;
 
 import sofia.app.Screen;
-import android.app.AlertDialog;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
-import android.graphics.RectF;
-import sofia.graphics.Shape;
-import java.util.ArrayList;
-import android.view.MotionEvent;
-import android.widget.CheckBox;
-import sofia.graphics.Color;
-import sofia.graphics.RectangleShape;
-import sofia.app.ShapeScreen;
-import java.util.HashMap;
-
 
 // -------------------------------------------------------------------------
 /**
@@ -24,11 +9,12 @@ import java.util.HashMap;
  *  it represents, and how to use it.
  *
  *  @author verro ejiba
+ *  @author Nate Craun
  *  @version Dec 1, 2012
  */
 public class AddCreatureScreen extends Screen
 {
-    private CreatureAdd add;
+    private CreatureAdd creatureAdd;
     private World world;
     private float cellS;
     private TimeLogic game;
@@ -38,26 +24,26 @@ public class AddCreatureScreen extends Screen
     /**
      * Place a description of your method here.
      */
-    public void initialize(CreatureAdd c)
+    public void initialize(CreatureAdd creatureAdd)
     {
-        add = c;
+        this.creatureAdd = creatureAdd;
     }
 
     public void turtleClicked()
     {
-        add.addType = CreatureType.TURTLE;
+        creatureAdd.addType = "simvita.core.TurtleA";
         finish();
     }
 
     public void doNothingClicked()
     {
-        add.addType = CreatureType.DONOTHING;
+        creatureAdd.addType = "simvita.core.DoNothingCreature";
         finish();
     }
 
     public void bacteriaClicked()
     {
-        add.addType = CreatureType.BACTERIA;
+        creatureAdd.addType = "simvita.core.BacteriaA";
         finish();
     }
 

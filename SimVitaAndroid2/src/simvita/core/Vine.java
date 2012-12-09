@@ -14,6 +14,7 @@ import java.util.Random;
  * This is a Vine that can replicate and die.
  *
  * @author Bin He
+ * @author Nate Craun
  * @version 2012.11.30
  *
  */

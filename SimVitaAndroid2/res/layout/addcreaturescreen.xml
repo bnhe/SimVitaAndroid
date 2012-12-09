@@ -5,21 +5,11 @@
     android:gravity="top" >
 
     <Button
-        android:id="@+id/turtle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/turtle"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:text="Turtle" />
-
-    <Button
         android:id="@+id/doNothing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/turtle"
         android:text="DoNothing" />
 
     <Button
@@ -30,5 +20,23 @@
         android:layout_marginLeft="32dp"
         android:layout_toRightOf="@+id/doNothing"
         android:text="Bacteria" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_toLeftOf="@+id/doNothing"
+        android:src="@drawable/turtlesmallsz" />
+
+    <ImageButton
+        android:id="@+id/turtle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/doNothing"
+        android:layout_below="@+id/doNothing"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/turtlesmallsz" />
 
 </RelativeLayout>

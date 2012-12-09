@@ -3,31 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/startGame"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Start Game" />
-
         <sofia.graphics.ShapeView
-        android:id="@+id/shapeView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/startGame" />
-
-        <Button
-            android:id="@+id/selectCreature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/shapeView"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="31dp"
-            android:layout_toRightOf="@+id/startGame"
-            android:text="Select Creature" />
+            android:id="@+id/shapeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/one" />
 
         <TextView
             android:id="@+id/textMoney"
@@ -49,5 +30,40 @@
             android:text="Turns"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/selectCreature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/shapeView"
+            android:layout_alignParentRight="true"
+            android:text="Select Creature" />
+
+        <Button
+            android:id="@+id/one"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text=">1" />
+
+        <Button
+            android:id="@+id/ten"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/shapeView"
+            android:layout_toRightOf="@+id/one"
+            android:text=">10" />
+
+        <Button
+            android:id="@+id/hundred"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/shapeView"
+            android:layout_toRightOf="@+id/ten"
+            android:text=">100" />
 
 </RelativeLayout>

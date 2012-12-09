@@ -17,7 +17,7 @@ public class GameOverScreen extends ShapeScreen
 
     public void playAgainClicked()
     {
-        presentScreen(SimVitaScreen.class, CreatureType.TURTLE);
+        presentScreen(TitleScreen.class);
         finish();
     }
 }

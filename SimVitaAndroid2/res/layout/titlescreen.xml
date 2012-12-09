@@ -6,13 +6,13 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/play"
+        android:id="@+id/playShort"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Play" />
+        android:text="Play Short" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -21,5 +21,25 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/title" />
+
+    <Button
+        android:id="@+id/playLong"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="46dp"
+        android:text="Play Long" />
+
+    <Button
+        android:id="@+id/playMedium"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="14dp"
+        android:layout_toLeftOf="@+id/playLong"
+        android:text="Play Medium" />
 
 </RelativeLayout>

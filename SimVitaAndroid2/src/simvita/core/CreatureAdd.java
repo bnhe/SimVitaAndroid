@@ -2,9 +2,9 @@ package simvita.core;
 
 public class CreatureAdd
 {
-    public CreatureType addType;
+    public String addType;
 
-    public CreatureAdd(CreatureType addType)
+    public CreatureAdd(String addType)
     {
         this.addType = addType;
     }

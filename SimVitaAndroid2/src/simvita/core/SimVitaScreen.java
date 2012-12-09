@@ -1,13 +1,6 @@
 package simvita.core;
 
 import android.widget.TextView;
-import sofia.graphics.TextShape;
-import sofia.graphics.TextShape;
-import android.app.AlertDialog;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
 import android.graphics.RectF;
 import java.util.ArrayList;
 import android.view.MotionEvent;
@@ -22,6 +15,7 @@ import sofia.app.ShapeScreen;
  *  it represents, and how to use it.
  *
  *  @author verro ejiba
+ *  @author Nate Craun
  *  @version Dec 1, 2012
  */
 public class SimVitaScreen extends ShapeScreen
@@ -31,20 +25,17 @@ public class SimVitaScreen extends ShapeScreen
     private int numBoxWidth;
     private int numBoxHeight;
     private TimeLogic game;
-    private BacteriaA ba;
-    private CreatureAdd add;
-    private TextShape displayMoney;
-    private TextShape displayTurnCount;
     private TextView textMoney;
     private TextView textTurns;
+    private CreatureAdd addCreature;
 
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
      */
-    public void initialize(CreatureType addType)
+    public void initialize(CreatureAdd addCreature, Long gameLength)
     {
-        add = new CreatureAdd(CreatureType.TURTLE);
+        this.addCreature = addCreature;
         setBackgroundColor(Color.black);
         float boardSize = Math.min(getWidth(), getHeight());
         cellSize = boardSize / 20;
@@ -52,8 +43,7 @@ public class SimVitaScreen extends ShapeScreen
         numBoxHeight = (int) (getHeight() / cellSize);
 
         //Set up the game
-        game = new TimeLogic();
-        game.init();
+        game = new TimeLogic(gameLength);
 
         //add text
         game.setMoney(100);
@@ -100,27 +90,49 @@ public class SimVitaScreen extends ShapeScreen
 
     public Creature generateCreature(Position p)
     {
-        if (add.addType == CreatureType.TURTLE)
+        Creature c = null;
+        try
         {
-            return new TurtleA(p);
+            c = (Creature)Class.forName(addCreature.addType).newInstance();
         }
-        else
-            if (add.addType == CreatureType.BACTERIA)
-            {
-                return new BacteriaA(p);
-            }
+        catch (IllegalAccessException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (InstantiationException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-        return new DoNothingCreature(p);
+        c.setPosition(p);
+        return c;
     }
 
-    public void startGameClicked()
+    public void hundredClicked()
     {
         doTicks(100);
     }
 
+    public void tenClicked()
+    {
+        doTicks(10);
+    }
+
+    public void oneClicked()
+    {
+        doTicks(1);
+    }
+
     public void selectCreatureClicked()
     {
-        presentScreen(AddCreatureScreen.class, add);
+        presentScreen(AddCreatureScreen.class, addCreature);
         updateScreen();
     }
 
@@ -151,7 +163,6 @@ public class SimVitaScreen extends ShapeScreen
             }
             catch (InterruptedException e)
             {
-
                 e.printStackTrace();
             }
         }
