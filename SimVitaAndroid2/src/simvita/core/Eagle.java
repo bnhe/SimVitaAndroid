@@ -55,7 +55,7 @@ public class Eagle extends Creature {
 
         shape = new ImageShape("bacteriabigsz", new RectF(0, 0, 1, 1));
 
-        life = 20;
+        life = 100;
         stomachSpace = 4;
 
         setFoodCreature(new TurtleA());
@@ -71,9 +71,9 @@ public class Eagle extends Creature {
      */
     public void act(TimeLogic tl)
     {
-        TurtleA nearTurtle = new TurtleA(
-            new Position(rand.nextInt(20),
-                rand.nextInt(20)));
+//        TurtleA nearTurtle = new TurtleA(
+//            new Position(rand.nextInt(20),
+//                rand.nextInt(20)));
 
         if (life <= 0 || stomachSpace <= 0)
         {
@@ -81,7 +81,7 @@ public class Eagle extends Creature {
         }
         else
         {
-            Creature aFood = tl.getWorld().getNearestFood(this);
+             Creature aFood = tl.getWorld().getNearestFood(this);
 
             if (aFood.getPosition().equals(this.getPosition()))
             {

@@ -166,7 +166,6 @@ public class World {
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
-	    Creature nearestFood = new Creature(new Position(10, 10));
 
         for (Thing th : this.getListOfThings())
         {
@@ -177,7 +176,7 @@ public class World {
             }
         }
 
-        return nearestFood;
+        return null;
 
 	}
 

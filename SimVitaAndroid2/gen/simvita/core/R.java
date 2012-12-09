@@ -9,7 +9,7 @@ package simvita.core;
 
 public final class R {
     public static final class array {
-        public static final int creatures=0x7f050000;
+        public static final int creatures=0x7f060000;
     }
     public static final class attr {
     }
@@ -63,6 +63,6 @@ public final class R {
         public static final int title_activity_sim_vita_screen=0x7f040003;
     }
     public static final class style {
-        public static final int AppTheme=0x7f060000;
+        public static final int AppTheme=0x7f050000;
     }
 }

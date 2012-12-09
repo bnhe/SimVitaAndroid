@@ -53,7 +53,7 @@ public class Vine extends Creature {
 
         shape = new ImageShape("plantbigzh", new RectF(0, 0, 10, 10));
 
-        life = 4;
+        life = 30;
     }
 
 
@@ -75,7 +75,7 @@ public class Vine extends Creature {
         else
         {
             replicate(tl);
-            life -= 3;
+            life -= 1;
             tl.addMoney(1);
         }
 
@@ -88,13 +88,14 @@ public class Vine extends Creature {
      */
     private void replicate(TimeLogic tl)
     {
+        if (rand.nextInt(100) < 20 )
+        {
         Position daughterPosition =
                 new Position(getPosition().x + rand.nextInt(3) - 1,
                         getPosition().y + rand.nextInt(3) - 1);
 
-
         tl.addCreature(new Vine(daughterPosition));
-
+        }
     }
 
 
