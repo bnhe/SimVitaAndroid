@@ -88,6 +88,7 @@ public class Creature extends Thing
 
         actFrequency = frequency;
         dead = false;
+        /*
         try
         {
             foodCreature =   (Creature) Class.forName("simvita.core.Vine").newInstance();
@@ -104,6 +105,9 @@ public class Creature extends Thing
         {
             e.printStackTrace();
         }
+        */
+
+        foodCreature = null;
     }
 
 

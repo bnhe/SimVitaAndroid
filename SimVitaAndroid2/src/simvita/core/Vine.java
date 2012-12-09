@@ -93,7 +93,7 @@ public class Vine extends Creature {
                         getPosition().y + rand.nextInt(3) - 1);
 
 
-        tl.addCreature(new BacteriaA(daughterPosition));
+        tl.addCreature(new Vine(daughterPosition));
 
     }
 
