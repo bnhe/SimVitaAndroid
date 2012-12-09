@@ -1,12 +1,11 @@
 package simvita.core;
 
+import sofia.graphics.Shape;
 import sofia.graphics.OvalShape;
 import sofia.graphics.Color;
-import java.util.ArrayList;
 
 /**
  * Creature are things that have life or life-like behavior;
- *
  */
 
 /**
@@ -14,14 +13,17 @@ import java.util.ArrayList;
  * @version 2012.11.1
  *
  */
-public class Creature extends Thing
+public class Creature
 {
 
-    //~Fields------------------------------------------------------------------
+    // ~Fields------------------------------------------------------------------
 
-    private ArrayList<StatusEffect<Creature>> statusEffects;
+    private Position    curPosition;
+    private String      name;
+    public Color color;
+    public Shape shape;
+    public int value;
     private int actFrequency;
-    private boolean dead;
     private Creature foodCreature;
 
 
@@ -29,18 +31,7 @@ public class Creature extends Thing
 
     public Creature(Position p)
     {
-        this(p, "a Name", new Description(" ", " "), Color.green);
-    }
-
-
-    /**
-     * @param x The position in the world.
-     * @param aName The name of the creature.
-     * @param desc The detailed description of the creature.
-     */
-    public Creature(Position x, String aName, Description desc, Color c)
-    {
-        this(x, aName, desc, c, new ArrayList<StatusEffect<Creature>>());
+        this(p, "a Name", Color.green);
     }
 
     /**
@@ -49,9 +40,9 @@ public class Creature extends Thing
      * @param desc The detailed description of the creature.
      * @param freq The frequency.
      */
-    public Creature(Position x, String aName, Description desc, Color c, int freq)
+    public Creature(Position x, String aName, Color c, int freq)
     {
-        this(x, aName, desc, c, new ArrayList<StatusEffect<Creature>>(), freq, null);
+        this(x, aName, c, freq, null);
     }
 
 
@@ -61,12 +52,10 @@ public class Creature extends Thing
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
      * @param stEffects A list of StatusEffect.
-
      */
-    public Creature(Position x, String aName, Description desc, Color c,
-        ArrayList<StatusEffect<Creature>> stEffects)
+    public Creature(Position x, String aName, Color c)
     {
-        this(x, aName, desc, c, stEffects, 5, null);
+        this(x, aName, c, 5, null);
     }
 
 
@@ -78,15 +67,18 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
      */
-    public Creature(Position x, String aName, Description desc, Color c,
-        ArrayList<StatusEffect<Creature>> stEffects, int frequency, OvalShape s)
+    public Creature(Position x, String aName, Color c,
+        int frequency, OvalShape s)
     {
-        super(x, aName, desc, c, s);
 
-        statusEffects = stEffects;
+        curPosition = x;
+        name = aName;
+        color = c;
+        shape = s;
+
+
 
         actFrequency = frequency;
-        dead = false;
         /*
         try
         {
@@ -104,7 +96,7 @@ public class Creature extends Thing
         {
             e.printStackTrace();
         }
-        */
+         */
 
         foodCreature = null;
     }
@@ -113,61 +105,58 @@ public class Creature extends Thing
     //~ Methods -----------------------------------------
 
     // ----------------------------------------------------------
+
+
+    // ----------------------------------------------------------
     /**
-     * Add a StatusEffect.
-     * @param s a StatusEffect.
+     * Set the position of the thing in the world.
+     *
+     * @param x
+     *            the position in the world.
      */
-    public void addStatusEffect(StatusEffect<Creature> s)
+    public void setPosition(Position x)
     {
-        statusEffects.add(s);
+        curPosition = x;
     }
 
 
     // ----------------------------------------------------------
     /**
-     * Remove a StatusEffect.
-     * @param s a StatusEffect.
+     * Get the current position of this thing.
+     *
+     * @return current position
      */
-    public void removeStatusEffect(StatusEffect<Creature> s)
+    public Position getPosition()
     {
-        statusEffects.remove(s);
+        return curPosition;
     }
 
-
-    // ----------------------------------------------------------
     /**
-     * Remove all StatusEffect.
+     * Get the name of the type of the Thing.
+     *
+     * @return The name.
      */
-    public void clearStatusEffects()
+    public String getName()
     {
-        statusEffects = new ArrayList<StatusEffect<Creature>>();
+        return name;
     }
 
-
-    // ----------------------------------------------------------
     /**
-     * Determine if a StatusEffect is available.
-     * @param s a StatusEffect.
-     * @return true if a StatusEffect is available false otherwise.
+     * Main action method. Controls how the Thing will
+     * interact with the world.
+     *
+     * @param w The world the creature acts upon.
      */
-    public boolean hasStatusEffect(StatusEffect<Creature> s)
+    public void act(TimeLogic tl)
     {
-        return !(statusEffects.isEmpty());
+
     }
 
-
-    // ----------------------------------------------------------
-    /**
-     * Return the list of StatusEffect.
-     * @return the list of StatusEffect
-     */
-    public ArrayList<StatusEffect<Creature>> getStatusEffects()
+    public String toString()
     {
-        return statusEffects;
+        return name;
     }
 
-
-    // ----------------------------------------------------------
     /**
      * Place a description of your method here.
      * @return actFrequency.
@@ -176,21 +165,6 @@ public class Creature extends Thing
     {
         return actFrequency;
     }
-
-    /**
-     *
-     */
-    public boolean isDead()
-    {
-        return dead;
-    }
-
-    public void kill()
-    {
-        dead = true;
-        color = Color.gray;
-    }
-
 
     public Creature getFoodCreature()
     {

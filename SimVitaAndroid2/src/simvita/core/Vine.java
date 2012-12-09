@@ -1,13 +1,7 @@
-/**
- *
- */
 package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
-import java.util.ArrayList;
 import sofia.graphics.Color;
 import java.util.Random;
 
@@ -50,7 +44,7 @@ public class Vine extends Creature {
      * @param c
      */
     public Vine(Position x, Color c, int f) {
-        super(x, "Vine", new Description("Vine", "A replicating Vine"), c, 5);
+        super(x, "Vine", c, 1);
 
         shape = new ImageShape("plantbigzh", new RectF(0, 0, 10, 10));
         life = 30;
@@ -88,17 +82,14 @@ public class Vine extends Creature {
      */
     private void replicate(TimeLogic tl)
     {
-        if (replicateCount > 10)
+        if (rand.nextInt(100) < 2)
         {
-            replicateCount = 0;
             Position daughterPosition =
                 new Position(getPosition().x + rand.nextInt(3) - 1,
                     getPosition().y + rand.nextInt(3) - 1);
 
             tl.addCreature(new Vine(daughterPosition));
         }
-        replicateCount++;
-
     }
 
 

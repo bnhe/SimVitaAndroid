@@ -1,6 +1,5 @@
 package simvita.core;
 
-import android.gesture.Prediction;
 import java.util.ArrayList;
 
 /**
@@ -20,20 +19,20 @@ import java.util.ArrayList;
  */
 public class World {
 
-	private ArrayList<Thing> things;
-	private ArrayList<Thing> toBeRemoved;
-	public ArrayList<Thing> toBeDraw;
-	public ArrayList<Thing> toBeMoved;
+	private ArrayList<Creature> creatures;
+	private ArrayList<Creature> toBeRemoved;
+	public ArrayList<Creature> toBeDraw;
+	public ArrayList<Creature> toBeMoved;
 
 	/**
 	 * Create a new empty world.
 	 */
 	public World()
 	{
-		things = new ArrayList<Thing>();
-		toBeRemoved = new ArrayList<Thing>();
-		toBeDraw = new ArrayList<Thing>();
-		toBeMoved = new ArrayList<Thing>();
+		creatures = new ArrayList<Creature>();
+		toBeRemoved = new ArrayList<Creature>();
+		toBeDraw = new ArrayList<Creature>();
+		toBeMoved = new ArrayList<Creature>();
 	}
 
 	/**
@@ -41,9 +40,9 @@ public class World {
 	 * @param things The list of things alread in the world.
 	 *
 	 */
-	public World(ArrayList<Thing> things)
+	public World(ArrayList<Creature> creatures)
 	{
-		this.things = things;
+		this.creatures = creatures;
 	}
 
 	/**
@@ -51,106 +50,44 @@ public class World {
 	 * @param t The thing to be added.
 	 * @param x The position tha the thing been add to the world.
 	 */
-	public void addThing(Thing t, Position x)
+	public void addThing(Creature c, Position p)
 	{
-		t.setPosition(x);
-		things.add(t);
-		toBeDraw.add(t);
+		c.setPosition(p);
+		creatures.add(c);
+		toBeDraw.add(c);
 	}
 
 	/**
 	 * Remove a certain thing in the world.
 	 * @param t The thing been removed.
 	 */
-	public void removeThing(Thing t)
+	public void removeThing(Creature c)
 	{
-	    things.remove(t);
-	    toBeRemoved.add(t);
+	    creatures.remove(c);
+	    toBeRemoved.add(c);
 	}
 
 	/**
 	 * Clear all things in the world.
 	 */
-	public void clearThings()
+	public void clearCreatures()
 	{
-		things = new ArrayList<Thing>();
+		creatures = new ArrayList<Creature>();
 	}
-
-
-	/**
-	 * Get all the things in a region.
-	 * @param region A ArrayList of positions representing the region.
-	 * @return A ArrayList of things in this region.
-	 *
-	 */
-	public ArrayList<Thing> getRegion(ArrayList<Position> region)
-	{
-		ArrayList<Thing> thingsInRegion = new ArrayList<Thing>();
-		boolean thisThingIsHere = false;
-
-		for (Thing t:things)
-		{
-			for (Position p:region)
-			{
-				if (t.getPosition() == p)
-				{
-					thisThingIsHere = true;
-				}
-			}
-
-			if (thisThingIsHere)
-			{
-				thingsInRegion.add(t);
-			}
-		}
-
-		return thingsInRegion;
-	}
-
-
-
-	/**
-	 * Get all the things in a rectangle region.
-	 * @param tl the top left corner of the rectangle region.
-	 * @param br the bottom right corner of the rectangle region.
-	 *
-	 * @return A ArrayList of things in this region.
-	 *
-	 */
-	public ArrayList<Thing> getRectangleRegion(Position tl, Position br)
-	{
-		ArrayList<Thing> thingsInRegion = new ArrayList<Thing>();
-
-		ArrayList<Position> region = new ArrayList<Position>();
-
-		for (int i = tl.x; i <= br.x; i++)
-		{
-			for (int j = tl.y; j <= br.y; j++)
-			{
-				region.add(new Position(i, j));
-			}
-		}
-
-		thingsInRegion = getRegion(region);
-
-
-		return thingsInRegion;
-	}
-
 
 	/**
 	 * Get all the things in the world.
 	 * @return All the things in the world.
 	 */
-	public ArrayList<Thing>  getListOfThings()
+	public ArrayList<Creature>  getListOfCreatures()
 	{
-		return things;
+		return creatures;
 	}
 
 	/**
 	 * getToBeRemoved list.
 	 */
-	public ArrayList<Thing> getToBeRemoved()
+	public ArrayList<Creature> getToBeRemoved()
 	{
 	    return toBeRemoved;
 	}
@@ -158,7 +95,7 @@ public class World {
 	/**
 	 * get Things to be added
 	 */
-	public ArrayList<Thing> getToBeDraw()
+	public ArrayList<Creature> getToBeDraw()
 	{
 	    return toBeDraw;
 	}
@@ -166,7 +103,7 @@ public class World {
 	/**
      * get Things to be added
      */
-    public ArrayList<Thing> getToBeMoved()
+    public ArrayList<Creature> getToBeMoved()
     {
         return toBeMoved;
     }
@@ -179,17 +116,14 @@ public class World {
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
-        for (Thing th : this.getListOfThings())
+        for (Creature c : getListOfCreatures())
         {
-            if (th.getClass().equals(preditor.getFoodCreature().getClass() ))
+            if (c.getClass().equals(preditor.getFoodCreature().getClass() ))
             {
-                return (Creature) th;
+                return c;
             }
         }
 
         return null;
 	}
-
-
-
 }

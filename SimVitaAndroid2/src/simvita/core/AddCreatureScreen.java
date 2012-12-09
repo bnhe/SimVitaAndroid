@@ -34,16 +34,6 @@ public class AddCreatureScreen extends Screen
         selectCreature("TurtleA");
     }
 
-    public void doNothingClicked()
-    {
-        selectCreature("DoNothingCreature");
-    }
-
-    public void bacteriaClicked()
-    {
-        selectCreature("BacteriaA");
-    }
-
     public void plantClicked()
     {
         selectCreature("Vine");

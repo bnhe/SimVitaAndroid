@@ -45,13 +45,13 @@ public class SimVitaScreen extends ShapeScreen
         numBoxHeight = (int) (getHeight() / cellSize);
 
         //Set up the game
-        game = new TimeLogic(gameLength, getHeight(), getWidth());
+        game = new TimeLogic(gameLength);
 
         //add text
         game.setMoney(100);
 
         addCreatureAndShape(new TurtleAdder(new Position(
-            rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
+            numBoxWidth / 2, numBoxHeight / 2)));
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");
     }
@@ -72,19 +72,19 @@ public class SimVitaScreen extends ShapeScreen
         addShape(c);
     }
 
-    public void addShape(Thing t)
+    public void addShape(Creature c)
     {
-        float startx = cellSize * t.getPosition().x;
-        float starty = cellSize * t.getPosition().y;
+        float startx = cellSize * c.getPosition().x;
+        float starty = cellSize * c.getPosition().y;
 
-        t.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
-        t.shape.setPosition(startx, starty);
-        add(t.shape);
+        c.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
+        c.shape.setPosition(startx, starty);
+        add(c.shape);
     }
 
-    public void removeShape(Thing t)
+    public void removeShape(Creature c)
     {
-        remove(t.shape);
+        remove(c.shape);
     }
 
     public void removeCreatureAndShape(Creature c)
@@ -197,56 +197,53 @@ public class SimVitaScreen extends ShapeScreen
     {
         updateText();
         //Remove Shapes that need to be removed
-        ArrayList<Thing> outOfBounds = new ArrayList<Thing>();
+        ArrayList<Creature> outOfBounds = new ArrayList<Creature>();
 
-        for (Thing t : game.getWorld().getToBeRemoved())
+        for (Creature c : game.getWorld().getToBeRemoved())
         {
-            removeShape(t);
+            removeShape(c);
         }
         //All removed, reset toRemove
         game.getWorld().getToBeRemoved().clear();
 
         //Add New Shapes
-        if (game.getWorld().getToBeDraw() != null)
+        for (Creature c : game.getWorld().getToBeDraw())
         {
-            for (Thing t : game.getWorld().getToBeDraw())
-            {
-                int x = t.getPosition().x;
-                int y = t.getPosition().y;
-                if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
-                {
-                    addShape(t);
-                }
-                else //Remove shapes that go offscreen
-                {
-                    outOfBounds.add(t);
-                }
-            }
-            //All drawn, reset toBeDraw
-            game.getWorld().getToBeDraw().clear();
-        }
-
-        //Update existing Shapes
-        //Move shapes that are moving.
-        for (Thing t : game.getWorld().getToBeMoved())
-        {
-            int x = t.getPosition().x;
-            int y = t.getPosition().y;
+            int x = c.getPosition().x;
+            int y = c.getPosition().y;
             if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
             {
-                t.shape.setPosition(cellSize * x, cellSize * y);
+                addShape(c);
             }
             else //Remove shapes that go offscreen
             {
-                outOfBounds.add(t);
+                outOfBounds.add(c);
+            }
+        }
+        //All drawn, reset toBeDraw
+        game.getWorld().getToBeDraw().clear();
+
+        //Update existing Shapes
+        //Move shapes that are moving.
+        for (Creature c : game.getWorld().getToBeMoved())
+        {
+            int x = c.getPosition().x;
+            int y = c.getPosition().y;
+            if (x >= 0 && y >= 0 && x < numBoxWidth && y < numBoxHeight)
+            {
+                c.shape.setPosition(cellSize * x, cellSize * y);
+            }
+            else //Remove shapes that go offscreen
+            {
+                outOfBounds.add(c);
             }
         }
         game.getWorld().getToBeMoved().clear();
 
         //Remove out of bounds shapes
-        for (Thing t : outOfBounds)
+        for (Creature c : outOfBounds)
         {
-            removeCreatureAndShape((Creature)t);
+            removeCreatureAndShape(c);
         }
     }
 }

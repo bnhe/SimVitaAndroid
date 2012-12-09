@@ -5,9 +5,6 @@ package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
-import java.util.ArrayList;
 import sofia.graphics.Color;
 import java.util.Random;
 import java.lang.Math;
@@ -50,8 +47,7 @@ public class Eagle extends Creature {
      * @param c
      */
     public Eagle(Position x, Color c, int f) {
-        super(x, "Eagle", new Description("Eagle",
-            "A Eagle that trying to eat turtle"), c, 1);
+        super(x, "Eagle", c, 1);
 
         shape = new ImageShape("eaglebigbh", new RectF(0, 0, 1, 1));
 

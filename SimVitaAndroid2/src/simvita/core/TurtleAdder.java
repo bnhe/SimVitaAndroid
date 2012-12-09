@@ -7,7 +7,7 @@ import sofia.graphics.OvalShape;
 import java.util.Random;
 
 public class TurtleAdder
-    extends Creature
+extends Creature
 {
 
     Random rand = new Random();
@@ -25,9 +25,7 @@ public class TurtleAdder
      * @param x The position to put the TurtleA at.
      */
     public TurtleAdder(Position x) {
-        this(x, "TurtleAdder",
-                new Description("TurtleAdder",
-                        "Adds turtles"));
+        this(x, "TurtleAdder");
 
     }
 
@@ -37,27 +35,18 @@ public class TurtleAdder
      * @param aName A name for the TurtleA
      * @param desc The description.
      */
-    public TurtleAdder(Position x, String aName, Description desc) {
-        super(x, aName, desc, Color.greenYellow, null, 20, new OvalShape(0, 0, 1, 1));
-
+    public TurtleAdder(Position x, String aName) {
+        super(x, aName, Color.greenYellow, 20, new OvalShape(0, 0, 1, 1));
         shape.setAlpha(255);
         value = 20;
-
-        //setFoodCreature(new Vine());
-
     }
 
     public void act(TimeLogic tl)
     {
-        //Position newPosition = new Position(rand.nextInt(tl.getWidth()),
-        //    rand.nextInt(tl.getHeight()));
         Position daughterPosition =
             new Position(getPosition().x + rand.nextInt(3) - 1,
-                    getPosition().y + rand.nextInt(3) - 1);
+                getPosition().y + rand.nextInt(3) - 1);
 
-
-    tl.addCreature(new TurtleA(daughterPosition));
-
-        //tl.addCreature(new TurtleA(newPosition));
+        tl.addCreature(new TurtleA(daughterPosition));
     }
 }
