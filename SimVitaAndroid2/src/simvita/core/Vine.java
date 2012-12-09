@@ -39,7 +39,7 @@ public class Vine extends Creature {
      * @param x the Position to put the Vine at.
      */
     public Vine(Position x) {
-        this(x, 4);
+        this(x, 5);
     }
 
     /**
@@ -74,9 +74,9 @@ public class Vine extends Creature {
         }
         else
         {
-            replicate(tl);
-            life -= 1;
-            tl.addMoney(1);
+            //replicate(tl);
+            life -= 5;
+            tl.addMoney(5);
         }
     }
 

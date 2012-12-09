@@ -69,7 +69,7 @@ public class TimeLogic
      */
     public void addCreature(Creature c)
     {
-        world.addThing(c, c.getPosition());
+        world.addCreature(c, c.getPosition());
         timeQueue.add(new TimeEvent(clock + c.getActFrequency(), c));
     }
 
@@ -87,7 +87,7 @@ public class TimeLogic
      */
     public void removeCreature(Creature c)
     {
-        world.removeThing(c);
+        world.removeCreature(c);
         removeOnNextTick.add(c);
     }
 

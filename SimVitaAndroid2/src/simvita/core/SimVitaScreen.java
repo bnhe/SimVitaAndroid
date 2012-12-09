@@ -59,18 +59,19 @@ public class SimVitaScreen extends ShapeScreen
     public void randomizeStart()
     {
         //Turtle Adder
-        for (int i = 0; i < 5; i++)
+        //for (int i = 0; i < 5; i++)
         {
-            addCreatureAndShape(new TurtleAdder(new Position(
-                rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
+            //addCreatureAndShape(new TurtleAdder(new Position(
+                //rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
         }
 
         //Plants
-        for (int i = 0; i < 10; i++)
+        for (int i = 0, j = 0; i < 5; i++, j++)
         {
-            addCreatureAndShape(new Vine(
-                new Position(rand.nextInt(numBoxWidth),
-                    rand.nextInt(numBoxHeight))));
+           addCreatureAndShape(new Vine(
+               new Position(i, j)));
+                //new Position(rand.nextInt(numBoxWidth),
+                    //rand.nextInt(numBoxHeight))));
         }
 
     }
@@ -220,6 +221,7 @@ public class SimVitaScreen extends ShapeScreen
 
         for (Creature c : game.getWorld().getToBeRemoved())
         {
+            System.out.println(c);
             removeShape(c);
         }
         //All removed, reset toRemove

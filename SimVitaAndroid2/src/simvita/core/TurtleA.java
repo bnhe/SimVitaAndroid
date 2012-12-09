@@ -5,11 +5,7 @@ package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
-import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
-import sofia.graphics.RectangleShape;
-import java.util.ArrayList;
-import sofia.graphics.Color;
 import java.util.Random;
 
 /**
@@ -70,10 +66,12 @@ public class TurtleA extends Creature {
         Creature aFood = tl.getWorld().getNearestFood(this);
         if (aFood != null)
         {
+            tl.removeCreature(aFood);
+            /*
 
             if (aFood.getPosition().equals(this.getPosition()))
             {
-                tl.removeCreature(tl.getWorld().getNearestFood(this));
+                tl.removeCreature(aFood);
             }
             else
             {
@@ -88,6 +86,7 @@ public class TurtleA extends Creature {
 
                 tl.moveCreature(this, new Position(newX, newY));
             }
+            */
         }
 
     }

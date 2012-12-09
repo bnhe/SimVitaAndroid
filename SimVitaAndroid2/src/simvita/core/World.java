@@ -50,7 +50,7 @@ public class World {
 	 * @param t The thing to be added.
 	 * @param x The position tha the thing been add to the world.
 	 */
-	public void addThing(Creature c, Position x)
+	public void addCreature(Creature c, Position x)
 	{
 		c.setPosition(x);
 		things.add(c);
@@ -61,7 +61,7 @@ public class World {
 	 * Remove a certain thing in the world.
 	 * @param t The thing been removed.
 	 */
-	public void removeThing(Creature c)
+	public void removeCreature(Creature c)
 	{
 	    things.remove(c);
 	    toBeRemoved.add(c);
