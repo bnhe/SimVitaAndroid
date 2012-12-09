@@ -1,7 +1,6 @@
 package simvita.core;
 
 import sofia.graphics.OvalShape;
-import sofia.graphics.Shape;
 import sofia.graphics.Color;
 import java.util.ArrayList;
 

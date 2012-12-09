@@ -43,10 +43,12 @@ public class SimVitaScreen extends ShapeScreen
         numBoxHeight = (int) (getHeight() / cellSize);
 
         //Set up the game
-        game = new TimeLogic(gameLength);
+        game = new TimeLogic(gameLength, getHeight(), getWidth());
 
         //add text
         game.setMoney(100);
+
+        //addCreatureAndShape(new TurtleAdder(new Position(numBoxHeight/2, numBoxHeight/2)));
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");
     }

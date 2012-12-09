@@ -27,9 +27,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="46dp"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/playMedium"
         android:text="Play Long" />
 
     <Button
@@ -38,8 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="14dp"
-        android:layout_toLeftOf="@+id/playLong"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/playShort"
         android:text="Play Medium" />
 
 </RelativeLayout>

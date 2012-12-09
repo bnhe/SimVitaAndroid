@@ -23,17 +23,21 @@ public class TimeLogic
     private ArrayList<Creature> removeOnNextTick;
     private long money;
     private long endTurn;
+    private int height;
+    private int width;
 
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
      */
-    public TimeLogic(long endTurn)
+    public TimeLogic(long endTurn, float f, float g)
     {
         this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
             new World());
         clock = 0;
         this.endTurn = endTurn;
+        this.height = (int)f;
+        this.width = (int)g;
     }
 
     public boolean isOver()
@@ -145,6 +149,16 @@ public class TimeLogic
                 timeQueue.add(new TimeEvent(c.getActFrequency(), c));
             }
         }
+    }
+
+    public int getHeight()
+    {
+        return height;
+    }
+
+    public int getWidth()
+    {
+        return width;
     }
 
     /**

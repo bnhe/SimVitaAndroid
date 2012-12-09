@@ -5,9 +5,6 @@ package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
-import java.util.ArrayList;
 import sofia.graphics.Color;
 import java.util.Random;
 

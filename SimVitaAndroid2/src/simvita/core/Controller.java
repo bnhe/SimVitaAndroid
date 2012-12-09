@@ -8,7 +8,7 @@ public class Controller
 
     public Controller()
     {
-        this(new TimeLogic(10));
+        //this(new TimeLogic(10));
     }
 
     public Controller(TimeLogic t)

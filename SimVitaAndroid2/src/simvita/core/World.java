@@ -163,22 +163,23 @@ public class World {
 
 	/**
 	 * Get the nearest target.
+	 *
+	 * @returns The nearest food object that a predator eats, or null if there
+	 * are none of them in the world.
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
-	    Creature nearestFood = new Creature(new Position(10, 10));
+	    Creature nearestFood = null;
 
         for (Thing th : this.getListOfThings())
         {
-
-            if (th.getClass().equals( preditor.getFoodCreature().getClass() ))
+            if (th.getClass().equals(preditor.getFoodCreature().getClass() ))
             {
                 return (Creature) th;
             }
         }
 
         return nearestFood;
-
 	}
 
 

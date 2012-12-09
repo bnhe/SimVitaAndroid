@@ -53,7 +53,7 @@ public class Eagle extends Creature {
         super(x, "Eagle", new Description("Eagle",
             "A Eagle that trying to eat turtle"), c, 1);
 
-        shape = new ImageShape("bacteriabigsz", new RectF(0, 0, 1, 1));
+        shape = new ImageShape("eaglebigbh", new RectF(0, 0, 1, 1));
 
         life = 20;
         stomachSpace = 4;
@@ -82,23 +82,27 @@ public class Eagle extends Creature {
         else
         {
             Creature aFood = tl.getWorld().getNearestFood(this);
-
-            if (aFood.getPosition().equals(this.getPosition()))
+            if (aFood != null)
             {
-                 tl.removeCreature(tl.getWorld().getNearestFood(this));
-            }
-            else
-            {
-                int ex = this.getPosition().x;
-                int ey = this.getPosition().y;
+                if (aFood.getPosition().equals(this.getPosition()))
+                {
 
-                int tx = aFood.getPosition().x;
-                int ty = aFood.getPosition().y;
+                    tl.removeCreature(aFood);
 
-                int newX = ex + (int) Math.signum((double)(tx - ex));
-                int newY = ey + (int) Math.signum((double)(ty - ey));
+                }
+                else
+                {
+                    int ex = this.getPosition().x;
+                    int ey = this.getPosition().y;
 
-                this.setPosition(new Position(newX, newY));
+                    int tx = aFood.getPosition().x;
+                    int ty = aFood.getPosition().y;
+
+                    int newX = ex + (int) Math.signum((double)(tx - ex));
+                    int newY = ey + (int) Math.signum((double)(ty - ey));
+
+                    this.setPosition(new Position(newX, newY));
+                }
             }
 
             life -= 2;
