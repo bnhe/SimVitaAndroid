@@ -20,7 +20,6 @@ public class Thing
 
     private Position    curPosition;
     private String      name;
-    public Color color;
     public Shape shape;
     public int value;
 
@@ -36,11 +35,10 @@ public class Thing
      * @param desc
      *            The detailed description of the thing.
      */
-    public Thing(Position x, String aName, Color c, Shape s)
+    public Thing(Position x, String aName, Shape s)
     {
         curPosition = x;
         name = aName;
-        color = c;
         shape = s;
     }
 
@@ -90,19 +88,9 @@ public class Thing
 
     }
 
-    /**
-     * Respond to another Thing acting on this one.
-     *
-     * @param t The thing acting on the creature.
-     */
-    public void respond(Thing t)
-    {
-    }
-
     public String toString()
     {
         return name;
-
     }
 
 }

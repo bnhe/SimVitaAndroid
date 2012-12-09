@@ -21,7 +21,6 @@ public class Creature extends Thing
 
     private ArrayList<StatusEffect<Creature>> statusEffects;
     private int actFrequency;
-    private boolean dead;
     private Creature foodCreature;
 
 
@@ -29,7 +28,7 @@ public class Creature extends Thing
 
     public Creature(Position p)
     {
-        this(p, "a Name", Color.green);
+        this(p, "a Name");
     }
 
 
@@ -38,9 +37,9 @@ public class Creature extends Thing
      * @param aName The name of the creature.
      * @param desc The detailed description of the creature.
      */
-    public Creature(Position x, String aName, Color c)
+    public Creature(Position x, String aName)
     {
-        this(x, aName, c, new ArrayList<StatusEffect<Creature>>());
+        this(x, aName, new ArrayList<StatusEffect<Creature>>());
     }
 
     /**
@@ -49,9 +48,9 @@ public class Creature extends Thing
      * @param desc The detailed description of the creature.
      * @param freq The frequency.
      */
-    public Creature(Position x, String aName, Color c, int freq)
+    public Creature(Position x, String aName, int freq)
     {
-        this(x, aName, c, new ArrayList<StatusEffect<Creature>>(), freq, null);
+        this(x, aName, new ArrayList<StatusEffect<Creature>>(), freq, null);
     }
 
 
@@ -63,10 +62,10 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
 
      */
-    public Creature(Position x, String aName, Color c,
+    public Creature(Position x, String aName,
         ArrayList<StatusEffect<Creature>> stEffects)
     {
-        this(x, aName, c, stEffects, 5, null);
+        this(x, aName, stEffects, 5, null);
     }
 
 
@@ -78,15 +77,14 @@ public class Creature extends Thing
      * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
      */
-    public Creature(Position x, String aName, Color c,
+    public Creature(Position x, String aName,
         ArrayList<StatusEffect<Creature>> stEffects, int frequency, OvalShape s)
     {
-        super(x, aName, c, s);
+        super(x, aName, s);
 
         statusEffects = stEffects;
 
         actFrequency = frequency;
-        dead = false;
         /*
         try
         {
@@ -177,20 +175,6 @@ public class Creature extends Thing
         return actFrequency;
     }
 
-    /**
-     *
-     */
-    public boolean isDead()
-    {
-        return dead;
-    }
-
-    public void kill()
-    {
-        dead = true;
-        color = Color.gray;
-    }
-
 
     public Creature getFoodCreature()
     {
@@ -201,6 +185,4 @@ public class Creature extends Thing
     {
         foodCreature = food;
     }
-
-
 }

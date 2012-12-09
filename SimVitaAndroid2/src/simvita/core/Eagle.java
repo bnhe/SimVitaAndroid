@@ -39,7 +39,7 @@ public class Eagle extends Creature {
      * @param x the Position to put the Eagle at.
      */
     public Eagle(Position x) {
-        this(x, Color.brown, 4);
+        this(x, 4);
     }
 
     /**
@@ -49,8 +49,8 @@ public class Eagle extends Creature {
      * @param desc
      * @param c
      */
-    public Eagle(Position x, Color c, int f) {
-        super(x, "Eagle",  c, 1);
+    public Eagle(Position x, int f) {
+        super(x, "Eagle",  1);
 
         shape = new ImageShape("eaglebigbh", new RectF(0, 0, 1, 1));
 

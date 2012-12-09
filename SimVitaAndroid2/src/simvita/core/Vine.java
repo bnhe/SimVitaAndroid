@@ -39,7 +39,7 @@ public class Vine extends Creature {
      * @param x the Position to put the Vine at.
      */
     public Vine(Position x) {
-        this(x, Color.green, 4);
+        this(x, 4);
     }
 
     /**
@@ -49,8 +49,8 @@ public class Vine extends Creature {
      * @param desc
      * @param c
      */
-    public Vine(Position x, Color c, int f) {
-        super(x, "Vine", c, 5);
+    public Vine(Position x, int f) {
+        super(x, "Vine",  5);
 
         shape = new ImageShape("plantbigzh", new RectF(0, 0, 10, 10));
         life = 30;
