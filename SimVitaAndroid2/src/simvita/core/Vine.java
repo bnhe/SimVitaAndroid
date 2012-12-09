@@ -55,6 +55,7 @@ public class Vine extends Creature {
         shape = new ImageShape("plantbigzh", new RectF(0, 0, 10, 10));
         life = 30;
         replicateCount = 0;
+        value = 10;
     }
 
 
@@ -70,7 +71,6 @@ public class Vine extends Creature {
         if (life <= 0)
         {
             tl.removeCreature(this);
-            System.out.println("Removed a bacteria");
         }
         else
         {
@@ -97,8 +97,7 @@ public class Vine extends Creature {
 
             tl.addCreature(new Vine(daughterPosition));
         }
-        replicateCount++;
-
+        replicateCount += rand.nextInt(2);
     }
 
 

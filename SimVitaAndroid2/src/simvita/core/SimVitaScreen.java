@@ -50,10 +50,29 @@ public class SimVitaScreen extends ShapeScreen
         //add text
         game.setMoney(100);
 
-        addCreatureAndShape(new TurtleAdder(new Position(
-            rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
+        //Randomize starting positions
+        randomizeStart();
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");
+    }
+
+    public void randomizeStart()
+    {
+        //Turtle Adder
+        for (int i = 0; i < 5; i++)
+        {
+            addCreatureAndShape(new TurtleAdder(new Position(
+                rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
+        }
+
+        //Plants
+        for (int i = 0; i < 10; i++)
+        {
+            addCreatureAndShape(new Vine(
+                new Position(rand.nextInt(numBoxWidth),
+                    rand.nextInt(numBoxHeight))));
+        }
+
     }
 
     public void updateMoney()

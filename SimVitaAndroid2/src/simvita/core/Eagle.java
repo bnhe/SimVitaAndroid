@@ -54,8 +54,9 @@ public class Eagle extends Creature {
 
         shape = new ImageShape("eaglebigbh", new RectF(0, 0, 1, 1));
 
-        life = 20;
+        life = 50;
         stomachSpace = 4;
+        value = 50;
 
         setFoodCreature(new TurtleA());
     }
