@@ -116,15 +116,26 @@ public class World {
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
+	    Creature nearestFood = null;
+	    double nearestDistance = 200000;
+	    double distance = 2000000000;
+
         for (Creature c : this.getListOfCreatures())
         {
             if (c.getClass().equals(preditor.getFoodCreature().getClass() ))
             {
-                return c;
+                distance = preditor.getPosition().distanceTo(c.getPosition());
+
+                if (distance < nearestDistance)
+                {
+                    nearestFood = c;
+                    nearestDistance = distance;
+                }
             }
         }
 
-        return null;
+
+        return nearestFood;
 	}
 
 

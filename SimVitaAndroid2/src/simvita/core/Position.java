@@ -1,5 +1,6 @@
 package simvita.core;
 
+
 // -------------------------------------------------------------------------
 /**
  * A class to store the x and y values for the position of the creature and
@@ -48,6 +49,17 @@ public class Position
     {
 
         return (x == position.x) && (y == position.y);
+    }
+
+    /**
+     * Distance to another position;
+     * @param toP Another position
+     * @return the distance
+     */
+    public double distanceTo(Position toP)
+    {
+        return Math.sqrt(Math.pow((this.x  - toP.x), 2)
+             + Math.pow((this.y - toP.y), 2));
     }
 
 }
