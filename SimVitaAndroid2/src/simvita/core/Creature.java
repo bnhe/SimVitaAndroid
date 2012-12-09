@@ -88,7 +88,22 @@ public class Creature extends Thing
 
         actFrequency = frequency;
         dead = false;
-        foodCreature = new Vine();
+        try
+        {
+            foodCreature =   (Creature) Class.forName("simvita.core.Vine").newInstance();
+        }
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+        catch (InstantiationException e)
+        {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 

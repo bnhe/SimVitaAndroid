@@ -3,11 +3,14 @@
  */
 package simvita.core;
 
+import android.graphics.RectF;
+import sofia.graphics.ImageShape;
 import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
 import java.util.ArrayList;
 import sofia.graphics.Color;
 import java.util.Random;
+import java.lang.Math;
 
 /**
  *
@@ -50,9 +53,8 @@ public class Eagle extends Creature {
         super(x, "Eagle", new Description("Eagle",
             "A Eagle that trying to eat turtle"), c, 1);
 
-        shape = new OvalShape();
-        ((FillableShape)shape).setFilled(true);
-        ((FillableShape)shape).setFillColor(color);
+        shape = new ImageShape("bacteriabigsz", new RectF(0, 0, 1, 1));
+
         life = 20;
         stomachSpace = 4;
 
@@ -79,13 +81,25 @@ public class Eagle extends Creature {
         }
         else
         {
-            int ex = this.getPosition().x;
-            int ey = this.getPosition().y;
-
             Creature aFood = tl.getWorld().getNearestFood(this);
-            int tx = aFood.getPosition().x;
-            int ty = aFood.getPosition().y;
 
+            if (aFood.getPosition().equals(this.getPosition()))
+            {
+                 tl.removeCreature(tl.getWorld().getNearestFood(this));
+            }
+            else
+            {
+                int ex = this.getPosition().x;
+                int ey = this.getPosition().y;
+
+                int tx = aFood.getPosition().x;
+                int ty = aFood.getPosition().y;
+
+                int newX = ex + (int) Math.signum((double)(tx - ex));
+                int newY = ey + (int) Math.signum((double)(ty - ey));
+
+                this.setPosition(new Position(newX, newY));
+            }
 
             life -= 2;
         }

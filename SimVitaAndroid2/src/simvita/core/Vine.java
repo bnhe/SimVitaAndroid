@@ -3,6 +3,8 @@
  */
 package simvita.core;
 
+import android.graphics.RectF;
+import sofia.graphics.ImageShape;
 import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
 import java.util.ArrayList;
@@ -48,9 +50,8 @@ public class Vine extends Creature {
     public Vine(Position x, Color c, int f) {
         super(x, "Vine", new Description("Vine", "A replicating Vine"), c, 1);
 
-        shape = new OvalShape();
-        ((FillableShape)shape).setFilled(true);
-        ((FillableShape)shape).setFillColor(color);
+        shape = new ImageShape("plantbigzh", new RectF(0, 0, 10, 10));
+
         life = 4;
     }
 
