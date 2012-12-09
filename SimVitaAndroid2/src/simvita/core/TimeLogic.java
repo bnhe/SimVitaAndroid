@@ -17,7 +17,6 @@ import java.util.PriorityQueue;
 public class TimeLogic
 {
     private PriorityQueue<TimeEvent> timeQueue;
-    private PriorityQueue<TimeEvent> rollOverTimeQueue;
     private World world;
     private long clock;
     private ArrayList<Creature> removeOnNextTick;
@@ -29,7 +28,7 @@ public class TimeLogic
      */
     public TimeLogic(long endTurn)
     {
-        this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
+        this(new PriorityQueue<TimeEvent>(),
             new World());
         clock = 0;
         this.endTurn = endTurn;
@@ -100,14 +99,16 @@ public class TimeLogic
      * @param rollOverTimeQueue
      * @param world
      */
-    public TimeLogic(PriorityQueue<TimeEvent> timeQueue,
-        PriorityQueue<TimeEvent> rollOverTimeQueue, World world)
+    public TimeLogic(PriorityQueue<TimeEvent> timeQueue, World world)
     {
         this.timeQueue = timeQueue;
-        this.rollOverTimeQueue = rollOverTimeQueue;
         this.world = world;
         this.removeOnNextTick = new ArrayList<Creature>();
-        init();
+
+        for (Creature c : world.getListOfCreatures())
+        {
+            timeQueue.add(new TimeEvent(c.getActFrequency(), c));
+        }
     }
 
     /**
@@ -121,16 +122,6 @@ public class TimeLogic
     }
 
     /**
-     * Get the Rollover Queue.
-     *
-     * @return The Rollover Queue.
-     */
-    public PriorityQueue<TimeEvent> getRollOverQueue()
-    {
-        return rollOverTimeQueue;
-    }
-
-    /**
      * Get the World.
      *
      * @return The world.
@@ -138,17 +129,6 @@ public class TimeLogic
     public World getWorld()
     {
         return world;
-    }
-
-    /**
-     * Initialize the TimeQueue, using creatures from the world.
-     */
-    private void init()
-    {
-        for (Creature c : world.getListOfCreatures())
-        {
-                timeQueue.add(new TimeEvent(c.getActFrequency(), c));
-        }
     }
 
     /**
@@ -184,13 +164,7 @@ public class TimeLogic
 
                 //requeue
                 // Check for overflow.
-                if (t.time >= Long.MAX_VALUE - t.creature.getActFrequency())
-                {
-                    // Go to overflow.
-                    t.time = t.creature.getActFrequency() - (Long.MAX_VALUE - t.time); //Long.MAX_VALUE - t.time - t.creature.getActFrequency();
-                    rollOverTimeQueue.offer(t);
-                }
-                else
+                if (t.time < Long.MAX_VALUE - t.creature.getActFrequency())
                 {
                     // Change the time to the next time it should be enacted
                     t.time += t.creature.getActFrequency();
@@ -199,21 +173,6 @@ public class TimeLogic
                 }
             }
 
-        }
-        else
-        {
-            // Main Queue is empty, switch to rollOver
-            if (rollOverTimeQueue.size() > 0)
-            {
-                timeQueue = rollOverTimeQueue;
-                rollOverTimeQueue = new PriorityQueue<TimeEvent>();
-                clock = 0;
-            }
-            else
-            {
-                // No Events Queued up at all.
-                // should anything be done here?
-            }
         }
     }
 
