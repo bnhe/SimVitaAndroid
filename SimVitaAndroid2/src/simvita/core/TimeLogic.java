@@ -150,7 +150,7 @@ public class TimeLogic
      */
     private void init()
     {
-        for (Creature c : world.getListOfThings())
+        for (Creature c : world.getListOfCreatures())
         {
                 timeQueue.add(new TimeEvent(c.getActFrequency(), c));
         }

@@ -76,73 +76,11 @@ public class World {
 		things = new ArrayList<Creature>();
 	}
 
-
-	/**
-	 * Get all the things in a region.
-	 * @param region A ArrayList of positions representing the region.
-	 * @return A ArrayList of things in this region.
-	 *
-	 */
-	public ArrayList<Creature> getRegion(ArrayList<Position> region)
-	{
-		ArrayList<Creature> thingsInRegion = new ArrayList<Creature>();
-		boolean thisThingIsHere = false;
-
-		for (Creature c:things)
-		{
-			for (Position p:region)
-			{
-				if (c.getPosition() == p)
-				{
-					thisThingIsHere = true;
-				}
-			}
-
-			if (thisThingIsHere)
-			{
-				thingsInRegion.add(c);
-			}
-		}
-
-		return thingsInRegion;
-	}
-
-
-
-	/**
-	 * Get all the things in a rectangle region.
-	 * @param tl the top left corner of the rectangle region.
-	 * @param br the bottom right corner of the rectangle region.
-	 *
-	 * @return A ArrayList of things in this region.
-	 *
-	 */
-	public ArrayList<Creature> getRectangleRegion(Position tl, Position br)
-	{
-		ArrayList<Creature> thingsInRegion = new ArrayList<Creature>();
-
-		ArrayList<Position> region = new ArrayList<Position>();
-
-		for (int i = tl.x; i <= br.x; i++)
-		{
-			for (int j = tl.y; j <= br.y; j++)
-			{
-				region.add(new Position(i, j));
-			}
-		}
-
-		thingsInRegion = getRegion(region);
-
-
-		return thingsInRegion;
-	}
-
-
 	/**
 	 * Get all the things in the world.
 	 * @return All the things in the world.
 	 */
-	public ArrayList<Creature>  getListOfThings()
+	public ArrayList<Creature>  getListOfCreatures()
 	{
 		return things;
 	}
@@ -179,7 +117,7 @@ public class World {
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
-        for (Creature c : this.getListOfThings())
+        for (Creature c : this.getListOfCreatures())
         {
             if (c.getClass().equals(preditor.getFoodCreature().getClass() ))
             {
