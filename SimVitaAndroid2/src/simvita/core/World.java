@@ -169,8 +169,6 @@ public class World {
 	 */
 	public Creature getNearestFood(Creature preditor)
 	{
-	    Creature nearestFood = null;
-
         for (Thing th : this.getListOfThings())
         {
             if (th.getClass().equals(preditor.getFoodCreature().getClass() ))
@@ -179,7 +177,7 @@ public class World {
             }
         }
 
-        return nearestFood;
+        return null;
 	}
 
 

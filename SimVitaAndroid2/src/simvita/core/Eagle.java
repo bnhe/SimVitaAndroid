@@ -86,9 +86,7 @@ public class Eagle extends Creature {
             {
                 if (aFood.getPosition().equals(this.getPosition()))
                 {
-
                     tl.removeCreature(aFood);
-
                 }
                 else
                 {
