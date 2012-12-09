@@ -1,6 +1,5 @@
 package simvita.core;
 
-import android.gesture.Prediction;
 import java.util.ArrayList;
 
 /**

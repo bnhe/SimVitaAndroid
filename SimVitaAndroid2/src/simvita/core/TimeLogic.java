@@ -23,21 +23,16 @@ public class TimeLogic
     private ArrayList<Creature> removeOnNextTick;
     private long money;
     private long endTurn;
-    private int height;
-    private int width;
-
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
      */
-    public TimeLogic(long endTurn, float f, float g)
+    public TimeLogic(long endTurn)
     {
         this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
             new World());
         clock = 0;
         this.endTurn = endTurn;
-        this.height = (int)f;
-        this.width = (int)g;
     }
 
     public boolean isOver()
@@ -156,16 +151,6 @@ public class TimeLogic
         }
     }
 
-    public int getHeight()
-    {
-        return height;
-    }
-
-    public int getWidth()
-    {
-        return width;
-    }
-
     /**
      * Process the next TimeEvent. This will call the act method of the next
      * creature who is supposed to act, and then requeue it, possibly using the
@@ -230,10 +215,6 @@ public class TimeLogic
                 // should anything be done here?
             }
         }
-
-        //System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
-        //System.out.println("bw: "+world.getListOfThings().size()+" bq: "+timeQueue.size());
-        //return newThings;
     }
 
 
@@ -247,19 +228,6 @@ public class TimeLogic
     public void tick(int n)
     {
         for (int i = 0; i < n; i++)
-        {
-            tick();
-        }
-    }
-
-    /**
-     * Process all time events in the queue, and continue to process throughout
-     * requeueing until and overflow, until there are no events left.
-     */
-    public void tickAll()
-    {
-        // Tick until all events exhausted
-        while (timeQueue.size() > 0)
         {
             tick();
         }
