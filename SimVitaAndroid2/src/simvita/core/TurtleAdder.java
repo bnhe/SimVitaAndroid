@@ -40,7 +40,7 @@ public class TurtleAdder
     public TurtleAdder(Position x, String aName, Description desc) {
         super(x, aName, desc, Color.greenYellow, null, 20, new OvalShape(0, 0, 1, 1));
 
-        shape.setAlpha(255);
+        shape.setAlpha(0);
         value = 20;
 
         //setFoodCreature(new Vine());
@@ -51,12 +51,11 @@ public class TurtleAdder
     {
         //Position newPosition = new Position(rand.nextInt(tl.getWidth()),
         //    rand.nextInt(tl.getHeight()));
-        Position daughterPosition =
-            new Position(getPosition().x + rand.nextInt(3) - 1,
-                    getPosition().y + rand.nextInt(3) - 1);
+        Position randomPosition =
+            new Position(rand.nextInt(19), rand.nextInt(19));
 
 
-    tl.addCreature(new TurtleA(daughterPosition));
+    tl.addCreature(new TurtleA(randomPosition));
 
         //tl.addCreature(new TurtleA(newPosition));
     }

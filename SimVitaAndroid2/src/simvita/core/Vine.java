@@ -97,7 +97,7 @@ public class Vine extends Creature {
 
             tl.addCreature(new Vine(daughterPosition));
         }
-        replicateCount++;
+        replicateCount += rand.nextInt(2);
 
     }
 
