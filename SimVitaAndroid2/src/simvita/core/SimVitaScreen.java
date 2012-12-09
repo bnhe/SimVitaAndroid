@@ -62,7 +62,7 @@ public class SimVitaScreen extends ShapeScreen
     public void randomizeStart()
     {
         //Turtle Adder
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             int xCell = rand.nextInt(numBoxWidth);
             int yCell = rand.nextInt(numBoxHeight);

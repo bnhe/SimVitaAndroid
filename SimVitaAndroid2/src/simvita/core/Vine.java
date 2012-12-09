@@ -76,7 +76,7 @@ public class Vine extends Creature {
         {
             replicate(tl);
             life -= 1;
-            tl.addMoney(1);
+            tl.addMoney(2);
         }
     }
 

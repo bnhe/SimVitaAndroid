@@ -11,8 +11,8 @@ package simvita.core;
 public class PositionTest
     extends student.TestCase
 {
-    //private Position p;
-    //private Position p2;
+    private Position p;
+    private Position p2;
 
     public PositionTest()
     {
@@ -22,42 +22,34 @@ public class PositionTest
     /**
      * Set up
      */
-//    public void setUp()
-//    {
-//        p = new Position(3, 4);
-//        p2 = new Position(0, 0);
-//    }
+    public void setUp()
+    {
+        p = new Position(3, 4);
+        p2 = new Position(0, 0);
+    }
 
     /**
      * Test Constructor.
      */
-//    public void testConstructor()
-//    {
-//        assertEquals(1, p.x);
-//        assertEquals(2, p.y);
-//    }
+    public void testConstructor()
+    {
+        assertEquals(3, p.x);
+        assertEquals(4, p.y);
+    }
 
     /**
      * Test Equals
      */
-//    public void testEquals()
-//    {
-//        assertEquals(p, new Position(3, 4));
-//    }
+    public void testEquals()
+    {
+        assertTrue(p.equals(new Position(3, 4)));
+    }
 
     /**
      * Test distanceTo
      */
-//    public void testDistanceTo()
-//    {
-//        assertEquals(5, p.distanceTo(p2));
-//    }
-
-    public void testDumy()
+    public void testDistanceTo()
     {
-        assertEquals(1, 1);
+        assertEquals(5, (int)p.distanceTo(p2));
     }
-
-
-
 }
