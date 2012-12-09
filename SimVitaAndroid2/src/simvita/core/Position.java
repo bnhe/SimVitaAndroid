@@ -54,10 +54,4 @@ public class Position
     {
         return Math.sqrt((toP.x - x)*(toP.x - x) + (toP.y - y)*(toP.y - y));
     }
-
-    public String toString()
-    {
-        return "[x: "+x+" y: "+y+"]";
-    }
-
 }

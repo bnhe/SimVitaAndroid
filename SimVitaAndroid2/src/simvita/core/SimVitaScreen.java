@@ -39,9 +39,10 @@ public class SimVitaScreen extends ShapeScreen
     public void initialize(CreatureAdd addCreature, Long gameLength)
     {
         this.addCreature = addCreature;
-        setBackgroundColor(Color.black);
+        setBackgroundColor(Color.white);
         //set the background
         add(new ImageShape("background", new RectF(0, 0, getWidth(), getHeight())));
+
         float boardSize = Math.min(getWidth(), getHeight());
         cellSize = boardSize / 20;
         numBoxWidth = (int) (getWidth() / cellSize);
@@ -53,10 +54,7 @@ public class SimVitaScreen extends ShapeScreen
         //add text
         game.setMoney(100);
 
-        //Randomize starting positions
         randomizeStart();
-        //addCreatureAndShape(new TurtleA((new Position(5, 5))));
-        //updateScreen();
         textMoney.setText("Money: 100");
         textTurns.setText("Turns: 0");
     }

@@ -18,23 +18,18 @@ public class StatsScreen extends Screen
         int plant = 0;
         int turtle = 0;
 
-        //System.out.println(cl);
-
         for (Creature c : cl)
         {
             if (c instanceof Vine)
             {
-                //System.out.println("plant");
                 plant++;
             }
             else if (c instanceof TurtleA)
             {
-                //System.out.println("t");
                 turtle++;
             }
             else if (c instanceof Eagle)
             {
-                System.out.println("e");
                 eagle++;
             }
         }

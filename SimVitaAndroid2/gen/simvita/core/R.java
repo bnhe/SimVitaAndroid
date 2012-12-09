@@ -8,9 +8,6 @@
 package simvita.core;
 
 public final class R {
-    public static final class array {
-        public static final int creatures=0x7f050000;
-    }
     public static final class attr {
     }
     public static final class drawable {
@@ -29,32 +26,32 @@ public final class R {
         public static final int turtlesmallsz=0x7f02000c;
     }
     public static final class id {
-        public static final int button1=0x7f08000d;
-        public static final int eagle=0x7f080001;
-        public static final int eagleCost=0x7f080002;
-        public static final int eagleCount=0x7f080013;
-        public static final int end=0x7f080010;
-        public static final int hundred=0x7f08000f;
-        public static final int imageView1=0x7f080004;
-        public static final int menu_settings=0x7f080019;
-        public static final int one=0x7f080009;
-        public static final int plant=0x7f080000;
-        public static final int plantCost=0x7f080003;
-        public static final int plantCount=0x7f080012;
-        public static final int playAgain=0x7f080005;
-        public static final int playLong=0x7f080017;
-        public static final int playMedium=0x7f080018;
-        public static final int playShort=0x7f080016;
-        public static final int returnButton=0x7f080015;
-        public static final int selectCreature=0x7f08000c;
-        public static final int shapeView=0x7f080008;
-        public static final int stat=0x7f080011;
-        public static final int ten=0x7f08000e;
-        public static final int textMoney=0x7f08000a;
-        public static final int textTurns=0x7f08000b;
-        public static final int textView1=0x7f080007;
-        public static final int textView2=0x7f080006;
-        public static final int turtleCount=0x7f080014;
+        public static final int button1=0x7f07000d;
+        public static final int eagle=0x7f070001;
+        public static final int eagleCost=0x7f070002;
+        public static final int eagleCount=0x7f070013;
+        public static final int end=0x7f070010;
+        public static final int hundred=0x7f07000f;
+        public static final int imageView1=0x7f070004;
+        public static final int menu_settings=0x7f070019;
+        public static final int one=0x7f070009;
+        public static final int plant=0x7f070000;
+        public static final int plantCost=0x7f070003;
+        public static final int plantCount=0x7f070012;
+        public static final int playAgain=0x7f070005;
+        public static final int playLong=0x7f070017;
+        public static final int playMedium=0x7f070018;
+        public static final int playShort=0x7f070016;
+        public static final int returnButton=0x7f070015;
+        public static final int selectCreature=0x7f07000c;
+        public static final int shapeView=0x7f070008;
+        public static final int stat=0x7f070011;
+        public static final int ten=0x7f07000e;
+        public static final int textMoney=0x7f07000a;
+        public static final int textTurns=0x7f07000b;
+        public static final int textView1=0x7f070007;
+        public static final int textView2=0x7f070006;
+        public static final int turtleCount=0x7f070014;
     }
     public static final class layout {
         public static final int addcreaturescreen=0x7f030000;
@@ -64,7 +61,7 @@ public final class R {
         public static final int titlescreen=0x7f030004;
     }
     public static final class menu {
-        public static final int simvitascreen=0x7f070000;
+        public static final int simvitascreen=0x7f060000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -73,6 +70,6 @@ public final class R {
         public static final int title_activity_sim_vita_screen=0x7f040003;
     }
     public static final class style {
-        public static final int AppTheme=0x7f060000;
+        public static final int AppTheme=0x7f050000;
     }
 }
