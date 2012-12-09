@@ -39,4 +39,20 @@
         android:layout_marginTop="64dp"
         android:src="@drawable/turtlesmallsz" />
 
+    <ImageButton
+        android:id="@+id/plant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/turtle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/plantsmallzh" />
+
+    <Button
+        android:id="@+id/eagle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/turtle"
+        android:layout_centerVertical="true"
+        android:text="Eagle" />
+
 </RelativeLayout>

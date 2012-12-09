@@ -31,20 +31,32 @@ public class AddCreatureScreen extends Screen
 
     public void turtleClicked()
     {
-        creatureAdd.addType = "simvita.core.TurtleA";
-        finish();
+        selectCreature("TurtleA");
     }
 
     public void doNothingClicked()
     {
-        creatureAdd.addType = "simvita.core.DoNothingCreature";
-        finish();
+        selectCreature("DoNothingCreature");
     }
 
     public void bacteriaClicked()
     {
-        creatureAdd.addType = "simvita.core.BacteriaA";
-        finish();
+        selectCreature("BacteriaA");
     }
 
+    public void plantClicked()
+    {
+        selectCreature("Vine");
+    }
+
+    public void eagleClicked()
+    {
+        selectCreature("Eagle");
+    }
+
+    private void selectCreature(String creatureClass)
+    {
+        creatureAdd.addType = "simvita.core."+creatureClass;
+        finish();
+    }
 }
