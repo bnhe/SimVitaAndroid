@@ -66,9 +66,6 @@ public class TurtleA extends Creature {
         Creature aFood = tl.getWorld().getNearestFood(this);
         if (aFood != null)
         {
-            tl.removeCreature(aFood);
-            /*
-
             if (aFood.getPosition().equals(this.getPosition()))
             {
                 tl.removeCreature(aFood);
@@ -86,9 +83,16 @@ public class TurtleA extends Creature {
 
                 tl.moveCreature(this, new Position(newX, newY));
             }
-            */
         }
+        else
+        {
+            //no food, move in random direction.
+            Position newPosition =
+                new Position(getPosition().x + rand.nextInt(3) - 1,
+                    getPosition().y + rand.nextInt(3) - 1);
 
+            tl.moveCreature(this, newPosition);
+        }
     }
 
 

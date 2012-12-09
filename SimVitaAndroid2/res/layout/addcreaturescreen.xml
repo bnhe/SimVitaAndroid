@@ -5,20 +5,9 @@
     android:gravity="top" >
 
     <ImageButton
-        android:id="@+id/turtle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/doNothing"
-        android:layout_below="@+id/doNothing"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="64dp"
-        android:src="@drawable/turtlesmallsz" />
-
-    <ImageButton
         android:id="@+id/plant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/turtle"
         android:layout_centerHorizontal="true"
         android:src="@drawable/plantsmallzh" />
 
@@ -26,26 +15,25 @@
         android:id="@+id/eagle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/turtle"
-        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="26dp"
         android:src="@drawable/eaglesmallbh" />
 
-    <Button
-        android:id="@+id/doNothing"
+    <TextView
+        android:id="@+id/eagleCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="20dp"
-        android:layout_toLeftOf="@+id/plant"
-        android:text="DoNothing" />
+        android:layout_alignLeft="@+id/eagle"
+        android:layout_below="@+id/eagle"
+        android:text="TextView" />
 
-    <Button
-        android:id="@+id/bacteria"
+    <TextView
+        android:id="@+id/plantCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/turtle"
         android:layout_alignLeft="@+id/plant"
-        android:layout_marginLeft="30dp"
-        android:text="Bacteria" />
+        android:layout_below="@+id/eagle"
+        android:text="TextView" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package simvita.core;
 
 import sofia.app.Screen;
+import android.widget.TextView;
 
 // -------------------------------------------------------------------------
 /**
@@ -18,6 +19,8 @@ public class AddCreatureScreen extends Screen
     private World world;
     private float cellS;
     private TimeLogic game;
+    private TextView eagleCost;
+    private TextView plantCost;
 
 
     // ----------------------------------------------------------
@@ -26,6 +29,8 @@ public class AddCreatureScreen extends Screen
      */
     public void initialize(CreatureAdd creatureAdd)
     {
+        eagleCost.setText(Integer.toString(new Eagle().value));
+        plantCost.setText(Integer.toString(new Vine().value));
         this.creatureAdd = creatureAdd;
     }
 

@@ -1,5 +1,6 @@
 package simvita.core;
 
+import sofia.graphics.ImageShape;
 import android.widget.TextView;
 import android.graphics.RectF;
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class SimVitaScreen extends ShapeScreen
     {
         this.addCreature = addCreature;
         setBackgroundColor(Color.black);
+        //set the background
+        add(new ImageShape("background", new RectF(0, 0, getWidth(), getHeight())));
         float boardSize = Math.min(getWidth(), getHeight());
         cellSize = boardSize / 20;
         numBoxWidth = (int) (getWidth() / cellSize);
@@ -59,19 +62,22 @@ public class SimVitaScreen extends ShapeScreen
     public void randomizeStart()
     {
         //Turtle Adder
-        //for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
-            //addCreatureAndShape(new TurtleAdder(new Position(
-                //rand.nextInt(numBoxWidth), rand.nextInt(numBoxHeight))));
+            int xCell = rand.nextInt(numBoxWidth);
+            int yCell = rand.nextInt(numBoxHeight);
+            addCreatureAndShape(new TurtleAdder((new Position(xCell, yCell))));
+            updateScreen();;
         }
 
         //Plants
-        for (int i = 0, j = 0; i < 5; i++, j++)
+        addCreature.addType = "simvita.core.Vine";
+        for (int i = 0; i < 20; i++)
         {
-           addCreatureAndShape(new Vine(
-               new Position(i, j)));
-                //new Position(rand.nextInt(numBoxWidth),
-                    //rand.nextInt(numBoxHeight))));
+            int xCell = rand.nextInt(numBoxWidth);
+            int yCell = rand.nextInt(numBoxHeight);
+            addCreatureAndShape(new Vine((new Position(xCell, yCell))));
+            updateScreen();
         }
 
     }
@@ -138,6 +144,11 @@ public class SimVitaScreen extends ShapeScreen
 
         c.setPosition(p);
         return c;
+    }
+
+    public void thousandClicked()
+    {
+        doTicks(1000);
     }
 
     public void hundredClicked()

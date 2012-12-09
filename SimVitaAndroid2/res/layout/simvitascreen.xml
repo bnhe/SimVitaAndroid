@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+        
         <sofia.graphics.ShapeView
             android:id="@+id/shapeView"
             android:layout_width="match_parent"
@@ -62,8 +62,17 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/shapeView"
+            android:layout_alignBottom="@+id/ten"
             android:layout_toRightOf="@+id/ten"
             android:text=">100" />
+
+        <Button
+            android:id="@+id/thousand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/hundred"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/hundred"
+            android:text=">1000" />
 
 </RelativeLayout>
