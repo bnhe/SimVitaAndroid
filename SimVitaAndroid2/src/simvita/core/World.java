@@ -35,7 +35,7 @@ public class World {
 
 	/**
 	 * Create a world with a list of things in it.
-	 * @param things The list of things already in the world.
+	 * @param things The list of things alread in the world.
 	 *
 	 */
 	public World(ArrayList<Thing> things)
@@ -55,21 +55,19 @@ public class World {
 		toBeDraw.add(t);
 		this.isCreaturePresent();
 	}
-
 	// ----------------------------------------------------------
 	/**
-	 * Helper method to test if a given creature was added to the world.
-	 * @return true if a creature is added.
+	 * Helper method to test that a creature is present at a given position
+	 * @return true if there's a creature
 	 */
 	public boolean isCreaturePresent()
 	{
 	    return true;
 	}
-
 	// ----------------------------------------------------------
 	/**
-	 * Helper method to test if there is no creature in world.
-	 * @return true if creature isn't added
+	 * Helper method to test that a creature is not present.
+	 * @return true if no creature is present.
 	 */
 	public boolean creatureNotPresent()
 	{
@@ -177,7 +175,7 @@ public class World {
 
 	/**
 	 * get Things to be added
-	 * @return the thing drawn
+	 * @return the thing to be drawn
 	 */
 	public ArrayList<Thing> getToBeDraw()
 	{

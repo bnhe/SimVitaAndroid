@@ -18,15 +18,12 @@ import java.util.HashMap;
 
 // -------------------------------------------------------------------------
 /**
- * Initializes the screen of the simvita game, and places a creature selected
- * by the player in world when he touched down the screen. Removes shapes from
- * the screen when the start button is clicked and  every thing remove action
- * of a creature is done according to the time queue of event.
+ *  Write a one-sentence summary of your class here.
+ *  Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
  *
- *  @author Verro Ejiba
- *  @author Nate Craun
- *  @author Bin He
- *  @version 12.1.12
+ *  @author verro ejiba
+ *  @version Dec 1, 2012
  */
 public class SimVitaScreen extends ShapeScreen
 {
@@ -41,8 +38,7 @@ public class SimVitaScreen extends ShapeScreen
 
     // ----------------------------------------------------------
     /**
-     * Initializes the new screen
-     * @param addType the type of creature to add
+     * Place a description of your method here.
      */
     public void initialize(CreatureType addType)
     {
@@ -87,22 +83,12 @@ public class SimVitaScreen extends ShapeScreen
 
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Adds a shape and a creature to the TimeLogic
-     * @param c creature name
-     */
     public void addCreatureAndShape(Creature c)
     {
         game.addCreature(c);
         addShape(c);
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Adds a shape to the thing
-     * @param t thing name
-     */
     public void addShape(Thing t)
     {
         float startx = cellSize * t.getPosition().x;
@@ -113,67 +99,43 @@ public class SimVitaScreen extends ShapeScreen
         add(t.shape);
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Removes a shape of a thing
-     * @param t thing name
-     */
     public void removeShape(Thing t)
     {
         remove(t.shape);
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Removes a shape and a creature to the screen
-     * @param c the creature to be removed
-     */
     public void removeCreatureAndShape(Creature c)
     {
         game.removeCreature(c);
         removeShape(c);
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Generate a create at a given position
-     * @param p the position
-     * @return the creature's position
-     */
     public Creature generateCreature(Position p)
     {
         if (add.addType == CreatureType.TURTLE)
         {
             return new TurtleA(p);
         }
+        else
+            if (add.addType == CreatureType.BACTERIA)
+            {
+                return new BacteriaA(p);
+            }
+
         return new DoNothingCreature(p);
     }
 
-    // ----------------------------------------------------------
-    /**
-     * do ticks once the start game button is clicked
-     */
     public void startGameClicked()
     {
        doTicks(100);
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Brings the player to another screen where he will get to choose the
-     * type of creature to add in the screen
-     */
     public void selectCreatureClicked()
     {
         presentScreen(AddCreatureScreen.class, add);
         updateScreen();
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Adds creature and shape to where the user touches down.
-     * @param event
-     */
     public void onTouchDown(MotionEvent event)
     {
         int xCell = (int)(event.getX() / cellSize);
@@ -182,11 +144,6 @@ public class SimVitaScreen extends ShapeScreen
         updateScreen();
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Does the ticks
-     * @param n number of times to do the ticks
-     */
     public void doTicks(int n)
     {
         for (int i = 0; i < n; i++)
@@ -205,20 +162,12 @@ public class SimVitaScreen extends ShapeScreen
     }
 
 
-    // ----------------------------------------------------------
-    /**
-     * Only does one tick then updates the screen.
-     */
     public void doOneTick()
     {
         game.tick();
         updateScreen();
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Updates the screen and disregard the creatures that are out of bound.
-     */
     public void updateScreen()
     {
         //Remove Shapes that need to be removed

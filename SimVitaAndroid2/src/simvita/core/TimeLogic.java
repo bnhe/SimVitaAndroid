@@ -8,7 +8,9 @@ import java.util.PriorityQueue;
  * time in the world. At each point in time, all relevant creatures will have
  * their act method called and be requeued at their next acting point. To
  * safeguard against exceeding the limits of a 32bit long, there will be an
- * automatic rollover. Time starts from 0.
+ * automatic rollover.
+ *
+ * Time starts from 0.
  *
  * @author Nate Craun
  */
@@ -16,19 +18,15 @@ public class TimeLogic
 {
     private PriorityQueue<TimeEvent> timeQueue;
     private PriorityQueue<TimeEvent> rollOverTimeQueue;
-    private World                    world;
-    private long                     clock;
-    private ArrayList<Creature>      removeOnNextTick;
-
-
+    private World world;
+    private long clock;
+    private ArrayList<Creature> removeOnNextTick;
     /**
      * Create a new TimeLogic object using new, default world, and queues.
      */
     public TimeLogic()
     {
-        this(
-            new PriorityQueue<TimeEvent>(),
-            new PriorityQueue<TimeEvent>(),
+        this(new PriorityQueue<TimeEvent>(), new PriorityQueue<TimeEvent>(),
             new World());
         clock = 0;
     }
@@ -36,24 +34,21 @@ public class TimeLogic
 
     /**
      * Adds a Creature the world and to the TimeLogic.
-     * @param c the creature type
      */
     public void addCreature(Creature c)
     {
         world.addThing(c, c.getPosition());
-        timeQueue.add(new TimeEvent(clock, c));
+        timeQueue.add(new TimeEvent(clock + c.getActFrequency(), c));
     }
-
 
     /**
      * Removes a Creature the world and to the TimeLogic.
-     * @param c the creature type
      */
     public void removeCreature(Creature c)
     {
         world.removeThing(c);
         removeOnNextTick.add(c);
-        // timeQueue.remove(c);
+        //timeQueue.remove(c);
     }
 
 
@@ -64,17 +59,14 @@ public class TimeLogic
      * @param rollOverTimeQueue
      * @param world
      */
-    public TimeLogic(
-        PriorityQueue<TimeEvent> timeQueue,
-        PriorityQueue<TimeEvent> rollOverTimeQueue,
-        World world)
+    public TimeLogic(PriorityQueue<TimeEvent> timeQueue,
+        PriorityQueue<TimeEvent> rollOverTimeQueue, World world)
     {
         this.timeQueue = timeQueue;
         this.rollOverTimeQueue = rollOverTimeQueue;
         this.world = world;
         this.removeOnNextTick = new ArrayList<Creature>();
     }
-
 
     /**
      * Get the Main Queue.
@@ -86,7 +78,6 @@ public class TimeLogic
         return timeQueue;
     }
 
-
     /**
      * Get the Rollover Queue.
      *
@@ -96,7 +87,6 @@ public class TimeLogic
     {
         return rollOverTimeQueue;
     }
-
 
     /**
      * Get the World.
@@ -108,7 +98,6 @@ public class TimeLogic
         return world;
     }
 
-
     /**
      * Initialize the TimeQueue, using creatures from the world.
      */
@@ -118,12 +107,11 @@ public class TimeLogic
         {
             if (t instanceof Creature)
             {
-                Creature c = (Creature)t;
+                Creature c = (Creature) t;
                 timeQueue.add(new TimeEvent(c.getActFrequency(), c));
             }
         }
     }
-
 
     /**
      * Process the next TimeEvent. This will call the act method of the next
@@ -141,30 +129,27 @@ public class TimeLogic
         // timeQueue
         if (timeQueue.size() > 0)
         {
-            // advance in time
+            //advance in time
             t = timeQueue.poll();
-            clock = t.time;
+            clock = t.time; //+ t.creature.getActFrequency() + 1;
 
-            // See if we should remove it
+            //See if we should remove it
             if (removeOnNextTick.contains(t.creature))
             {
-                // remove it, we won't queue it up.
+                //remove it, we won't queue it up.
                 removeOnNextTick.remove(t.creature);
             }
             else
             {
-                // act
+                //act
                 t.creature.act(this);
 
-                // requeue
+                //requeue
                 // Check for overflow.
                 if (t.time >= Long.MAX_VALUE - t.creature.getActFrequency())
                 {
                     // Go to overflow.
-                    t.time =
-                        t.creature.getActFrequency()
-                            - (Long.MAX_VALUE - t.time); // Long.MAX_VALUE -
-// t.time - t.creature.getActFrequency();
+                    t.time = t.creature.getActFrequency() - (Long.MAX_VALUE - t.time); //Long.MAX_VALUE - t.time - t.creature.getActFrequency();
                     rollOverTimeQueue.offer(t);
                 }
                 else
@@ -193,9 +178,11 @@ public class TimeLogic
             }
         }
 
-        System.out.println("w:" + world.getListOfThings() + " pq:" + timeQueue);
-        // return newThings;
+        //System.out.println("w:"+world.getListOfThings()+" pq:"+timeQueue);
+        //System.out.println("bw: "+world.getListOfThings().size()+" bq: "+timeQueue.size());
+        //return newThings;
     }
+
 
 
     /**
@@ -211,7 +198,6 @@ public class TimeLogic
             tick();
         }
     }
-
 
     /**
      * Process all time events in the queue, and continue to process throughout

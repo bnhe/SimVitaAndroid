@@ -25,9 +25,7 @@ public class LifeChanger implements StatusEffect<NaturalCreature>
         this.times = times;
     }
 
-    /**
-     * When the energy of a creature decreases.
-     */
+
     public void effect(NaturalCreature c)
     {
         if (times >= 0)
@@ -36,22 +34,13 @@ public class LifeChanger implements StatusEffect<NaturalCreature>
             times--;
         }
     }
-    /**
-     * isDone
-     * @return true when the time is zero
-     */
+
     public boolean isDone()
     {
         return times == 0;
     }
 
 
-    // ----------------------------------------------------------
-    /**
-     * Place a description of your method here.
-     * @param s
-     * @return
-     */
     public boolean equals(StatusEffect<NaturalCreature> s)
     {
         LifeChanger lc = (LifeChanger)s;
