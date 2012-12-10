@@ -12,11 +12,10 @@ import sofia.util.Random;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
+ * This is the main screen of the game.
+ * Also includes several helper functions to interact with the TimeLogic
+ * (a mini Controller, if you will).
  *
- *  @author verro ejiba
  *  @author Nate Craun
  *  @version Dec 1, 2012
  */
@@ -30,15 +29,20 @@ public class SimVitaScreen extends ShapeScreen
     private TextView textMoney;
     private TextView textTurns;
     private CreatureAdd addCreature;
-    Random rand = new Random();
+    private Random rand = new Random();
 
-    // ----------------------------------------------------------
+    //~Setup --------------------------------------------------
     /**
-     * Place a description of your method here.
+     * This creates a new screen.
+     * A background image is added, the player starts with 100 money, and given
+     * random plants, and turtleadder. Also the textdisplays are set up.
+     *
+     * @param addc The default type of creature to add.
+     * @param gameLength the Length of the game.
      */
-    public void initialize(CreatureAdd addCreature, Long gameLength)
+    public void initialize(CreatureAdd addc, Long gameLength)
     {
-        this.addCreature = addCreature;
+        this.addCreature = addc;
         setBackgroundColor(Color.white);
         //set the background
         add(new ImageShape("background", new RectF(0, 0, getWidth(), getHeight())));
@@ -59,9 +63,12 @@ public class SimVitaScreen extends ShapeScreen
         textTurns.setText("Turns: 0");
     }
 
+    /**
+     * Randomize the start state. Give the player 20 plants, and a couple turtle
+     * adders that will kick in a few turns.
+     */
     public void randomizeStart()
     {
-        //Turtle Adder
         for (int i = 0; i < 3; i++)
         {
             int xCell = rand.nextInt(numBoxWidth);
@@ -82,102 +89,63 @@ public class SimVitaScreen extends ShapeScreen
 
     }
 
-    public void updateMoney()
-    {
-        textMoney.setText("Money: "+Long.toString(game.getMoney()));
-    }
-
-    public void updateTurnCount()
-    {
-        textTurns.setText("Turns: "+Long.toString(game.getClock()));
-    }
-
-    public void addCreatureAndShape(Creature c)
-    {
-        game.addCreature(c);
-        addShape(c);
-    }
-
-    public void addShape(Creature c)
-    {
-        float startx = cellSize * c.getPosition().x;
-        float starty = cellSize * c.getPosition().y;
-
-        c.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
-        c.shape.setPosition(startx, starty);
-        add(c.shape);
-    }
-
-    public void removeShape(Creature c)
-    {
-        remove(c.shape);
-    }
-
-    public void removeCreatureAndShape(Creature c)
-    {
-        game.removeCreature(c);
-        removeShape(c);
-    }
-
-    public Creature generateCreature(Position p)
-    {
-        Creature c = null;
-        try
-        {
-            c = (Creature)Class.forName(addCreature.addType).newInstance();
-        }
-        catch (IllegalAccessException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        catch (InstantiationException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        c.setPosition(p);
-        return c;
-    }
-
+    //~ UI---------------------------------
+    /**
+     * Player clicked end, so show the game over screen.
+     */
     public void endClicked()
     {
         presentScreen(GameOverScreen.class, game.getMoney());
         finish();
     }
 
+    /**
+     * Progress the action forward by 100 turns.
+     */
     public void hundredClicked()
     {
         doTurns(100);
     }
 
+    /**
+     * Progress the action forward by 10 turns.
+     */
     public void tenClicked()
     {
         doTurns(10);
     }
 
+    /**
+     * Progress the action forward by 1 turns.
+     */
     public void oneClicked()
     {
         doTurns(1);
     }
 
+    /**
+     * Show the statistics screen.
+     */
     public void statClicked()
     {
         presentScreen(StatsScreen.class, game.getWorld().getListOfCreatures());
     }
 
+    /**
+     * Let the user select which kind of creature to add to the world.
+     */
     public void selectCreatureClicked()
     {
         presentScreen(AddCreatureScreen.class, addCreature);
         updateScreen();
     }
 
+    /**
+     * Add the current addType of creature to the screen if the user can afford
+     * it, and deduct them accordingly.
+     *
+     * @param event Where the user touched the screen.
+     */
     public void onTouchDown(MotionEvent event)
     {
         if (game.getMoney() > 0)
@@ -194,6 +162,20 @@ public class SimVitaScreen extends ShapeScreen
         }
     }
 
+    //~Helper Methods--------------------
+
+    /**
+     * Keep ticking the TimeLogic until the clock has proceeded by the given
+     * time. A way to provide an approximation of going forward in specific
+     * time intervals in a strictly event driven simulation.
+     *
+     * There is a delay of 10ms added between each tick, so the user can see
+     * what is happening.
+     *
+     * If the game ends, switch to the game over screen, and end the game.
+     *
+     * @param n The number of turns to advance by.
+     */
     public void doTurns(int n)
     {
         long currClock = game.getClock();
@@ -202,7 +184,8 @@ public class SimVitaScreen extends ShapeScreen
         {
             try
             {
-                Thread.currentThread().sleep(10);
+                //Thread.currentThread();
+                Thread.sleep(10);
             }
             catch (InterruptedException e)
             {
@@ -227,43 +210,24 @@ public class SimVitaScreen extends ShapeScreen
         }
     }
 
-    public void doTicks(int n)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            doOneTick();
-            try
-            {
-                Thread.currentThread().sleep(20);
-            }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-    public void doOneTick()
-    {
-        if (!game.isOver())
-        {
-            game.tick();
-            updateScreen();
-        }
-        else
-        {
-            presentScreen(GameOverScreen.class, game.getMoney());
-            finish();
-        }
-    }
-
+    /**
+     * Update the display text display fields of money and turns with values
+     * retrieved from the TimeLogic.
+     */
     public void updateText()
     {
-        updateMoney();
-        updateTurnCount();
+        textTurns.setText("Turns: "+Long.toString(game.getClock()));
+        textMoney.setText("Money: "+Long.toString(game.getMoney()));
     }
 
+    /**
+     * Update the shapes for all the creatures on the screen.
+     * Retrieve the values from the fields of the world to move, add, and delete
+     * the creatures and shapes of the creatures that need it.
+     *
+     * Additionally, remove any shapes that go off screen, as they will have
+     * fallen off the sky island.
+     */
     public void updateScreen()
     {
         updateText();
@@ -297,7 +261,6 @@ public class SimVitaScreen extends ShapeScreen
             game.getWorld().getToBeDraw().clear();
         }
 
-        //Update existing Shapes
         //Move shapes that are moving.
         for (Creature c : game.getWorld().getToBeMoved())
         {
@@ -320,4 +283,86 @@ public class SimVitaScreen extends ShapeScreen
             removeCreatureAndShape(c);
         }
     }
+
+    /**
+     * Add a creature to the world, and it's shape to the screen.
+     *
+     * @param c The creature.
+     */
+    public void addCreatureAndShape(Creature c)
+    {
+        game.addCreature(c);
+        addShape(c);
+    }
+
+    /**
+     * Add a creature's shape to the screen.
+     *
+     * @param c The creature.
+     */
+    public void addShape(Creature c)
+    {
+        float startx = cellSize * c.getPosition().x;
+        float starty = cellSize * c.getPosition().y;
+
+        c.shape.setBounds(new RectF(0, 0, cellSize, cellSize / 4 * 3));
+        c.shape.setPosition(startx, starty);
+        add(c.shape);
+    }
+
+    /**
+     * Remove a creature's shape from the screen.
+     *
+     * @param c The Creature.
+     */
+    public void removeShape(Creature c)
+    {
+        remove(c.shape);
+    }
+
+    /**
+     * Remove a creature and it's shape from the screen.
+     *
+     * @param c The Creature.
+     */
+    public void removeCreatureAndShape(Creature c)
+    {
+        game.removeCreature(c);
+        removeShape(c);
+    }
+
+    /**
+     * Construct a new Creature type based on the String in addType at a given
+     * position.
+     *
+     * @param p The position to add it at.
+     * @return The new creature at that position.
+     */
+    public Creature generateCreature(Position p)
+    {
+        Creature c = null;
+        try
+        {
+            c = (Creature)Class.forName(addCreature.addType).newInstance();
+        }
+        catch (IllegalAccessException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (InstantiationException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        c.setPosition(p);
+        return c;
+    }
+
 }

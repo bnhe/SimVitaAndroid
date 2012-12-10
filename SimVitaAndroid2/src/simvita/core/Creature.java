@@ -1,13 +1,13 @@
 package simvita.core;
 
 import sofia.graphics.Shape;
-import sofia.graphics.OvalShape;
-import sofia.graphics.Color;
-import java.util.ArrayList;
 
 /**
- * Creature are things that have life or life-like behavior;
+ * Creature are things that have life or life-like behavior.
  *
+ * They exist in the world to perform actions. All logic is done by the
+ * creature, passing world as parameter. In this way we can easily create new
+ * creatures to extend functionality, without changing the world class.
  */
 
 /**
@@ -24,22 +24,34 @@ public class Creature
     private Creature foodCreature;
     private Position    curPosition;
     private String      name;
+    /**
+     * The Shape of the creature.
+     */
     public Shape shape;
+    /**
+     * How much the creature costs to add to the world.
+     */
     public int value;
 
 
 
     //~Constructors------------------------------------------------------------
 
+    /**
+     * Create a new Creature.
+     *
+     * @param p The Position of the Creature.
+     */
     public Creature(Position p)
     {
         this(p, "a Name");
     }
 
     /**
+     * Create a new Creature.
+     *
      * @param x The position in the world.
      * @param aName The name of the creature.
-     * @param desc The detailed description of the creature.
      * @param freq The frequency.
      */
     public Creature(Position x, String aName, int freq)
@@ -49,12 +61,10 @@ public class Creature
 
 
     /**
-     * Create a Creature with a list of StatusEffect.
+     * Create a Creature.
+     *
      * @param x The position in the world.
      * @param aName The name of the creature.
-     * @param desc The detailed description of the creature.
-     * @param stEffects A list of StatusEffect.
-
      */
     public Creature(Position x, String aName)
     {
@@ -63,12 +73,12 @@ public class Creature
 
 
     /**
-     * Create a Creature with a list of StatusEffect and act frequency.
+     * Create a Creature.
+     *
      * @param x The position in the world.
      * @param aName The name of the creature.
-     * @param desc The detailed description of the creature.
-     * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
+     * @param s The Shape of the creature.
      */
     public Creature(Position x, String aName, int frequency, Shape s)
     {
@@ -82,8 +92,6 @@ public class Creature
 
     //~ Methods -----------------------------------------
 
-    // ----------------------------------------------------------
-    // ----------------------------------------------------------
     /**
      * Place a description of your method here.
      * @return actFrequency.
@@ -94,11 +102,21 @@ public class Creature
     }
 
 
+    /**
+     * Get the Creature type that this creature will eat.
+     *
+     * @return The food creature.
+     */
     public Creature getFoodCreature()
     {
         return foodCreature;
     }
 
+    /**
+     * Set the creature type this creature will eat.
+     *
+     * @param food The food creature.
+     */
     public void setFoodCreature(Creature food)
     {
         foodCreature = food;
@@ -114,8 +132,6 @@ public class Creature
         curPosition = x;
     }
 
-
-    // ----------------------------------------------------------
     /**
      * Get the current position of this thing.
      *
@@ -140,13 +156,19 @@ public class Creature
      * Main action method. Controls how the Thing will
      * interact with the world.
      *
-     * @param w The world the creature acts upon.
+     * @param tl The TimeLogic the creature acts upon.
      */
     public void act(TimeLogic tl)
     {
-
+        //Nothing here, default action is nothing
+        //subclasses will extend with their own actions.
     }
 
+    /**
+     * Get String representation of this Creature
+     *
+     * @return The creature's name.
+     */
     public String toString()
     {
         return name;

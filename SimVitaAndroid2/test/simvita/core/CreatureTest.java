@@ -1,8 +1,5 @@
 package simvita.core;
 
-import java.util.ArrayList;
-
-// -------------------------------------------------------------------------
 /**
  * Test cases for the Creature class.
  *
@@ -16,8 +13,6 @@ public class CreatureTest extends student.TestCase
     private Position p;
     private String name;
     private int frequency;
-    private Creature creature2;
-    private Position curPosition;
 
     /**
      * Set up.

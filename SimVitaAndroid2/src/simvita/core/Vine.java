@@ -36,7 +36,7 @@ public class Vine extends Creature {
     }
 
     /**
-     * Create a Vine at a given position, name and discription.
+     * Create a Vine at a given position, name and description.
      * @param x Position of the Vine
      * @param f Frequency of action
      */

@@ -4,14 +4,25 @@ import java.util.ArrayList;
 import sofia.app.Screen;
 import android.widget.TextView;
 
-
-
+/**
+ *  Write a one-sentence summary of your class here.
+ *  Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author nate
+ *  @version Dec 9, 2012
+ */
 public class StatsScreen extends Screen
 {
-    TextView eagleCount;
-    TextView plantCount;
-    TextView turtleCount;
+    private TextView eagleCount;
+    private TextView plantCount;
+    private TextView turtleCount;
 
+    /**
+     * Create this StatsScreen.
+     *
+     * @param cl A list of all the creatures in the world.
+     */
     public void initialize(ArrayList<Creature> cl)
     {
         int eagle = 0;
@@ -39,6 +50,9 @@ public class StatsScreen extends Screen
         turtleCount.setText("Turtle: "+Integer.toString(turtle));
     }
 
+    /**
+     * Player clicked return, they're done looking at stats. Back to the Game!
+     */
     public void returnButtonClicked()
     {
         finish();

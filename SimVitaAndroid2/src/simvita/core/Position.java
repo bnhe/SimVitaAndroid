@@ -51,7 +51,10 @@ public class Position
     }
 
     /**
+     * Calculate the distance between two points.
      *
+     * @param toP The "to" point.
+     * @return The distance between the two points.
      */
     public double distanceTo(Position toP)
     {

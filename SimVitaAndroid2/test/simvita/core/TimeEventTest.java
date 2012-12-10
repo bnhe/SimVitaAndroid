@@ -12,7 +12,6 @@ public class TimeEventTest extends student.TestCase
 {
     private TimeEvent event;
     private TimeEvent event2;
-    private TurtleA t;
     private Creature c1;
     private Creature c2;
 

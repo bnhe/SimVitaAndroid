@@ -14,11 +14,6 @@ public class PositionTest
     private Position p;
     private Position p2;
 
-    public PositionTest()
-    {
-
-    }
-
     /**
      * Set up
      */

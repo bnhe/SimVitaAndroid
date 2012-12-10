@@ -28,6 +28,8 @@ public class TimeLogic
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
+     *
+     * @param endTurn The turn on which the game will end.
      */
     public TimeLogic(long endTurn)
     {
@@ -39,9 +41,9 @@ public class TimeLogic
     /**
      * Create a new TimeLogic object with specified world, and queues.
      *
-     * @param timeQueue
-     * @param rollOverTimeQueue
-     * @param world
+     * @param timeQueue The PriorityQueue of events.
+     * @param world The world for this game.
+     * @param endTurn The turn on which the game will end.
      */
     public TimeLogic(PriorityQueue<TimeEvent> timeQueue, World world, long endTurn)
     {
@@ -60,31 +62,61 @@ public class TimeLogic
         plantCost = 10;
     }
 
+    /**
+     * See if the game is over or not.
+     * The game is over if we are past the endTurn, or have no plants and not
+     * enough money to buy more.
+     *
+     * @return true if the game is over, false if not.
+     */
     public boolean isOver()
     {
         return clock >= endTurn || (numPlants == 0 && money < plantCost);
     }
 
+    /**
+     * Return the current clock turn time of the game.
+     * @return the Clock.
+     */
     public long getClock()
     {
         return clock;
     }
 
+    /**
+     * Set the player's money to a specified amount.
+     *
+     * @param money The amount of money to set it to.
+     */
     public void setMoney(long money)
     {
         this.money = money;
     }
 
+    /**
+     * See how much money the player has.
+     *
+     * @return The amount of money the player has.
+     */
     public long getMoney()
     {
         return money;
     }
 
+    /**
+     * convenient method to add an amount of money.
+     *
+     * @param m The amount to add.
+     */
     public void addMoney(long m)
     {
         money += m;
     }
-
+    /**
+     * convenient method to subtract an amount of money.
+     *
+     * @param m The amount to subtract.
+     */
     public void subtractMoney(long m)
     {
         money -= m;
@@ -92,6 +124,8 @@ public class TimeLogic
 
     /**
      * Adds a Creature the world and to the TimeLogic.
+     *
+     * @param c The creature to add to the world.
      */
     public void addCreature(Creature c)
     {
@@ -108,6 +142,9 @@ public class TimeLogic
 
     /**
      * Moves a creature to a new position.
+     *
+     * @param c The creature to move.
+     * @param p The position to move to.
      */
     public void moveCreature(Creature c, Position p)
     {
@@ -116,7 +153,9 @@ public class TimeLogic
     }
 
     /**
-     * Removes a Creature the world and to the TimeLogic.
+     * Removes a Creature the world and from the TimeLogic.
+     *
+     * @param c The creature to remove.
      */
     public void removeCreature(Creature c)
     {

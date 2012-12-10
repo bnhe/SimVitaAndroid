@@ -6,7 +6,7 @@ import sofia.graphics.OvalShape;
 import sofia.util.Random;
 
 /**
- * Turtle that will run around and eat the plants. 
+ * Turtle that will run around and eat the plants.
  * The eagle will eat the turtle.
  *
  * @author Bin He
@@ -15,7 +15,7 @@ import sofia.util.Random;
  */
 public class TurtleA extends Creature {
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
     /**
      * Create a TurtleA at the origin of the world.
@@ -35,10 +35,9 @@ public class TurtleA extends Creature {
     }
 
     /**
-     * Create a TurtleA at with a position, name and description.
+     * Create a TurtleA at with a position, name.
      * @param x The position.
      * @param aName A name for the TurtleA
-     * @param desc The description.
      */
     public TurtleA(Position x, String aName) {
         super(x, aName, 1, new OvalShape(0, 0, 1, 1));
@@ -55,7 +54,7 @@ public class TurtleA extends Creature {
      * Main action method. Controls how the Thing will
      * interact with the world.
      *
-     * @param w The world the TurtleA acts upon.
+     * @param tl The Time logic that the TurtleA acts upon.
      */
     public void act(TimeLogic tl)
     {

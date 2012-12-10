@@ -44,7 +44,6 @@ public class TimeLogicTest extends student.TestCase
      */
     public void testAddCreature()
     {
-        long clock = game.getClock();
         game.addCreature(c);
         assertTrue(world.getListOfCreatures().contains(c));
         TimeEvent te = game.getMainQueue().poll();
@@ -69,7 +68,6 @@ public class TimeLogicTest extends student.TestCase
      */
     public void testMoveCreature()
     {
-        Position p = new Position(5, 9);
         game.addCreature(c);
         game.moveCreature(c, p);
         assertEquals(p, c.getPosition());
@@ -132,8 +130,6 @@ public class TimeLogicTest extends student.TestCase
      */
     public void testQueueing()
     {
-        Position p = new Position(0, 0);
-        Creature c = new Creature(p, "", 5);
         Creature c2 = new Creature(p, "", 7);
 
         game.addCreature(c);

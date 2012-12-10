@@ -5,15 +5,15 @@ import sofia.util.Random;
 /**
  * Test the Vine class.
  *
- * @author Nate Craun
+ * @author Nate Craun (ncraun)
  * @version Dec 9, 2012
  */
 
 public class VineTest
     extends student.TestCase
 {
-    TimeLogic game;
-    Vine      v;
+    private TimeLogic game;
+    private Vine      v;
 
 
     /**

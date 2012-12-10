@@ -10,9 +10,16 @@ package simvita.core;
  */
 public class CreatureAdd
 {
+    /**
+     * The name of the class of creature to be added.
+     */
     public String addType;
 
-
+    /**
+     * Create a new CreatureAdd.
+     *
+     * @param addType The type to add.
+     */
     public CreatureAdd(String addType)
     {
         this.addType = addType;
