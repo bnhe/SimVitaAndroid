@@ -18,6 +18,7 @@ import java.util.Random;
  *
  *  @author verro ejiba
  *  @author Nate Craun
+ *  @author Bin He
  *  @version Dec 1, 2012
  */
 public class SimVitaScreen extends ShapeScreen

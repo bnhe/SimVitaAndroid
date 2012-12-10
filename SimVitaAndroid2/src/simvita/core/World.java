@@ -21,7 +21,13 @@ public class World {
 
     private ArrayList<Creature> things;
     private ArrayList<Creature> toBeRemoved;
+    /**
+     * The things need to be draw on screen.
+     */
     public ArrayList<Creature> toBeDraw;
+    /**
+     * All the things that will move.
+     */
     public ArrayList<Creature> toBeMoved;
 
     /**
@@ -47,7 +53,7 @@ public class World {
 
     /**
      * Add a thing in the world.
-     * @param t The thing to be added.
+     * @param c The creature to be added.
      * @param x The position tha the thing been add to the world.
      */
     public void addCreature(Creature c, Position x)
@@ -59,7 +65,7 @@ public class World {
 
     /**
      * Remove a certain thing in the world.
-     * @param t The thing been removed.
+     * @param c The creature to be removed.
      */
     public void removeCreature(Creature c)
     {
@@ -76,8 +82,8 @@ public class World {
     }
 
     /**
-     * Get all the things in the world.
-     * @return All the things in the world.
+     * Get all the Creatures in the world.
+     * @return All the Creatures in the world.
      */
     public ArrayList<Creature>  getListOfCreatures()
     {
@@ -86,6 +92,7 @@ public class World {
 
     /**
      * getToBeRemoved list.
+     * @return A list of things need to be removed.
      */
     public ArrayList<Creature> getToBeRemoved()
     {
@@ -94,6 +101,7 @@ public class World {
 
     /**
      * get Things to be added
+     * @return A list of Creatures to be draw on screen.
      */
     public ArrayList<Creature> getToBeDraw()
     {
@@ -102,6 +110,7 @@ public class World {
 
     /**
      * get Things to be added
+     * @return A list of creatrues to be moved.
      */
     public ArrayList<Creature> getToBeMoved()
     {
@@ -110,24 +119,29 @@ public class World {
 
     /**
      * Get the nearest target.
+     * @param predator The predator object.
+     * @return The nearest food of the predator.
      *
      * @returns The nearest food object that a predator eats, or null if there
      * are none of them in the world.
      */
-    public Creature getNearestFood(Creature preditor)
+    public Creature getNearestFood(Creature predator)
     {
         Creature nearestFood = null;
         double nearestDistance = Double.POSITIVE_INFINITY;
 
-        for (Creature c : this.getListOfCreatures())
+        if (this.getListOfCreatures() != null)
         {
-            if (c.getClass().equals(preditor.getFoodCreature().getClass()))
+            for (Creature c : this.getListOfCreatures())
             {
-                double distance = preditor.getPosition().distanceTo(c.getPosition());
-                if (distance < nearestDistance)
+                if (c.getClass().equals(predator.getFoodCreature().getClass()))
                 {
-                    nearestFood = c;
-                    nearestDistance = distance;
+                    double distance = predator.getPosition().distanceTo(c.getPosition());
+                    if (distance < nearestDistance)
+                    {
+                        nearestFood = c;
+                        nearestDistance = distance;
+                    }
                 }
             }
         }

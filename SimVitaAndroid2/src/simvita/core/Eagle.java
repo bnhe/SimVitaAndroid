@@ -5,10 +5,6 @@ package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
-import java.util.ArrayList;
-import sofia.graphics.Color;
 import java.util.Random;
 import java.lang.Math;
 
@@ -22,7 +18,7 @@ import java.lang.Math;
  */
 public class Eagle extends Creature {
 
-    Random rand = new Random();
+    private Random rand = new Random();
     private int life;
     private int stomachSpace;
 
@@ -44,10 +40,8 @@ public class Eagle extends Creature {
 
     /**
      * Create a Eagle at a given position, name and discription.
-     * @param x
-     * @param aName
-     * @param desc
-     * @param c
+     * @param x Position of the eagle
+     * @param f Frequency of action.
      */
     public Eagle(Position x, int f) {
         super(x, "Eagle",  1);
@@ -67,11 +61,10 @@ public class Eagle extends Creature {
      * interact with the world.
      *
      * @param tl The TimeLogic.
-     * @return
      */
     public void act(TimeLogic tl)
     {
-        TurtleA nearTurtle = new TurtleA(
+        new TurtleA(
             new Position(rand.nextInt(20),
                 rand.nextInt(20)));
 

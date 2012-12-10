@@ -6,6 +6,7 @@ package simvita.core;
  * scenery in the world.
  *
  * @author Verro Ejiba
+ * @author Bin He
  * @version Nov 1, 2012
  */
 public class Position
@@ -50,6 +51,12 @@ public class Position
         return (x == position.x) && (y == position.y);
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Compute the distance to another position.
+     * @param toP The position
+     * @return the distance of the two positon
+     */
     public double distanceTo(Position toP)
     {
         return Math.sqrt((toP.x - x)*(toP.x - x) + (toP.y - y)*(toP.y - y));

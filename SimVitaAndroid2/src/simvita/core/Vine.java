@@ -5,10 +5,6 @@ package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
-import sofia.graphics.FillableShape;
-import sofia.graphics.OvalShape;
-import java.util.ArrayList;
-import sofia.graphics.Color;
 import java.util.Random;
 
 /**
@@ -22,7 +18,7 @@ import java.util.Random;
  */
 public class Vine extends Creature {
 
-    Random rand = new Random();
+    private Random rand = new Random();
     private int life;
     private int replicateCount;
 
@@ -44,10 +40,8 @@ public class Vine extends Creature {
 
     /**
      * Create a Vine at a given position, name and discription.
-     * @param x
-     * @param aName
-     * @param desc
-     * @param c
+     * @param x Position of the Vine
+     * @param f Frequency of action
      */
     public Vine(Position x, int f) {
         super(x, "Vine",  5);
@@ -62,9 +56,6 @@ public class Vine extends Creature {
     /**
      * Main action method. Controls how the Thing will
      * interact with the world.
-     *
-     * @param w The world the BacteriaA acts upon.
-     * @return
      */
     public void act(TimeLogic tl)
     {
