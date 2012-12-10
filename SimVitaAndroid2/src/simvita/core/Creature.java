@@ -70,31 +70,12 @@ public class Creature
      * @param stEffects A list of StatusEffect.
      * @param frequency a frequency of act.
      */
-    public Creature(Position x, String aName, int frequency, OvalShape s)
+    public Creature(Position x, String aName, int frequency, Shape s)
     {
         curPosition = x;
         name = aName;
         shape = s;
         actFrequency = frequency;
-        /*
-        try
-        {
-            foodCreature =   (Creature) Class.forName("simvita.core.Vine").newInstance();
-        }
-        catch (IllegalAccessException e)
-        {
-            e.printStackTrace();
-        }
-        catch (InstantiationException e)
-        {
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        */
-
         foodCreature = null;
     }
 

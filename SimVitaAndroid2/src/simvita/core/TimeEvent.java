@@ -16,6 +16,11 @@ public class TimeEvent implements Comparable<TimeEvent>
         return Long.valueOf(this.time).compareTo(t.time);
     }
 
+    public boolean equals(TimeEvent t)
+    {
+        return time == t.time && creature == t.creature;
+    }
+
     public String toString()
     {
         return time+": "+creature;

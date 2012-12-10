@@ -24,6 +24,7 @@ public class TimeLogic
     private long endTurn;
     private int maxCreatures;
     private int numPlants;
+    private int plantCost;
 
     /**
      * Create a new TimeLogic object using new, default world, and queues.
@@ -31,9 +32,7 @@ public class TimeLogic
     public TimeLogic(long endTurn)
     {
         this(new PriorityQueue<TimeEvent>(),
-            new World());
-        clock = 0;
-        this.endTurn = endTurn;
+            new World(), endTurn);
     }
 
 
@@ -44,24 +43,26 @@ public class TimeLogic
      * @param rollOverTimeQueue
      * @param world
      */
-    public TimeLogic(PriorityQueue<TimeEvent> timeQueue, World world)
+    public TimeLogic(PriorityQueue<TimeEvent> timeQueue, World world, long endTurn)
     {
         this.timeQueue = timeQueue;
         this.world = world;
         this.removeOnNextTick = new ArrayList<Creature>();
         maxCreatures = 250;
         numPlants = 0;
+        clock = 0;
+        this.endTurn = endTurn;
 
         for (Creature c : world.getListOfCreatures())
         {
             timeQueue.add(new TimeEvent(c.getActFrequency(), c));
         }
+        plantCost = 10;
     }
 
     public boolean isOver()
     {
-        Vine v = new Vine();
-        return clock >= endTurn || (numPlants == 0 && money < v.value);
+        return clock >= endTurn || (numPlants == 0 && money < plantCost);
     }
 
     public long getClock()
@@ -106,7 +107,7 @@ public class TimeLogic
     }
 
     /**
-     * Adds a Creature the world and to the TimeLogic.
+     * Moves a creature to a new position.
      */
     public void moveCreature(Creature c, Position p)
     {
@@ -157,7 +158,7 @@ public class TimeLogic
      *
      * @return The TimeEvent in question, and null if nothing happened.
      */
-    public void tick()
+    public TimeEvent tick()
     {
         TimeEvent t = null;
         // timeQueue
@@ -189,22 +190,6 @@ public class TimeLogic
                 }
             }
         }
+        return t;
     }
-
-
-
-    /**
-     * Process the next n time events.
-     *
-     * @param n
-     *            The Number of time events to process.
-     */
-    public void tick(int n)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            tick();
-        }
-    }
-
 }
