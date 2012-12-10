@@ -20,9 +20,6 @@ public class TimeLogicTest extends student.TestCase
     private String name;
     private int frequency;
 
-
-    // ---------------------------------------------------------
-    // ----------------------------------------------------------
     /**
      * Create a new TimeLogicTest object.
      */

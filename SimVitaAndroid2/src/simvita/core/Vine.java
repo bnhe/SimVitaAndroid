@@ -9,7 +9,7 @@ import sofia.graphics.FillableShape;
 import sofia.graphics.OvalShape;
 import java.util.ArrayList;
 import sofia.graphics.Color;
-import java.util.Random;
+import sofia.util.Random;
 
 /**
  *
