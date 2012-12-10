@@ -36,7 +36,7 @@ public class AddCreatureScreenTest extends
      */
     public void testEagleClicked()
     {
-        //click(eagle);
+        click(eagle);
         //assertEquals("simvita.core.Eagle", screen.getCreatureTypeString());
         //assertNull(null);
     }
@@ -49,6 +49,6 @@ public class AddCreatureScreenTest extends
     {
         //click(plant);
         //assertEquals("simvita.core.Vine", screen.getCreatureTypeString());
-        //assertNull(null);
+        assertNull(null);
     }
 }
