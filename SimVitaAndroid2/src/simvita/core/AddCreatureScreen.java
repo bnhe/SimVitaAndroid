@@ -27,16 +27,19 @@ public class AddCreatureScreen extends Screen
     /**
      * Place a description of your method here.
      */
+
+    public void initialize()
+    {
+        eagleCost.setText(Integer.toString(new Eagle().value));
+        plantCost.setText(Integer.toString(new Vine().value));
+        this.creatureAdd = new CreatureAdd("simvita.core.Vine");
+    }
+
     public void initialize(CreatureAdd creatureAdd)
     {
         eagleCost.setText(Integer.toString(new Eagle().value));
         plantCost.setText(Integer.toString(new Vine().value));
         this.creatureAdd = creatureAdd;
-    }
-
-    public void turtleClicked()
-    {
-        selectCreature("TurtleA");
     }
 
     public void plantClicked()
@@ -53,5 +56,10 @@ public class AddCreatureScreen extends Screen
     {
         creatureAdd.addType = "simvita.core."+creatureClass;
         finish();
+    }
+
+    public String getCreatureTypeString()
+    {
+        return creatureAdd.addType;
     }
 }

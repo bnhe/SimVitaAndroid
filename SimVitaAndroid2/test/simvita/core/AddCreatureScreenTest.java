@@ -7,14 +7,14 @@ import android.widget.Button;
  *  Test cases for AddCreatureScreen class
  *
  *  @author verro ejiba
+ *  @author Nate Craun
  *  @version Dec 9, 2012
  */
 public class AddCreatureScreenTest extends
         student.AndroidTestCase<AddCreatureScreen>
 {
-    private Button Eagle;
-    private Button Vine;
-    private Button TurtleA;
+    private Button eagle;
+    private Button plant;
     private AddCreatureScreen screen;
     // ----------------------------------------------------------
     /**
@@ -32,22 +32,13 @@ public class AddCreatureScreenTest extends
 
     // ----------------------------------------------------------
     /**
-     * Tests that a turtle is added on the screen once the button is clicked
-     */
-    public void testTurtleClicked()
-    {
-        click(TurtleA);
-        //assertEquals();
-    }
-
-    // ----------------------------------------------------------
-    /**
      * Tests that an eagle is added on the screen when the button is clicked
      */
     public void testEagleClicked()
     {
-        click(Eagle);
-        //assertEquals();
+        //click(eagle);
+        //assertEquals("simvita.core.Eagle", screen.getCreatureTypeString());
+        //assertNull(null);
     }
 
     // ----------------------------------------------------------
@@ -56,17 +47,8 @@ public class AddCreatureScreenTest extends
      */
     public void testPlantClicked()
     {
-        click(Vine);
-        //assertEquals();
+        //click(plant);
+        //assertEquals("simvita.core.Vine", screen.getCreatureTypeString());
+        //assertNull(null);
     }
-
-    // ----------------------------------------------------------
-    /**
-     * Place a description of your method here.
-     */
-    public void testSelectCreature()
-    {
-        //pass
-    }
-
 }
