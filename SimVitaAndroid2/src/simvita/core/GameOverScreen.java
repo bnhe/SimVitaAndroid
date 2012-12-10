@@ -1,8 +1,6 @@
 package simvita.core;
 
 import android.widget.TextView;
-import sofia.graphics.TextShape;
-import sofia.app.ShapeScreen;
 import sofia.app.Screen;
 
 public class GameOverScreen extends Screen

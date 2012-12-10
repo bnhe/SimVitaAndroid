@@ -1,16 +1,13 @@
-/**
- *
- */
 package simvita.core;
 
 import android.graphics.RectF;
 import sofia.graphics.ImageShape;
 import sofia.graphics.OvalShape;
-import java.util.Random;
+import sofia.util.Random;
 
 /**
- *
- * This is a very simple Thing which just replicate and die.
+ * Turtle that will run around and eat the plants. 
+ * The eagle will eat the turtle.
  *
  * @author Bin He
  * @version 2012.11.30
@@ -94,23 +91,4 @@ public class TurtleA extends Creature {
             tl.moveCreature(this, newPosition);
         }
     }
-
-
-
-    /**
-     * Move the Turtle to random direction.
-     */
-    /*
-    private void move()
-    {
-        Position newPosition =
-            new Position(getPosition().x + rand.nextInt(3) - 1,
-                getPosition().y + rand.nextInt(3) - 1);
-
-        this.setPosition(newPosition);
-
-    }
-    */
-
-
 }

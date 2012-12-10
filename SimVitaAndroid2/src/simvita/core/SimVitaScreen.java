@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import android.view.MotionEvent;
 import sofia.graphics.Color;
 import sofia.app.ShapeScreen;
-import java.util.Random;
+import sofia.util.Random;
 
 
 // -------------------------------------------------------------------------

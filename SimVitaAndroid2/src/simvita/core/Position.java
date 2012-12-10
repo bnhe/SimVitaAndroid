@@ -50,6 +50,9 @@ public class Position
         return (x == position.x) && (y == position.y);
     }
 
+    /**
+     *
+     */
     public double distanceTo(Position toP)
     {
         return Math.sqrt((toP.x - x)*(toP.x - x) + (toP.y - y)*(toP.y - y));

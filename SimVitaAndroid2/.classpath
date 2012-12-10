@@ -5,5 +5,8 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="/Sofia-v2/libs/student.jar"/>
+	<classpathentry kind="lib" path="/Sofia-v2/libs/sofia-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
