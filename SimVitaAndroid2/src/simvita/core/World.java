@@ -21,8 +21,8 @@ public class World {
 
     private ArrayList<Creature> things;
     private ArrayList<Creature> toBeRemoved;
-    public ArrayList<Creature> toBeDraw;
-    public ArrayList<Creature> toBeMoved;
+    private ArrayList<Creature> toBeDraw;
+    private ArrayList<Creature> toBeMoved;
 
     /**
      * Create a new empty world.

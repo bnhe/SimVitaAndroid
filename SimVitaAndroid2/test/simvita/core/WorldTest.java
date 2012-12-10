@@ -106,7 +106,7 @@ public class WorldTest
     public void testMovingMethods()
     {
         w.addCreature(cr, pos);
-        w.toBeMoved.add(cr);
+        w.getToBeMoved().add(cr);
 
 
         assertEquals(1, w.getListOfCreatures().size());
