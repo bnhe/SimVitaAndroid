@@ -40,7 +40,7 @@ public class SimVitaScreen extends ShapeScreen
 
     //~Setup --------------------------------------------------
     /**
-     * This creates a new screen.
+     * This creates a new  screen.
      * A background image is added, the player starts with 100 money, and given
      * random plants, and turtleadder. Also the textdisplays are set up.
      *
