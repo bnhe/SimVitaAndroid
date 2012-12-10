@@ -11,9 +11,9 @@ import java.util.ArrayList;
  * This is the game simulate interactions between creatures.
  * All the creatures live in a expandable world.
  *
- * @author Bin He
- * @author Nate Craun
- * @version 2012.11.3
+ * @author Bin He (binhe)
+ * @author Nate Craun (ncraun)
+ * @version 2012.12.09
  */
 
 public class World {

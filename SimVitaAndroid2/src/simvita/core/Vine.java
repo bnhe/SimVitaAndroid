@@ -8,9 +8,9 @@ import sofia.util.Random;
  *
  * This is a Vine that can replicate and die.
  *
- * @author Bin He
- * @author Nate Craun
- * @version 2012.11.30
+ * @author Bin He (binhe)
+ * @author Nate Craun (ncraun)
+ * @version 2012.12.09
  *
  */
 public class Vine extends Creature {

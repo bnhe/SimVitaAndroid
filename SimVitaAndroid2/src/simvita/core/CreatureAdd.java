@@ -5,8 +5,8 @@ package simvita.core;
  * Screens. This particular one is used to determine the type of creature to add
  * to the screen when the player touches the screen.
  *
- * @author Nate Craun
- * @version Dec 9, 2012
+ * @author Nate Craun (ncraun)
+ * @version 2012.12.09
  */
 public class CreatureAdd
 {

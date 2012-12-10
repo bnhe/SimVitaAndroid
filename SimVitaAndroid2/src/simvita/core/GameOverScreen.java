@@ -8,8 +8,8 @@ import sofia.app.Screen;
  * Shows the ending image, the player's final score, and the option to try
  * again.
  *
- *  @author Nate Craun
- *  @version Dec 9, 2012
+ *  @author Nate Craun (ncraun)
+ *  @version 2012.12.09
  */
 public class GameOverScreen extends Screen
 {

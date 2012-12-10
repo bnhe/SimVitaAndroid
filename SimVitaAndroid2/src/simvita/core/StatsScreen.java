@@ -9,8 +9,8 @@ import android.widget.TextView;
  *  Follow it with additional details about its purpose, what abstraction
  *  it represents, and how to use it.
  *
- *  @author nate
- *  @version Dec 9, 2012
+ *  @author Nate Craun (ncraun)
+ *  @version 2012.12.09
  */
 public class StatsScreen extends Screen
 {

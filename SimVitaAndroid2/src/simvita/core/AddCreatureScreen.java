@@ -5,13 +5,11 @@ import android.widget.TextView;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
+ * Allow the user to select which creature type they want to purchase.
  *
- *  @author verro ejiba
- *  @author Nate Craun
- *  @version Dec 1, 2012
+ *  @author Verro Ejiba (verroe)
+ *  @author Nate Craun (ncraun)
+ *  @version 2012.12.09
  */
 public class AddCreatureScreen extends Screen
 {

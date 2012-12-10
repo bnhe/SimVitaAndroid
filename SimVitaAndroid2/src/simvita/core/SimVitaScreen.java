@@ -16,8 +16,15 @@ import sofia.util.Random;
  * Also includes several helper functions to interact with the TimeLogic
  * (a mini Controller, if you will).
  *
- *  @author Nate Craun
- *  @version Dec 1, 2012
+ * Testing Note: Unfortunately there were complications in using the provided
+ * testing framework. All of our screens make heavy use of both Multiple Screens
+ * and Screen with parameters to initialize, which are not supported in the
+ * framework (see posts on piazza). Removing this from our screens would strip
+ * out too much functionality, so we have omitted automated Screen tests for
+ * this submission. However, we have tested all our Screens manually.
+ *
+ *  @author Nate Craun (ncraun)
+ *  @version 2012.12.09
  */
 public class SimVitaScreen extends ShapeScreen
 {

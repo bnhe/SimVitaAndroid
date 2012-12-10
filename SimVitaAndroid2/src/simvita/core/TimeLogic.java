@@ -12,7 +12,8 @@ import java.util.PriorityQueue;
  *
  * Time starts from 0.
  *
- * @author Nate Craun
+ * @author Nate Craun (ncraun)
+ * @version 2012.12.09
  */
 public class TimeLogic
 {

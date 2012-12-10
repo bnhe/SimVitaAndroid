@@ -5,8 +5,8 @@ package simvita.core;
  * A class to store the x and y values for the position of the creature and
  * scenery in the world.
  *
- * @author Verro Ejiba
- * @version Nov 1, 2012
+ * @author Verro Ejiba (verroe)
+ * @version 2012.12.09
  */
 public class Position
 {

@@ -7,8 +7,8 @@ import sofia.util.Random;
  * An invisible creature that will add turtles to the World. This enables us to
  * have constantly spawning turtles, without getting exponential growth.
  *
- *  @author Nate Craun
- *  @version Dec 9, 2012
+ *  @author Nate Craun (ncraun)
+ *  @version 2012.12.09
  */
 public class TurtleAdder
 extends Creature

@@ -9,8 +9,8 @@ import sofia.util.Random;
  * Turtle that will run around and eat the plants.
  * The eagle will eat the turtle.
  *
- * @author Bin He
- * @version 2012.11.30
+ * @author Bin He (binhe)
+ * @version 2012.12.09
  *
  */
 public class TurtleA extends Creature {

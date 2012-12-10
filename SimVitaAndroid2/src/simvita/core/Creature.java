@@ -11,8 +11,9 @@ import sofia.graphics.Shape;
  */
 
 /**
- * @author Sihui Zhang
- * @version 2012.11.1
+ * @author Sihui Zhang (sihuiz07)
+ * @author Nate Craun (ncraun)
+ * @version 2012.12.09
  *
  */
 public class Creature

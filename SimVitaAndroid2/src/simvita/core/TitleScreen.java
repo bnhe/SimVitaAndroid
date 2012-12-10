@@ -7,7 +7,7 @@ import sofia.app.Screen;
  * buttons letting the player choose how long their game is.
  *
  * @author Nate Craun (ncraun)
- * @version Dec 9, 2012
+ * @version 2012.12.09
  */
 
 public class TitleScreen

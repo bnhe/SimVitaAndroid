@@ -8,8 +8,8 @@ import java.lang.Math;
  *
  * This is a Eagle that chasing turtle.
  *
- * @author Bin He
- * @version 2012.12.06
+ * @author Bin He (binhe)
+ * @version 2012.12.09
  *
  */
 public class Eagle extends Creature {

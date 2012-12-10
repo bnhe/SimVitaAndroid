@@ -4,8 +4,8 @@ package simvita.core;
  *  The entry for the TimeLogic's priority Queue. Bundles a creature with a Time
  *  and sorts by time.
  *
- *  @author Nate Craun
- *  @version Dec 9, 2012
+ *  @author Nate Craun (ncraun)
+ *  @version 2012.12.09
  */
 public class TimeEvent implements Comparable<TimeEvent>
 {

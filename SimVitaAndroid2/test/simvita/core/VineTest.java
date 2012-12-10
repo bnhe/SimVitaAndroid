@@ -5,7 +5,7 @@ import sofia.util.Random;
 /**
  * Test the Vine class.
  *
- * @author Nate Craun (ncraun)
+ * @author Nate Craun
  * @version Dec 9, 2012
  */
 
